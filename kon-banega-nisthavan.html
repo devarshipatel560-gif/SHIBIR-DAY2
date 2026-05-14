@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>કોન બનેગા નિષ્ઠાવાન — સંકલિત (Version 1 flow)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;600;700;800&family=Noto+Sans+Gujarati:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --f-serif:"Fraunces",Georgia,serif;
+  --f-guj:"Noto Sans Gujarati","Nirmala UI","Shruti",system-ui,sans-serif;
+  --f-sans:"Inter",system-ui,sans-serif;
+  --bg:#f6f1ea; --bg-alt:#ede4d7; --ink:#1d1a1a; --ink-soft:#4a4340; --muted:#8a7e77;
+  --rose:#b8456b; --rose-deep:#7e2a48; --gold:#b8936a; --green:#4f6a3a; --blue:#355a8a;
+  --card:#fffaf3; --hair:#d9cfc0; --cream:#fff4dc;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  min-height:100vh;font-family:var(--f-guj);color:var(--ink);background:var(--bg);
+  line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;height:auto;}
+a{color:inherit;}
+
+/* nav */
+.nav{
+  position:sticky;top:0;z-index:50;background:rgba(246,241,234,.94);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(217,207,192,.8);padding:12px 26px;display:flex;
+  align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+}
+.brand{display:flex;flex-direction:column;line-height:1.15;}
+.brand strong{color:var(--rose-deep);font-size:1rem;font-weight:800;}
+.brand span{color:var(--muted);font-family:var(--f-sans);font-size:.64rem;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:700;}
+.nav-pills{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap;}
+.nav-pill{
+  text-decoration:none;color:var(--rose-deep);border:1px solid rgba(184,69,107,.34);
+  background:rgba(255,250,243,.66);border-radius:999px;padding:5px 11px;font-weight:800;font-size:.92rem;
+  transition:transform .2s,background .2s,color .2s,border-color .2s;
+}
+.nav-pill:hover{transform:translateY(-1px);background:var(--rose);border-color:var(--rose);color:var(--cream);}
+
+/* hero */
+.hero{padding:46px 24px 34px;background:
+  radial-gradient(900px 420px at 50% -20%,rgba(184,69,107,.16),transparent 64%),
+  linear-gradient(180deg,#f6f1ea 0%,#fffaf3 100%);}
+.hero-inner{max-width:1120px;margin:0 auto;}
+.eyebrow{font-family:var(--f-sans);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--muted);font-weight:700;margin-bottom:12px;}
+h1{font-family:var(--f-serif);font-weight:300;font-size:clamp(2.6rem,6vw,5rem);line-height:1;color:var(--ink);}
+h1 em{color:var(--rose);font-style:italic;}
+.hero-copy{margin-top:18px;max-width:780px;color:var(--ink-soft);font-size:clamp(1rem,1.5vw,1.14rem);}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
+.legend span{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-sans);font-size:.74rem;
+  font-weight:700;color:var(--ink-soft);}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+.dot.both{background:var(--green);} .dot.pdf{background:var(--rose);} .dot.app{background:var(--blue);}
+.hero-stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
+.mini-stat{min-width:120px;padding:10px 14px;background:rgba(255,250,243,.72);
+  border:1px solid var(--hair);border-radius:6px;}
+.mini-stat strong{display:block;font-family:var(--f-serif);font-size:1.5rem;color:var(--rose-deep);line-height:1;}
+.mini-stat span{display:block;margin-top:5px;font-family:var(--f-sans);font-size:.64rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+
+/* bands */
+.band{padding:44px 24px;}
+.band:nth-of-type(even){background:var(--bg-alt);}
+.wrap{max-width:1120px;margin:0 auto;}
+.section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap;}
+.sec-num{font-family:var(--f-sans);font-weight:800;font-size:.78rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--rose);}
+.section-head h2{font-family:var(--f-serif);font-weight:300;font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.1;}
+.section-head h2 em{color:var(--rose);font-style:italic;}
+
+.flow-note{background:rgba(184,147,106,.14);border:1px dashed rgba(184,147,106,.6);
+  border-radius:6px;padding:10px 14px;margin-bottom:20px;font-size:.96rem;color:var(--ink-soft);}
+.flow-note b{color:var(--rose-deep);}
+
+.question-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.question-card{background:var(--card);border:1px solid var(--hair);border-radius:8px;
+  box-shadow:0 18px 45px -30px rgba(30,20,20,.36);padding:18px 20px;}
+.q-top{display:flex;gap:11px;align-items:flex-start;}
+.q-number{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  background:#f1e4d4;color:var(--rose-deep);font-family:var(--f-serif);font-size:1.05rem;}
+.q-main{flex:1;}
+.q-badge{display:inline-block;font-family:var(--f-sans);font-size:.6rem;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:999px;margin-bottom:6px;}
+.q-badge.both{background:#eaf2df;color:var(--green);}
+.q-badge.pdf{background:#f7e3ea;color:var(--rose-deep);}
+.q-badge.app{background:#e3ebf5;color:var(--blue);}
+.question{font-weight:800;color:var(--ink);font-size:1.02rem;}
+.options{display:grid;gap:7px;margin:14px 0 0 45px;}
+.option{border:1px solid rgba(217,207,192,.9);background:rgba(255,255,255,.5);border-radius:6px;
+  padding:7px 10px;color:var(--ink-soft);font-weight:600;font-size:.98rem;}
+.option.correct{color:#164d36;border-color:rgba(79,106,58,.45);background:#eaf2df;}
+.option-label{font-family:var(--f-sans);font-weight:800;margin-right:6px;color:var(--muted);}
+.option.correct .option-label{color:var(--green);}
+.q-note{margin:12px 0 0 45px;font-size:.9rem;color:var(--rose-deep);background:#f7e3ea;
+  border-radius:6px;padding:7px 10px;}
+details{margin:13px 0 0 45px;border-top:1px solid rgba(217,207,192,.8);padding-top:11px;}
+summary{cursor:pointer;color:var(--rose-deep);font-weight:800;list-style:none;font-size:.95rem;}
+summary::-webkit-details-marker{display:none;}
+summary::after{content:"+";display:inline-grid;place-items:center;width:20px;height:20px;
+  margin-left:8px;border-radius:50%;border:1px solid rgba(184,69,107,.4);font-family:var(--f-sans);}
+details[open] summary::after{content:"\2013";}
+.prasang{margin-top:10px;color:var(--ink-soft);font-size:.99rem;}
+.prasang p+p{margin-top:9px;}
+
+/* games */
+.games-head{margin:34px 0 16px;font-family:var(--f-sans);font-weight:800;font-size:.82rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--rose);
+  border-top:1px solid var(--hair);padding-top:18px;}
+.game-panel{background:var(--card);border:1px solid var(--hair);border-radius:8px;
+  box-shadow:0 18px 45px -30px rgba(30,20,20,.36);padding:20px 24px;margin-bottom:16px;}
+.game-name{font-family:var(--f-serif);font-weight:350;font-size:clamp(1.4rem,2.4vw,1.95rem);
+  color:var(--rose-deep);margin-bottom:6px;}
+.game-image{width:100%;border:1px solid var(--hair);border-radius:6px;margin-bottom:14px;background:#fff;}
+.game-sub{font-family:var(--f-sans);font-weight:800;color:var(--ink);font-size:1.05rem;
+  margin:14px 0 4px;}
+.game-block h4{color:var(--rose-deep);font-family:var(--f-sans);font-size:.92rem;font-weight:800;
+  margin:13px 0 4px;}
+.game-block ul,.game-block ol{margin-left:1.3rem;color:var(--ink-soft);line-height:1.5;font-size:.97rem;}
+.game-block li+li{margin-top:2px;}
+
+.excel-banner{background:var(--rose-deep);color:var(--cream);padding:42px 24px;}
+.excel-banner .wrap{max-width:1120px;margin:0 auto;}
+.excel-banner .eyebrow{color:rgba(255,244,220,.7);margin-bottom:10px;}
+.excel-banner h2{font-family:var(--f-serif);font-weight:300;font-size:clamp(1.8rem,3.2vw,2.6rem);line-height:1.12;}
+.excel-banner p{margin-top:10px;color:rgba(255,244,220,.86);max-width:780px;}
+.nav-pill.excel{border-color:rgba(53,90,138,.4);color:var(--blue);}
+.nav-pill.excel:hover{background:var(--blue);border-color:var(--blue);color:var(--cream);}
+.sec-num.excel{color:var(--blue);}
+
+footer{padding:30px 24px 50px;text-align:center;color:var(--muted);font-family:var(--f-sans);
+  font-size:.8rem;}
+
+@media(max-width:880px){
+  .question-grid{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  body{font-size:16px;}
+  .nav{flex-direction:column;align-items:flex-start;}
+  .options,.q-note,details{margin-left:0;}
+  .q-top{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="brand"><strong>કોન બનેગા નિષ્ઠાવાન</strong><span>Quiz &amp; Activities</span></div>
+  <div class="nav-pills" id="navPills"></div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Quiz + Activities</p>
+    <h1>કોન બનેગા <em>નિષ્ઠાવાન?</em></h1>
+    <p class="hero-copy">
+      This standalone page follows the flow of <b>Version 1</b> of the "Kon Banega Nisthavan" script.
+      Each section lists all of its questions first, drawn from both the script and the Excel sheet,
+      followed by the activities, complete with instructions. The Excel-only sections that don't appear
+      in the script's Version 1 (Mandir, Kirtan, Niyam-Dharma, Das-Bhav) have been left out for now.
+    </p>
+    <div class="legend">
+      <span><i class="dot both"></i>In Script &amp; Excel</span>
+      <span><i class="dot pdf"></i>Only in Script</span>
+      <span><i class="dot app"></i>Only in Excel</span>
+    </div>
+    <div class="hero-stats">
+      <div class="mini-stat"><strong id="statSec">8</strong><span>Sections</span></div>
+      <div class="mini-stat"><strong id="statQ">0</strong><span>Questions</span></div>
+      <div class="mini-stat"><strong id="statG">0</strong><span>Activities</span></div>
+    </div>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<script>
+const SECTIONS = [
+{
+  key:"upasana", num:1, title:"ઉપાસના",
+  flowNote:"સ્ક્રિપ્ટ પ્રવાહ: આ વિભાગ પછી કીર્તન — “આજ મારે ઓરડે રે” અને “શાસ્ત્રીજી મહારાજનો સંગ”. (Excel માં આ વિભાગની કોઈ રમત નથી.)",
+  questions:[
+    { source:"both",
+      q:"અક્ષરપુરુષોત્તમ ઉપાસનામાં સર્વોપરી, સર્વકર્તા, સાકાર તથા કઈ ચોથી બાબત સમજવાની છે?",
+      options:["સમજણ","સત્પુરુષ","સંત","પ્રગટ"], correct:3,
+      prasang:[
+        "અક્ષરપુરુષોત્તમ ઉપાસનામાં ચોથી બાબત પ્રગટ છે.",
+        "“ઉપાસનામાં ૪ વાત કરે છે ને! કર્તા, સાકાર, સર્વોપરી અને પ્રગટ! જો ‘પ્રગટ’ ના હોય તો એક અંગ જ ઊડી જાય ૩ જ રહે.”",
+        "BAPS સિદ્ધાંત મુજબ ઉપાસનાના ચાર સ્તંભ: ૧. સર્વકર્તાહર્તા ૨. સાકાર ૩. સર્વોપરી ૪. પ્રગટ — ભગવાન હંમેશા ગુણાતીત સત્પુરુષ દ્વારા પૃથ્વી પર પ્રગટ રહે છે."
+      ]},
+    { source:"pdf",
+      q:"મહંતસ્વામી મહારાજે હરિકૃષ્ણ મહારાજની સાથે અક્ષરમૂર્તિ ગુણાતીતાનંદ સ્વામીની મૂર્તિની જોડ ક્યારે પધરાવી?",
+      options:[], correct:-1,
+      note:"સ્ક્રિપ્ટની Version 1 માં આ પ્રશ્નના વિકલ્પો અને જવાબ આપેલા નથી — ઉમેરવાના બાકી." },
+    { source:"pdf",
+      q:"આપનો સાધનામંત્ર કયો છે?",
+      options:["અક્ષરમ્ અહમ્ પુરુષોત્તમદાસોઽસ્મિ","ધન્યોઽસ્મિ પૂર્ણકામોઽસ્મિ","સ્વામિનારાયણ સાક્ષાત્ અક્ષરપુરુષોત્તમ","ઉત્તિષ્ઠ સહજાનંદ શ્રીહરે પુરુષોત્તમ"],
+      correct:0,
+      prasang:["સાધનામંત્ર ગોંડલ અક્ષરદેરી સાર્ધ શતાબ્દી (2018) પ્રસંગે આપવામાં આવ્યો હતો."] },
+    { source:"pdf",
+      q:"મહંત સ્વામી મહારાજે સત્સંગ દીક્ષા ગ્રંથમાં ઉપાસના સંબંધી કેટલા શ્લોકો આપ્યા છે?",
+      options:["(બાકી)","23","(બાકી)","(બાકી)"], correct:1,
+      note:"સ્ક્રિપ્ટમાં ફક્ત વિકલ્પ B) 23 ભરેલો છે; બાકીના વિકલ્પો અને સમજૂતી બાકી." },
+    { source:"app",
+      q:"શ્રીજી મહારાજે ______ રહેવા સારું છ ભવ્ય શિખરબદ્ધ મંદિરોનું નિર્માણ કર્યું હતું.",
+      options:["ભક્તિ","સંપ્રદાય","ઉપાસના","પરંપરા"], correct:2,
+      prasang:[
+        "શ્રીજી મહારાજે ઉપાસના રહેવા સારું છ ભવ્ય શિખરબદ્ધ મંદિરોનું નિર્માણ કર્યું હતું.",
+        "“એ સ્વરૂપોની ઉપાસનામાં રહેવા સારુ જ મહારાજે ભગવાનનાં મંદિર કરાવ્યાં છે. ઉપાસનાનો નાશ થઈ જાય તો પાછળથી અંધપરંપરા ચાલે.”",
+        "ભગવાન સ્વામિનારાયણે અમદાવાદ, ભુજ, વરતાલ, ધોલેરા, જૂનાગઢ અને ગઢડામાં શિખરબદ્ધ મંદિરોનું નિર્માણ કર્યું હતું."
+      ]},
+    { source:"app",
+      q:"ભગવાન સ્વામિનારાયણે મૂળ અક્ષર તરીકે કોની ઓળખાણ કરાવી હતી?",
+      options:["ગોપાળાનંદ સ્વામી","ગુણાતીતાનંદ સ્વામી","મુક્તાનંદ સ્વામી","રામાનંદ સ્વામી"], correct:1,
+      prasang:[
+        "ભગવાન સ્વામિનારાયણે મૂળ અક્ષર તરીકે ગુણાતીતાનંદ સ્વામીની ઓળખાણ કરાવી હતી.",
+        "“શ્રીહરિ કહે : ‘એવા સદ્‌ગુરુ તો આ ગુણાતીતાનંદ સ્વામી છે! એ તો મારે રહેવાનું અક્ષરધામ છે! ને અમે તો સાક્ષાત્ પુરુષોત્તમ નારાયણ છીએ!’”"
+      ]},
+    { source:"app",
+      q:"ગુણાતીતાનંદ સ્વામીનાં દીક્ષા પ્રસંગે મહારાજે તેઓની અક્ષરબ્રહ્મ તરીકે કરાવેલી ઓળખાણની વાત કયા સંપ્રદાયિક ગ્રંથમાં નોંધાયેલી છે?",
+      options:["વચનામૃત","હરિલીલામૃત","હરિલીલાકલ્પતરુ","હરિવાક્યસુધાસિંધુ"], correct:2,
+      prasang:[
+        "ગુણાતીતાનંદ સ્વામીની અક્ષરબ્રહ્મ તરીકેની ઓળખાણની વાત હરિલીલાકલ્પતરુ ગ્રંથમાં નોંધાયેલી છે.",
+        "સંવત ૧૮૬૬ પોષ સુદ પૂનમ, ડભાણ મુકામે મહાવિષ્ણુયાગ દરમિયાન શ્રીજી મહારાજે મૂળજી શર્માને દીક્ષા આપી ‘ગુણાતીતાનંદ સ્વામી’ નામ પાડ્યું. આ પ્રસંગનો ઉલ્લેખ ‘શ્રીહરિલીલાકલ્પતરુ’ ગ્રંથના ૭મા સ્કંધના ૧૭મા અધ્યાયમાં છે."
+      ]}
+  ],
+  games:[]
+},
+{
+  key:"purusharth", num:2, title:"પુરુષાર્થ",
+  gameImages:["PURUSHARTH.png"],
+  questions:[
+    { source:"both",
+      q:"શાસ્ત્રીજી મહારાજે સતત 10 કલાક સુધી અક્ષરપુરુષોત્તમના મહિમાની વાતો કોને કરી?",
+      options:["જેઠાભાઈ","ઉત્તમભાઈ","બાલકૃષ્ણભાઈ","આશાભાઈ"], correct:0,
+      prasang:[
+        "શાસ્ત્રીજી મહારાજે સતત ૧૦ કલાક સુધી અક્ષરપુરુષોત્તમના મહિમાની વાતો જેઠાભાઈને કરી હતી. તેઓ પાછળથી નિર્ગુણદાસ સ્વામી તરીકે ઓળખાયા.",
+        "“એક દિવસે મંદિરની પ્રદક્ષિણામાં સાંજના ૬ વાગ્યાથી સવારના ૪ વાગ્યા સુધી શાસ્ત્રીજી મહારાજે તેમને અક્ષરપુરુષોત્તમના સિદ્ધાંતની વાતો કરી. દશ કલાકમાં શાસ્ત્રીજી મહારાજે તેમનું અંતર ભેદી નાખ્યું.”"
+      ]},
+    { source:"both",
+      q:"ખાનદેશમાં અક્ષરપુરુષોત્તમ સત્સંગના પ્રવર્તનમાં સિંહફાળો કોનો રહ્યો છે?",
+      options:["સાધુ બાલમુકુન્દદાસ","સાધુ વિજ્ઞાનદાસ","સાધુ મહાપુરુષદાસ","સાધુ નિર્ગુણદાસ"], correct:3,
+      note:"⚠ સ્ક્રિપ્ટ ‘Kon Banega Nisthavan’ (V1) માં આ પ્રશ્નનો સાચો જવાબ ‘B) સાધુ વિજ્ઞાનદાસ’ આપેલો છે. Excel માં ‘D) સાધુ નિર્ગુણદાસ’ છે — જવાબ ચકાસવો.",
+      prasang:[
+        "Excel મુજબ: ખાનદેશમાં અક્ષરપુરુષોત્તમ સત્સંગના પ્રવર્તનમાં સિંહફાળો સાધુ નિર્ગુણદાસનો રહ્યો છે.",
+        "પ્રારંભિક બીજ રોપવાનું કાર્ય સાધુ વિજ્ઞાનદાસજીએ કર્યું, પરંતુ તેને વ્યાપક બનાવીને ટકાવી રાખવાનું કાર્ય નિર્ગુણદાસ સ્વામીએ કર્યું હતું.",
+        "સ્ક્રિપ્ટ મુજબ: ખાનદેશમાં સત્સંગની શરૂઆતમાં સાધુ વિજ્ઞાનદાસનો મુખ્ય ફાળો રહ્યો — તેમણે વિચરણ કરીને મુમુક્ષુઓને શુદ્ધ ઉપાસનાની સમજણ આપીને સત્સંગનો પાયો નાખ્યો."
+      ]},
+    { source:"pdf",
+      q:"ખાનદેશ જવા નીકળતી વખતે જાલિલારોડ સ્ટેશને બંને પગ ઝલાઈ ગયા — આ પ્રસંગ વખતે શાસ્ત્રીજી મહારાજની ઉંમર કેટલી હતી?",
+      options:["84","82","80","78"], correct:0,
+      prasang:["૮૪ વર્ષની ઉંમરે અને બંને પગ ઝલાઈ ગયા હોવા છતાં શાસ્ત્રીજી મહારાજને પોતાની પીડાની ચિંતા નહોતી, પણ ખાનદેશના ભક્તોને લાભ ન મળ્યો તેનો ‘વસવસો’ હતો. આ તેમનો પુરુષાર્થ દર્શાવે છે."]},
+    { source:"app",
+      q:"BAPS સંસ્થાનું સૌપ્રથમ મંદિર શાસ્ત્રીજી મહારાજે ક્યાં બનાવ્યું?",
+      options:["આણંદ","મહેળાવ","બોચાસણ","વઢવાણ"], correct:2,
+      prasang:[
+        "બોચાસણ મંદિર એ શાસ્ત્રીજી મહારાજ દ્વારા નિર્મિત BAPS સંસ્થાનું સૌપ્રથમ શિખરબદ્ધ મંદિર છે.",
+        "ભગવાન સ્વામિનારાયણે બોચાસણના ભક્ત કાશીદાસ મોટાને વચન આપ્યું હતું કે “તમારે ત્યાં અમારે મંદિર કરવું છે... અમે અહીં ધામ સહિત બિરાજીશું.”",
+        "માગશર વદ ૧, સંવત ૧૯૬૩ના રોજ પાયા ખોદવાનું શરૂ થયું અને માત્ર ૧૯૩ દિવસમાં મંદિર તૈયાર થઈ ગયું. પાયા ખોદતી વખતે સોનાના સિક્કા નીકળ્યા, પણ સ્વામીશ્રીએ “આપણે તો અહીં મૂર્તિમાન લક્ષ્મી બેસાડીશું” કહીને દટાવી દીધા."
+      ]},
+    { source:"app",
+      q:"બોચાસણ બાદ બીજું શિખરબદ્ધ મંદિર ક્યાં બનાવ્યું?",
+      options:["સારંગપુર","ગોંડલ","અટલાદરા","ગઢડા"], correct:0,
+      prasang:[
+        "સારંગપુર મંદિર એ શાસ્ત્રીજી મહારાજ દ્વારા નિર્મિત બીજું શિખરબદ્ધ મંદિર છે.",
+        "શાસ્ત્રીજી મહારાજે લીમડી દરબાર પાસેથી ૨૪ એકર પ્રસાદીની જમીન મેળવી અને સંવત ૧૯૭૨, વૈશાખ સુદ ૬ (૨૩ મે, ૧૯૧૬) ના રોજ મધ્ય મંદિરમાં અક્ષર-પુરુષોત્તમ મહારાજ અને ગોપાળાનંદ સ્વામીની મૂર્તિઓની પ્રતિષ્ઠા કરી."
+      ]},
+    { source:"pdf",
+      q:"ગુજરાતનું બીજા નંબરનું સૌથી ઊંચું મંદિર કયું છે?",
+      options:["ગઢડા","સારંગપુર","બોચાસણ","સોમનાથ"], correct:1 },
+    { source:"pdf",
+      q:"સ્ક્રીન પર જે મંદિર દેખાય છે એ કયું છે?",
+      options:["બોચાસણ","અટલાદરા","ભરૂચ","પુણે"], correct:0,
+      prasang:[
+        "બોચાસણ મંદિર એ BAPS સંસ્થાનું સૌપ્રથમ શિખરબદ્ધ મંદિર છે, જે ભગવાન સ્વામિનારાયણના સંકલ્પ અને વચનને સાકાર કરવા બાંધવામાં આવ્યું.",
+        "તે સમયે આખા ભારતમાં આવું ત્રણ માળનું ભવ્ય મંદિર બીજે ક્યાંય નહોતું."
+      ]},
+    { source:"both",
+      q:"નોર્થ અમેરિકામાં સૌપ્રથમ શિખરબદ્ધ મંદિર ક્યાં બન્યું?",
+      options:["શિકાગો","હ્યુસ્ટન","એટલાન્ટા","ટોરોન્ટો"], correct:1 },
+    { source:"both",
+      q:"રોબિન્સવિલ અક્ષરધામનું લોકાર્પણ ક્યારે થયું?",
+      options:["8 October 2023","8 November 2023","10 October 2023","11 November 2023"], correct:0 },
+    { source:"both",
+      q:"મહંત સ્વામી મહારાજે હમણાં છેલ્લે કયા શિખરબદ્ધ મંદિરની મૂર્તિ પ્રતિષ્ઠા કરી?",
+      options:["અબુધાબી","સિડની","નાસિક","જોધપુર"], correct:3,
+      note:"સ્ક્રિપ્ટની V1 માં વિકલ્પો ભૂજ / સિડની / મહુવા / જોધપુર છે; Excel માં ઉપર મુજબ. જવાબ બંનેમાં જોધપુર." },
+    { source:"both",
+      q:"મહંત સ્વામી મહારાજ સપ્ટેમ્બર 2026માં કયા નૂતન મંદિરનું લોકાર્પણ કરશે?",
+      options:["કણાદ, સુરત","પેરિસ, ફ્રાન્સ","જોહાનિસબર્ગ, આફ્રિકા","મેલબર્ન, ઓસ્ટ્રેલિયા"], correct:1 }
+  ],
+  games:[
+    {title:"Apple Bobbing Challenge"},
+    {title:"Objective",items:["Retrieve an apple from the water using only your mouth."]},
+    {title:"Materials Needed",items:["Large tub or bucket","Clean water","Apples","Towels"]},
+    {title:"Instructions",ordered:true,items:[
+      "Fill a tub or bucket with clean water.",
+      "Place a few apples in the water.",
+      "One participant goes at a time.",
+      "The participant must keep both hands behind their back.",
+      "They must try to bite and lift an apple using only their mouth.",
+      "Once the apple is lifted out of the water, the challenge is complete.",
+      "If the participant is unable to get the apple, another teammate may try."
+    ]},
+    {title:"Safety Note",items:["Use clean water and fresh apples. Replace the water when needed. Make sure participants do not push their face too deep into the water."]}
+  ]
+},
+{
+  key:"sahan", num:3, title:"ભીડો અને સહનશક્તિ",
+  gameImages:["SAHAN.png","SAHAN-2.png"],
+  questions:[
+    { source:"pdf",
+      q:"કયા વર્ષમાં શાસ્ત્રીજી મહારાજને ઝેર આપ્યું?",
+      options:["1902 (વિક્રમ સંવત 1958)","1904 (વિક્રમ સંવત 1960)","1903 (વિક્રમ સંવત 1959)","1905 (વિક્રમ સંવત 1961)"], correct:0 },
+    { source:"pdf",
+      q:"વડતાલમાં જ્યારે શાસ્ત્રીજી મહારાજને જમવામાં ઝેર આપવામાં આવ્યું, ત્યારે તેમણે શું કર્યું હતું?",
+      options:["બહાર જઈને બધાને વાત કરી દીધી","રસોઈયા સામે કેસ કર્યો","તે જ દિવસે વડતાલ છોડી દીધું","ચૂપચાપ બધું સહન કરી મહારાજનું સ્મરણ કર્યું"], correct:3 },
+    { source:"pdf",
+      q:"શાસ્ત્રીજી મહારાજના જીવનમાં 'સહનશીલતા' એટલે શું?",
+      options:["કઈ ન સમજાય એટલે ચૂપ રહેવું","ઉપાસના માટે ગમે તેવા અપમાન પી જવાની શક્તિ","બીજા પર ગુસ્સો કરવો","નબળાઈ દર્શાવવી"], correct:1,
+      note:"સ્ક્રિપ્ટમાં નોંધ: આ પ્રશ્ન ‘અક્ષરપુરુષોત્તમના બળદિયા છીએ’ (ખેતરમાં પાણી/ધૂળ) પ્રસંગ સાથે બદલવાનું સૂચન છે." },
+    { source:"both",
+      q:"“આ મૂંડાવ્યું છે તે પણ અક્ષર-પુરુષોત્તમ સારુ જ મૂંડાવ્યું છે.” આ મહાવાક્ય શાસ્ત્રીજી મહારાજે કયા મંદિર નિર્માણ વખતે કહ્યું હતું?",
+      options:["સારંગપુર","બોચાસણ","વઢવાણ","ગોંડલ","ગઢડા"], correct:0,
+      prasang:[
+        "શાસ્ત્રીજી મહારાજે આ વાક્ય સારંગપુર મંદિરના નિર્માણ વખતે કહ્યું હતું.",
+        "“ઠાકોર સાહેબ! આ દેહે જે કષ્ટ સહન કર્યા છે, તે મહાપ્રભુ શ્રીસહજાનંદ સ્વામી અને ગુણાતીતાનંદ સ્વામી સારું જ સહ્યાં છે... અમારા ઈષ્ટદેવ તો શ્રીસહજાનંદ સ્વામી અને ગુણાતીતાનંદ સ્વામી જ છે.”",
+        "લીમડીના ઠાકોર સાહેબે મધ્ય મંદિરમાં રાધા-કૃષ્ણની મૂર્તિઓ પધરાવવાનો આગ્રહ કર્યો, ત્યારે શાસ્ત્રીજી મહારાજે અત્યંત ખુમારી અને નિડરતાથી આ શબ્દો કહ્યા હતા."
+      ]},
+    { source:"app",
+      q:"“આ મુંડાવ્યું છે તે અક્ષરપુરુષોત્તમ માટે મુંડાવ્યું છે.” – આ વાક્ય આપણને શું સમજાવે છે?",
+      options:["સંસ્થાના વિકાસ માટે સહન કરેલી તકલીફો","અક્ષરપુરુષોત્તમનો સિદ્ધાંત","સત્પુરુષ માટે હોમાઈ જવાનો ભાવ","ઉપરના તમામ"], correct:3 },
+    { source:"app",
+      q:"શાસ્ત્રીજી મહારાજે વડતાલથી મહાપ્રસ્થાન ક્યારે કર્યું?",
+      options:["સંવત 1962 કાર્તિક વદ પૂર્ણિમા","સંવત 1962 કાર્તિક સુદ પૂર્ણિમા","સંવત 1962 કાર્તિક સુદ પાંચમ","સંવત 1962 કાર્તિક સુદ બીજ"], correct:3,
+      prasang:[
+        "શાસ્ત્રીજી મહારાજે વડતાલથી મહાપ્રસ્થાન સંવત ૧૯૬૨ કાર્તિક સુદ બીજના રોજ કર્યું હતું.",
+        "આ ઐતિહાસિક પ્રસ્થાન અક્ષર-પુરુષોત્તમ ઉપાસનાના શુદ્ધ સિદ્ધાંતના પ્રવર્તન માટે હતું."
+      ]},
+    { source:"app",
+      q:"શાસ્ત્રીજી મહારાજે વડતાલથી મહાપ્રસ્થાન કેમ કર્યું?",
+      options:["સુખથી ભજન કરવા","જાનનું જોખમ","હરિભક્તનો આગ્રહ","અક્ષરપુરુષોત્તમ જ્ઞાનનું પ્રવર્તન કરવા માટે"], correct:3,
+      prasang:[
+        "શાસ્ત્રીજી મહારાજે વડતાલથી મહાપ્રસ્થાન અક્ષરપુરુષોત્તમ જ્ઞાનનું પ્રવર્તન કરવા માટે કર્યું હતું.",
+        "વરતાલમાં જાનનું જોખમ હતું અને હરિભક્તોનો આગ્રહ પણ હતો, પરંતુ તેમનું મુખ્ય લક્ષ્ય અક્ષરપુરુષોત્તમ ઉપાસના વિશ્વમાં પ્રવર્તાવવાનું હતું."
+      ]}
+  ],
+  games:[
+    {title:"Option 1: Ice Diamond Challenge"},
+    {title:"Objective",items:["Melt the ice using only your hands and retrieve the diamond inside."]},
+    {title:"Materials Needed",items:["Ice blocks with small plastic diamonds or objects frozen inside","Tray or bowl","Towels"]},
+    {title:"Instructions",ordered:true,items:[
+      "Each team receives one ice block with a diamond inside.",
+      "Participants must melt the ice using only their hands.",
+      "They may take turns holding and rubbing the ice.",
+      "No tools, breaking, hitting, or throwing the ice is allowed.",
+      "The team continues until the diamond is fully released.",
+      "Once the diamond is free, the challenge is complete."
+    ]},
+    {title:"Option 2: Chair Position Challenge"},
+    {title:"Objective",items:["Stay in a sitting position without using an actual chair for as long as possible."]},
+    {title:"Materials Needed",items:["Open space","Timer"]},
+    {title:"Instructions",ordered:true,items:[
+      "Participants stand with their back against a wall or in an open space.",
+      "They slowly bend their knees and sit as if they are sitting on an invisible chair.",
+      "Their knees should be bent, and their back should stay straight.",
+      "Hands should not touch the ground, wall, knees, or any other support.",
+      "Once the participant stands up, falls, or takes support, they are out.",
+      "The person who holds the position the longest wins."
+    ]},
+    {title:"Safety Note",items:["Do not force anyone to continue if they feel pain or discomfort. This game should test endurance, not cause injury."]}
+  ]
+},
+{
+  key:"dhiraj", num:4, title:"ધીરજ",
+  gameImages:["DHIRAJ.png","DHIRAJ-2.png"],
+  questions:[
+    { source:"pdf",
+      q:"શાસ્ત્રીજી મહારાજે ગઢડામાં અક્ષર-પુરુષોત્તમ મંદિરના નિર્માણ માટે કેટલા વર્ષ પ્રતીક્ષા કરી?",
+      options:["૨૫ વર્ષ","૧૦ વર્ષ","૫ વર્ષ","૩૬ વર્ષ"], correct:-1,
+      note:"સ્ક્રિપ્ટની Version 1 માં સાચો જવાબ ચિહ્નિત નથી — ચકાસવાનો બાકી." },
+    { source:"pdf",
+      q:"પ્રમુખ સ્વામી મહારાજે દિલ્લી અક્ષરધામ બનાવવા માટે કેટલા વર્ષો સુધી રાહ જોઈ?",
+      options:["૧૮","૨૦","૧૬","૨૨"], correct:0,
+      prasang:[
+        "યોગીજી મહારાજે ૧૯૬૮માં યમુનાના કિનારે અક્ષરધામ બનાવવાનો સંકલ્પ કર્યો હતો. પ્રમુખસ્વામી મહારાજે ૧૯૮૨માં જમીન માટેની સત્તાવાર પ્રક્રિયા શરૂ કરી.",
+        "૧૯૮૨ થી ૨૦૦૦ સુધીના ૧૮ વર્ષો દરમિયાન અનેક અવરોધો આવ્યા. અંતે ૨૦૦૦ની સાલમાં જમીન મળી અને માત્ર ૫ વર્ષમાં ૨૦૦૫માં દિલ્હી અક્ષરધામ તૈયાર થઈ ગયું."
+      ]}
+  ],
+  games:[
+    {title:"Option 1: Steady Steps Challenge"},
+    {title:"Objective",items:["Carry a cup of water from start to finish without spilling too much."]},
+    {title:"Materials Needed",items:["Plastic cups","Water","Tape for start and finish lines"]},
+    {title:"Instructions",ordered:true,items:[
+      "Fill a cup of water up to the marked line.",
+      "One participant starts at the start line.",
+      "They must walk slowly to the finish line while holding the cup.",
+      "The water must stay above the marked line.",
+      "If too much water spills, the participant must restart.",
+      "Each team member can take a turn.",
+      "The challenge is complete when the team successfully carries the water to the finish line."
+    ]},
+    {title:"Extra Challenge",items:["Ask participants to walk with the cup using one hand only."]},
+    {title:"Option 2: Limbu Chamchi Challenge"},
+    {title:"Objective",items:["Balance the lemon on the spoon and cross the finish line without dropping it. The goal is not to finish first, but to stay steady, calm, and focused."]},
+    {title:"Materials Needed",items:["Lemons","Spoons","Tape or markers for start and finish lines","Open space"]},
+    {title:"Instructions",ordered:true,items:[
+      "Mark a clear start line and finish line.",
+      "Five to six participants stand at the start line.",
+      "Give each participant one spoon and one lemon.",
+      "Each participant places the spoon handle in their mouth.",
+      "The lemon must be balanced on the spoon.",
+      "When the game begins, participants walk carefully from the start line to the finish line.",
+      "Participants may not use their hands to hold the spoon or lemon during the challenge.",
+      "If the lemon falls, the participant must return to the start line and begin again.",
+      "The challenge is complete when a participant crosses the finish line with the lemon still balanced on the spoon.",
+      "The winner is the participant who completes the challenge with balance and control, not the one who rushes."
+    ]},
+    {title:"Rules",items:[
+      "Do not run or push others.",
+      "Hands cannot touch the spoon or lemon during the challenge.",
+      "Participants must stay in their own lane or path.",
+      "If the lemon falls, the participant must restart from the start line.",
+      "Focus on balance, patience, and steadiness."
+    ]},
+    {title:"Reflection Message",items:["In life, speed is not always the most important thing. Sometimes, patience, balance, and focus help us reach the goal safely and successfully."]}
+  ]
+},
+{
+  key:"haribhakto", num:5, title:"હરિભક્તો",
+  flowNote:"સ્ક્રિપ્ટ પ્રવાહ: “જેવા શાસ્ત્રીજી મહારાજ હતા તેવા જ તેમના સંતો અને હરિભક્તો” — આ વિભાગમાં Excel માં કોઈ રમત નથી.",
+  questions:[
+    { source:"both",
+      q:"ઈશ્વરભાઈની ઈમેજ સ્ક્રીન પર બતાવવામાં આવી છે. આ છબીમાં દેખાતા ‘મુક્તરાજ’ કોણ છે?",
+      options:["આશાભાઈ","ઈશ્વરભાઈ","જેઠા ભગત","જેઠાલાલ સ્વામીનારાયણ"], correct:1 },
+    { source:"both",
+      q:"મગનભાઈ કઈ સેવા કરીને શાસ્ત્રીજી મહારાજની માળાના મણકા બની ગયા?",
+      options:["હરિભક્તોને નિત્ય જમાડવાની","આફ્રિકામાં મંદિર બનાવવાની","ઉપાસના પ્રવર્તનની","આર્થિક સેવા"], correct:2,
+      prasang:[
+        "મગનભાઈ ઉપાસના પ્રવર્તનની સેવા કરીને શાસ્ત્રીજી મહારાજની માળાના મણકા બની ગયા હતા.",
+        "મગનભાઈ આફ્રિકામાં રેલવે સ્ટેશન માસ્તર તરીકે નોકરી કરતા હોવા છતાં, કલાકો સુધી કથાવાર્તા કરતા અને તાર દ્વારા પણ અન્ય સ્ટેશનો પરના ભક્તોને સત્સંગનો મહિમા સમજાવતા હતા."
+      ]},
+    { source:"both",
+      q:"સારંગપુરમાં સુવર્ણ જડિત મંદિરના દર્શન શાસ્ત્રીજી મહારાજે કોને કરાવ્યા?",
+      options:["પરમ ભગવદીય આશાભાઈ","પરમ ભગવદીય ઈશ્વરભાઈ","પરમ ભગવદીય છગનભાઈ","પરમ ભગવદીય રણછોડભગત"], correct:2,
+      prasang:[
+        "સારંગપુરમાં છગનલાલ ગગાભાઈ ખત્રી સાથે જોડાયેલો પ્રસંગ મંદિરની લખણી વખતે થયો હતો.",
+        "છગનભાઈએ રૂ. ૩૫ની સેવા લખાવી. “તમારા જેવા નિષ્ઠાવાન મુક્તોનો એક રૂપિયો, એક કરોડ રૂપિયા બરાબર છે” — એમ કહીને સ્વામીશ્રીએ હાથ લાંબો કર્યો અને છગનભાઈને સુવર્ણ-રત્નજડિત ત્રણ શિખરનું મણિમય મંદિર દેખાયું."
+      ]},
+    { source:"both",
+      q:"“અમે સૌ સ્વામીના બાળક, જીવીશું સ્વામીને માટે” – આ કીર્તનના રચયિતા કોણ છે?",
+      options:["પરમ ભગવદીય શંકરભાઈ","મોતીભાઈ","મહાપુરુષદાસ","નારાયણ ભગત"], correct:1,
+      prasang:[
+        "આ કીર્તનના રચયિતા મોતીભાઈ (મોતીભાઈ ભગવાનદાસ પટેલ) છે.",
+        "આણંદના મોતીભાઈ ભગવાનદાસ પટેલ શાસ્ત્રીજી મહારાજના અનન્ય ભક્ત હતા. તેમણે આ કીર્તન દ્વારા અક્ષર-પુરુષોત્તમ સિદ્ધાંત પ્રત્યેની શૂરવીરતા અને સમર્પણ ભાવ વ્યક્ત કર્યો છે."
+      ]},
+    { source:"both",
+      q:"“અક્ષરપુરુષોત્તમ દયાળુ પ્રભુ અક્ષરપુરુષોત્તમ” આ કીર્તનના રચયિતા કોણ છે?",
+      options:["સાધુ બાલમુકુન્દદાસ","છગન ભગત","સાધુ મહાપુરુષદાસ","શંકરદાસ"], correct:2 }
+  ],
+  games:[]
+},
+{
+  key:"samp", num:6, title:"સંપ",
+  gameImages:["SAMP.png","SAMP-2.png"],
+  questions:[
+    { source:"both",
+      q:"શાસ્ત્રીજી મહારાજ જ્યારે વરતાલથી નીકળ્યા, ત્યારે તેમની સાથે કેટલા સંતો હતા?",
+      options:["ત્રણ","પાંચ","સાત","આઠ"], correct:1,
+      prasang:[
+        "શાસ્ત્રીજી મહારાજ સંવત ૧૯૬૨ કાર્તિક સુદ ૨ ના રોજ વરતાલથી નીકળ્યા ત્યારે તેમની સાથે પાંચ સાધુઓ હતા: સાધુ રામરતનદાસ, સાધુ ભક્તિજીવનદાસ, સાધુ જ્ઞાનપ્રિયદાસ, સાધુ રત્નજીવનદાસ અને સાધુ નીલકંઠદાસ.",
+        "“શાસ્ત્રીજી મહારાજ વરતાલથી નીકળ્યા ત્યારે પાંચ સાધુ હતા, પણ સંપ હતો તો પાંચસોને ડોલાવ્યા.” આ પાંચ સાધુ અને શાસ્ત્રીજી મહારાજ — કુલ ૬ સંતોનું મંડળ નીકળ્યું હતું."
+      ]},
+    { source:"app",
+      q:"નૉર્થ અમેરિકાના અક્ષરધામમાં કેટલા સ્વયંસેવકો સેવામાં જોડાયા?",
+      options:["11,500","12,400","12,500","11,400"], correct:2 }
+  ],
+  games:[
+    {title:"Option 1: Hula Hoop Circle"},
+    {title:"Objective",items:["Pass the hula hoop around the entire circle without letting go of each other’s hands."]},
+    {title:"Materials Needed",items:["Hula hoop"]},
+    {title:"Instructions",ordered:true,items:[
+      "All team members stand in a circle.",
+      "Everyone holds hands.",
+      "Place the hula hoop between two people before they join hands.",
+      "The team must move the hula hoop around the full circle.",
+      "Players may use their arms, shoulders, head, legs, and body movement.",
+      "Hands must stay connected at all times.",
+      "If anyone lets go, the team must restart."
+    ]},
+    {title:"Extra Challenge",items:["Try one round without talking."]},
+    {title:"Option 2: Blindfold Bat and Ball Challenge"},
+    {title:"Objective",items:["Knock the soft ball off your partner’s head by following their instructions while blindfolded."]},
+    {title:"Materials Needed",items:["Soft foam bat or cushion bat","Soft ball","Blindfold","Open space"]},
+    {title:"Instructions",ordered:true,items:[
+      "Divide participants into pairs.",
+      "One participant balances a soft ball on their head.",
+      "The other participant holds a soft foam bat and is blindfolded.",
+      "The blindfolded participant must not swing randomly.",
+      "The partner with the ball gives clear verbal instructions, such as “move one step forward,” “turn slightly left,” or “raise the bat a little.”",
+      "The blindfolded participant follows only their partner’s guidance.",
+      "The goal is to gently hit the ball off the partner’s head using the soft bat.",
+      "Once the ball falls, the challenge is complete.",
+      "Partners may switch roles after one round."
+    ]},
+    {title:"Safety Rules",items:[
+      "Use only a soft bat and soft ball.",
+      "The blindfolded person should swing gently.",
+      "No hard hitting.",
+      "A volunteer should stand nearby to make sure the game stays safe."
+    ]},
+    {title:"Extra Challenge",items:["Make it a team relay where each pair gets one attempt, and the team with the most successful hits wins."]}
+  ]
+},
+{
+  key:"agna", num:7, title:"આજ્ઞા",
+  gameImages:["AGNA.png"],
+  questions:[
+    { source:"pdf",
+      q:"શાસ્ત્રીજી મહારાજની આજ્ઞાથી ગલભાઈએ કયા મંદિરમાં જઈને અક્ષરપુરુષોત્તમ મહારાજની જાય બોલાવી હતી?",
+      options:["ગઢડા","અમદાવાદ","ધોલેરા","વડતાલ"], correct:3,
+      note:"સ્ક્રિપ્ટની Version 1 માં આ પ્રશ્નની સમજૂતી (explanation) બાકી છે." },
+    { source:"both",
+      q:"સોમા ભગતે શાસ્ત્રીજી મહારાજની આજ્ઞાથી કયા મંદિર નિર્માણમાં દોરડા બાંધવાની સેવા કરી?",
+      options:["ગઢડા","બોચાસણ","સારંગપુર","વડતાલ"], correct:2,
+      prasang:[
+        "સોમા ભગતે શાસ્ત્રીજી મહારાજની આજ્ઞાથી સારંગપુર મંદિર નિર્માણમાં દોરડા (રાંઢવા) બાંધવાની સેવા કરી હતી.",
+        "૧૫૦ મણનો પથ્થર જ્યારે સાતમાંથી છ દોરડા તૂટી જવાથી એક જ દોરડા પર લટકી રહ્યો હતો, ત્યારે શાસ્ત્રીજી મહારાજની આજ્ઞાથી સોમા ભગતે પોતાના જીવના જોખમે તે લટકતા પથ્થર પર ચઢીને તૂટેલા દોરડા ફરીથી બાંધ્યા હતા."
+      ]},
+    { source:"app",
+      q:"13 સપ્ટેમ્બર 2023ના દિવસે મહંત સ્વામી મહારાજે શું કરવાની પ્રેરણા આપી?",
+      options:["દરરોજ પંદર મિનિટ પ્રાપ્તિનો વિચાર","ઘરસભા","સત્સંગ દીક્ષા મુખપાઠ","વચનામૃત વાંચન"], correct:0 },
+    { source:"app",
+      q:"4 ઑક્ટોબર 2023ના દિવસે મહંત સ્વામી મહારાજે શું કરવાની પ્રેરણા આપી?",
+      options:["દરરોજ પંદર મિનિટ ‘પ્રાપ્તિનો વિચાર’ કરવો","અંદર અક્ષરધામ","સત્સંગ દીક્ષા મુખપાઠ કરવો","અંદર અક્ષરપુરુષોત્તમ"], correct:1 },
+    { source:"app",
+      q:"કેટલા બાળકોએ સત્સંગ દીક્ષા ગ્રંથનો મુખપાઠ રજૂ કરી સ્વામીશ્રીનો રાજીપો પ્રાપ્ત કર્યો?",
+      options:["12,735","15,000","15,454","15,666"], correct:3 },
+    { source:"app",
+      q:"બ્રહ્મસ્વરૂપ શાસ્ત્રીજી મહારાજે વર્ષમાં _______ નિર્જળા ઉપવાસ કરવાની આજ્ઞા કરી છે.",
+      options:["9","3","5","7"], correct:2,
+      prasang:[
+        "બ્રહ્મસ્વરૂપ શાસ્ત્રીજી મહારાજે વર્ષમાં ૫ નિર્જળા ઉપવાસ કરવાની આજ્ઞા કરી છે.",
+        "પાંચ ઉપવાસમાં શ્રીહરિ જયંતી (રામનવમી), જન્માષ્ટમી અને ત્રણ મુખ્ય એકાદશીઓ (દેવપોઢી, જળઝીલણી, દેવઊઠી) નો સમાવેશ થાય છે."
+      ]}
+  ],
+  games:[
+    {title:"Blindfold Trust Walk"},
+    {title:"Objective",items:["Reach the finish line safely by following instructions from teammates."]},
+    {title:"Materials Needed",items:["Blindfold","Cones or simple obstacles"]},
+    {title:"Instructions",ordered:true,items:[
+      "Choose one participant to be blindfolded.",
+      "Set up a simple path with cones or safe obstacles.",
+      "The blindfolded participant must walk from the start line to the finish line.",
+      "Teammates may guide only by giving verbal instructions.",
+      "No one may touch or physically move the blindfolded participant.",
+      "The blindfolded participant must listen carefully and follow the instructions.",
+      "If they touch an obstacle, pause and continue from that spot."
+    ]},
+    {title:"Extra Challenge",items:["Allow only one teammate to give directions, while others remain silent."]}
+  ]
+},
+{
+  key:"mahima", num:8, title:"મહિમા",
+  gameImages:["MAHIMA.png"],
+  flowNote:"સ્ક્રિપ્ટની Version 1 ના મહિમા વિભાગમાં કોઈ MCQ નહોતી (ફક્ત પ્રસ્તાવના + રમત + સંદેશ). નીચેના પ્રશ્નો Excel માંથી ઉમેરેલા છે.",
+  questions:[
+    { source:"app",
+      q:"“તમારા શિષ્યો ભવિષ્યમાં તમારી સોનાની મૂર્તિ પધરાવશે” – આ વાક્ય કોણે કહ્યું હતું?",
+      options:["કૃપાશંકર પંડ્યા","પ્રભાશંકર જોશી","દોલતરામભાઈ પંડ્યા","કૃષ્ણરામ શાસ્ત્રી"], correct:2,
+      prasang:[
+        "આ વાક્ય નડિયાદના સાક્ષર અને વરતાલ મંદિરના ટ્રસ્ટી દોલતરામભાઈ પંડ્યાએ કહ્યું હતું.",
+        "સને ૧૯૧૪માં દોલતરામ પંડ્યાએ શાસ્ત્રીજી મહારાજને પોતાના ઘરે પધરામણી માટે નિમંત્રણ આપ્યું. સ્વામીશ્રીએ વચનામૃતના આધારે અઢી કલાક સુધી શુદ્ધ અક્ષર-પુરુષોત્તમ ઉપાસનાનો સિદ્ધાંત સમજાવ્યો, ત્યારે દોલતરામભાઈ બોલી ઊઠ્યા કે ભવિષ્યમાં તમારા શિષ્યો તમારી સુવર્ણની મૂર્તિઓ પધરાવશે."
+      ]},
+    { source:"app",
+      q:"મહંત સ્વામી મહારાજ મુજબ દાસભાવ કેળવવાનો મુખ્ય ઉપાય કયો છે?",
+      options:["વધુ પડતું કામ કરવું","મહિમા સમજવો","મૌન રહેવું","ઉપવાસ કરવા"], correct:1,
+      prasang:[
+        "કણાદ (સુરત), ૨૦૨૪-૦૨-૦૨ — સ્વામીશ્રીના દીક્ષાદિન નિમિત્તે પ્રશ્નોત્તરીનું આયોજન હતું.",
+        "પ્રશ્ન: “અમે અમારા જીવનમાં દાસભાવ કેવી રીતે વધુ દૃઢ કરી શકીએ?” સ્વામીશ્રી: “મહિમા! બધાનો મહિમા સમજાય તો દાસભાવ આવે — એક-બેનો નહીં, બધ્ધાનો મહિમા સમજવો પડે.”"
+      ]}
+  ],
+  games:[
+    {title:"Gun Darshan Ball Pass Challenge"},
+    {title:"Objective",items:["Recognize and share one good quality, gun, of someone in the group."]},
+    {title:"Materials Needed",items:["1 soft ball","Speaker","Kirtan or music","Open space"]},
+    {title:"Setup",ordered:true,items:[
+      "Make one group of 8 to 10 participants.",
+      "Ask everyone to sit or stand in a circle.",
+      "Give one soft ball to the group.",
+      "Start playing kirtan or music."
+    ]},
+    {title:"Instructions",ordered:true,items:[
+      "When the music starts, participants pass the ball around the group.",
+      "Everyone must keep passing the ball until the music stops.",
+      "When the music stops, the person holding the ball stays in their place.",
+      "That person chooses anyone in the group and says one good quality about them.",
+      "After they share, start the music again.",
+      "Continue for multiple rounds so different people get a chance."
+    ]},
+    {title:"Rules",items:[
+      "The quality must be respectful and positive.",
+      "Do not repeat the same quality too many times.",
+      "Try to be specific.",
+      "No teasing or comments that may hurt someone.",
+      "If someone cannot think of a quality, the group can help them."
+    ]}
+  ]
+},
+{
+  key:"mandir", title:"મંદિર", notInScript:true,
+  flowNote:"આમાંના કેટલાક પ્રશ્નો (નોર્થ અમેરિકા, રોબિન્સવિલ, જોધપુર, પેરિસ) script ના પુરુષાર્થ વિભાગમાં પણ મૂકેલા છે — અહીં Excel ની મૂળ ગોઠવણ બતાવી છે.",
+  questions:[
+    { source:"app",
+      q:"ઈમેજ સ્ક્રીન પર બતાવેલ મંદિર ઓળખો (અટલાદરા મંદિર): આ કયું મંદિર છે?",
+      options:["ગઢડા","સારંગપુર","બોચાસણ","અટલાદરા","ગોંડલ"], correct:3,
+      prasang:[
+        "BAPS અટલાદરા (વડોદરા) મંદિર એ બ્રહ્મસ્વરૂપ શાસ્ત્રીજી મહારાજ દ્વારા નિર્મિત ચોથું શિખરબદ્ધ મંદિર છે.",
+        "અટલાદરાના મથુરભાઈ પટેલ અને રણછોડ ભક્તની વિનંતીથી શાસ્ત્રીજી મહારાજે અહીં મંદિર કરવાનું સ્વીકાર્યું.",
+        "મંદિરનું ખાતમુહૂર્ત સંવત ૧૯૯૬, વૈશાખ સુદ ૩ (૧૦-૫-૧૯૪૦) ના રોજ થયું. મૂર્તિ પ્રતિષ્ઠા સંવત ૨૦૦૧, અષાઢ સુદ ૩ (૧૨-૭-૧૯૪૫) ના રોજ શાસ્ત્રીજી મહારાજના હસ્તે કરવામાં આવી.",
+        "પ્રમુખસ્વામી મહારાજે (ત્યારે સાધુ નારાયણસ્વરૂપદાસ) આ મંદિરના નિર્માણમાં પથ્થર ઉતારવાની અને પાલખ પર ચઢીને અનેક શારીરિક સેવાઓ કરી હતી."
+      ]},
+    { source:"app",
+      q:"નોર્થ અમેરિકામાં સૌપ્રથમ શિખરબદ્ધ મંદિર ક્યાં બન્યું?",
+      options:["શિકાગો","હ્યુસ્ટન","એટલાન્ટા","ટોરોન્ટો"], correct:1,
+      note:"↑ આ પ્રશ્ન ઉપર ‘પુરુષાર્થ’ વિભાગમાં પણ આપેલો છે." },
+    { source:"app",
+      q:"રોબિન્સવિલ અક્ષરધામનું લોકાર્પણ ક્યારે થયું?",
+      options:["8 October 2023","8 November 2023","10 October 2023","11 November 2023"], correct:0,
+      note:"↑ આ પ્રશ્ન ઉપર ‘પુરુષાર્થ’ વિભાગમાં પણ આપેલો છે." },
+    { source:"app",
+      q:"મહંત સ્વામી મહારાજે હમણાં છેલ્લે કયા શિખરબદ્ધ મંદિરની મૂર્તિ પ્રતિષ્ઠા કરી?",
+      options:["અબુધાબી","સિડની","નાસિક","જોધપુર"], correct:3,
+      note:"↑ આ પ્રશ્ન ઉપર ‘પુરુષાર્થ’ વિભાગમાં પણ આપેલો છે." },
+    { source:"app",
+      q:"મહંત સ્વામી મહારાજ સપ્ટેમ્બર 2026માં કયા નૂતન મંદિરનું લોકાર્પણ કરશે?",
+      options:["કણાદ, સુરત","પેરિસ, ફ્રાન્સ","જોહાનિસબર્ગ, આફ્રિકા","મેલબર્ન, ઓસ્ટ્રેલિયા"], correct:1,
+      note:"↑ આ પ્રશ્ન ઉપર ‘પુરુષાર્થ’ વિભાગમાં પણ આપેલો છે." },
+    { source:"app",
+      q:"વર્ષ 2026 / અત્યારસુધીમાં સંસ્થામાં કુલ કેટલા શિખરબદ્ધ મંદિરો થયા?",
+      options:["114","44","51","71"], correct:2,
+      prasang:["શાસ્ત્રીજી મહારાજ: 5","યોગીજી મહારાજ: 2","પ્રમુખસ્વામી મહારાજ: 37","મહંત સ્વામી મહારાજ: 7"] }
+  ],
+  games:[]
+},
+{
+  key:"kirtan", title:"કીર્તન", notInScript:true,
+  gameImages:["KIRTAN.png"],
+  questions:[
+    { source:"app",
+      q:"“અમે સૌ સ્વામીના બાળક, જીવીશું સ્વામીને માટે” – આ કીર્તનના રચયિતા કોણ છે?",
+      options:["પરમ ભગવદીય શંકરભાઈ","મોતીભાઈ","મહાપુરુષદાસ","નારાયણ ભગત"], correct:1,
+      note:"↑ આ પ્રશ્ન ઉપર ‘હરિભક્તો’ વિભાગમાં પણ આપેલો છે.",
+      prasang:[
+        "આ કીર્તનના રચયિતા મોતીભાઈ (મોતીભાઈ ભગવાનદાસ પટેલ) છે.",
+        "આણંદના મોતીભાઈ ભગવાનદાસ પટેલ શાસ્ત્રીજી મહારાજના અનન્ય ભક્ત હતા. તેમણે આ કીર્તન દ્વારા અક્ષર-પુરુષોત્તમ સિદ્ધાંત પ્રત્યેની શૂરવીરતા અને સમર્પણ ભાવ વ્યક્ત કર્યો છે."
+      ]},
+    { source:"app",
+      q:"અક્ષરધામથી મહા એકાંતિક કીર્તનનું મ્યુઝિક પ્લે કરી કીર્તન કર્યું છે એ કયું છે?",
+      options:["શાસ્ત્રીજી મહારાજનો સંગભાઈ મને","દયાળુ ભગવાન અક્ષરપુરુષોત્તમ","અક્ષરધામથી મહા એકાંતિક","નમન કરું શ્રીનાથને"], correct:2 },
+    { source:"app",
+      q:"કીર્તનનું મ્યુઝિક પ્લે કરી કીર્તન કર્યું છે એ કયું છે?",
+      options:["Option A","Option B","Option C","Option D"], correct:-1 },
+    { source:"app",
+      q:"કીર્તનનું મ્યુઝિક પ્લે કરી કીર્તન કર્યું છે એ કયું છે?",
+      options:["Option A","Option B","Option C","Option D"], correct:-1 }
+  ],
+  games:[
+    {title:"Kirtan Musical Chair Challenge"},
+    {title:"Objective",items:["Play musical chairs using kirtan as the music and learn the importance of staying connected to satsang."]},
+    {title:"Materials Needed",items:["Chairs","Speaker","Phone or laptop","Kirtan playlist"]},
+    {title:"Setup",ordered:true,items:[
+      "Place the chairs in a straight line.",
+      "Chairs should face alternating directions.",
+      "Example: first chair faces left, second chair faces right, third chair faces left, and so on.",
+      "Keep one chair fewer than the number of participants.",
+      "Example: If 10 people are playing, place 9 chairs.",
+      "Ask participants to stand in a line near the chairs."
+    ]},
+    {title:"Instructions",ordered:true,items:[
+      "When the kirtan starts, participants walk around the straight line of chairs.",
+      "Everyone should keep moving in the same direction.",
+      "When they reach the end of the chair line, they turn around and continue walking around the chairs.",
+      "When the kirtan stops, everyone must quickly sit on a chair.",
+      "The person left without a chair is out for that round.",
+      "Remove one chair after every round.",
+      "Start the kirtan again and continue the game.",
+      "Keep playing until one final participant remains.",
+      "The last person sitting is the winner."
+    ]},
+    {title:"Rules",items:[
+      "No pushing, pulling, or blocking others.",
+      "Do not sit before the kirtan stops.",
+      "Walk calmly and safely.",
+      "Chairs should have enough space around them.",
+      "Use clean and uplifting kirtans only."
+    ]}
+  ]
+},
+{
+  key:"niyam-dharma", title:"નિયમ-ધર્મ", notInScript:true,
+  gameImages:["NIYAM-DHARMA.png"],
+  questions:[
+    { source:"app",
+      q:"“શાસ્ત્રી યજ્ઞપુરુષદાસ જેવો સ્ત્રી-ધનનો ત્યાગી હજુ સુધી દીઠો નથી.” ઉપરોક્ત વાક્ય કોણે કહ્યું છે?",
+      options:["ઉલ્લાસ રામદાસભાઈ","કોઠારી ગોરધનભાઈ","કોઠારી બેચરભાઈ","આચાર્ય લક્ષ્મીપ્રસાદ"], correct:1,
+      prasang:[
+        "આ વાક્ય વરતાલ મંદિરના કોઠારી ગોવર્ધનભાઈએ કહ્યું છે.",
+        "“બે હજાર સાધુઓમાં શાસ્ત્રી યજ્ઞપુરુષદાસજી જેવો સર્વ પ્રકારે ધન-સ્ત્રીનો ત્યાગી મેં હજુ સુધી કોઈ દીઠો નથી. તેની વાતો મને સાકરના કટકા જેવી લાગે છે એટલે અહીં આવું છું.”"
+      ]},
+    { source:"app",
+      q:"સત્સંગ દીક્ષા ગ્રંથના લેખનનો પ્રારંભ મહંત સ્વામી મહારાજે ક્યાંથી કર્યો?",
+      options:["ગોંડલ","સુરત","નવસારી","નેનપુર"], correct:2,
+      prasang:[
+        "સત્સંગ દીક્ષા ગ્રંથના લેખનનો પ્રારંભ મહંત સ્વામી મહારાજે નવસારીથી કર્યો હતો.",
+        "સ્વામીશ્રીએ ૩૦ જાન્યુઆરી ૨૦૨૦, વસંત પંચમીના દિવસે નવસારીમાં આ ગ્રંથનો શુભારંભ કર્યો અને ૨ એપ્રિલ ૨૦૨૦ના રોજ અમદાવાદમાં તે પૂર્ણ કર્યો."
+      ]},
+    { source:"app",
+      q:"શાસ્ત્રીજી મહારાજ મુસાફરી દરમિયાન કયો નિયમ પાળતા હતા જેનો ઉલ્લેખ યોગીજી મહારાજે પણ કર્યો છે?",
+      options:["મુસાફરીમાં ક્યારેય સૂવું નહીં.","મુસાફરીમાં (બહારનું) કાંઈ પણ લેવું નહીં.","હંમેશા ચાલતા જ મુસાફરી કરવી.","ટ્રેનમાં મુસાફરી ન કરવી."], correct:1 },
+    { source:"app",
+      q:"શાસ્ત્રીજી મહારાજ કયા ગ્રંથોના અલ્પ વચનનો પણ ક્યારેય લોપ કરતા નહીં અને બીજા પાસે પણ પળાવતા?",
+      options:["શિક્ષાપત્રી, ધર્મામૃત અને નિષ્કામશુદ્ધિ","માત્ર વચનામૃત.","માત્ર સ્વામીની વાતો.","રામાયણ અને મહાભારત"], correct:0,
+      prasang:[
+        "સ્વામીશ્રી ભરૂચમાં બિરાજતા હતા ત્યારે અચાનક ટાઈફોઈડ તાવ લાગુ પડ્યો. ડોક્ટરોએ આરામની સૂચના કરી, પણ સ્વામીશ્રીને શ્રીજી મહારાજની આજ્ઞાનું વધુ મહત્વ હતું.",
+        "શ્રીજીની આજ્ઞાનું યથાર્થ પાલન એ જ તેમનું જીવન હતું. શિક્ષાપત્રી, ધર્મામૃત અને નિષ્કામશુદ્ધિનું અલ્પ વચન પણ કોઈ દિવસ લોપતા નહીં."
+      ]}
+  ],
+  games:[
+    {title:"Balance Box Challenge"},
+    {title:"Objective",items:["Balance balloons on a tray while staying inside the marked boundary."]},
+    {title:"Materials Needed",items:["Tray or cardboard board","Balloons","Tape to mark a square on the floor"]},
+    {title:"Instructions",ordered:true,items:[
+      "Mark a square boundary on the floor using tape.",
+      "Two team members stand inside the square and hold the tray together.",
+      "Other team members gently toss balloons onto the tray.",
+      "The two players must balance the tray and keep the balloons from falling.",
+      "Players holding the tray must stay inside the square at all times.",
+      "They cannot step outside the boundary.",
+      "They cannot grab the balloons with their hands.",
+      "The goal is to keep as many balloons as possible on the tray for a set time."
+    ]},
+    {title:"Rules",items:[
+      "Hands can only hold the tray.",
+      "Players must remain inside the boundary.",
+      "If a balloon falls, it cannot be picked up again."
+    ]}
+  ]
+},
+{
+  key:"das-bhav", title:"દાસભાવ", notInScript:true,
+  gameImages:["DAS-BHAV.png"],
+  questions:[
+    { source:"app",
+      q:"“અક્ષર પુરુષોત્તમની વાતો મારા માથા પર બેસીને કરે તો પણ ઓછું છે.” – આ વાક્ય પરથી શાસ્ત્રીજી મહારાજના અંતરનો કયો ભાવ પ્રગટ થાય છે?",
+      options:["હરિભક્તોના અંતરની લાગણીની સમજ","નાની જગ્યામાં પણ સાંકડે માકડે ચલાવી લેવાની ભાવના","નિષ્ઠા પ્રવર્તનની સેવા કરનારનો મહિમા","ઉપરના તમામ"], correct:2,
+      prasang:[
+        "આ વાક્ય પરથી શાસ્ત્રીજી મહારાજના અંતરનો નિષ્ઠા પ્રવર્તનની સેવા કરનારનો મહિમા પ્રગટ થાય છે.",
+        "આ વાક્ય શાસ્ત્રીજી મહારાજની અક્ષરપુરુષોત્તમ ઉપાસના પ્રત્યેની અત્યંત નિષ્ઠા અને જ્ઞાનનો પ્રસાર કરનારા ભક્તો પ્રત્યેનો અપાર મહિમા અને દાસભાવ દર્શાવે છે."
+      ]},
+    { source:"app",
+      q:"૨૦૨૩ના વર્ષમાં નોર્થ અમેરિકા અક્ષરધામ મહોત્સવ દરમિયાન મહંત સ્વામી મહારાજે ખાલી જગ્યાની ચરણરજ માથે ચડાવી — એ કોની હતી?",
+      options:["સદ્‌ગુરુ સંતોની","દર્શનાર્થીઓની","સ્વયંસેવકોની","ઉપરના તમામ"], correct:2 },
+    { source:"app",
+      q:"શાસ્ત્રીજી મહારાજના કયા વચનમાં આપણને દાસભાવના દર્શન થાય છે?",
+      options:["“અમે તો ખીચડિયા સાધુ છીએ.”","“૪૦ વર્ષ ધોકા ખાધેલા, તે ખમવાને સ્વભાવ પડી ગયો છે...”","“આપણે તો અક્ષરપુરુષોત્તમના બળદિયા છીએ”","“આપણે ક્યાં નેતા છીએ? આપણે તો શાસ્ત્રી છીએ.”"], correct:2 }
+  ],
+  games:[
+    {title:"Limbo Challenge"},
+    {title:"Objective",items:["Pass under the limbo bar as it gets lower each round."]},
+    {title:"Materials Needed",items:["Limbo stick, rope, pool noodle, or any safe bar"]},
+    {title:"Instructions",ordered:true,items:[
+      "Two volunteers hold the limbo bar.",
+      "One participant goes at a time.",
+      "Each participant must pass under the bar by leaning backward.",
+      "Hands should not touch the ground.",
+      "If a participant touches the bar, falls, or uses hands for support, they are out for that round.",
+      "After every round, lower the bar slightly.",
+      "Continue until the final participant remains, or until the team completes the challenge."
+    ]},
+    {title:"Reflection Before Turn",items:["Before going under the bar, each participant may share one way they can practice humility in daily life."]}
+  ]
+}
+];
+
+const LETTERS = ["A","B","C","D","E","F"];
+
+function el(tag, cls, html){
+  const e = document.createElement(tag);
+  if(cls) e.className = cls;
+  if(html != null) e.innerHTML = html;
+  return e;
+}
+
+function renderQuestion(item, idx){
+  const card = el("div","question-card");
+  const top = el("div","q-top");
+  top.appendChild(el("div","q-number", String(idx)));
+  const main = el("div","q-main");
+  const badgeTxt = item.source==="both" ? "Script + Excel" : item.source==="pdf" ? "Script" : "Excel";
+  main.appendChild(el("span","q-badge "+item.source, badgeTxt));
+  main.appendChild(el("div","question", item.q));
+  top.appendChild(main);
+  card.appendChild(top);
+
+  if(item.options && item.options.length){
+    const opts = el("div","options");
+    item.options.forEach((o,i)=>{
+      const isCorrect = i === item.correct;
+      const op = el("div","option" + (isCorrect ? " correct" : ""));
+      op.innerHTML = '<span class="option-label">'+LETTERS[i]+'</span>'+o;
+      opts.appendChild(op);
+    });
+    card.appendChild(opts);
+  }
+  if(item.note){
+    card.appendChild(el("div","q-note", item.note));
+  }
+  if(item.prasang && item.prasang.length){
+    const d = el("details");
+    d.appendChild(el("summary",null,"પ્રસંગ / સમજૂતી"));
+    const body = el("div","prasang");
+    item.prasang.forEach(p=> body.appendChild(el("p",null,p)));
+    d.appendChild(body);
+    card.appendChild(d);
+  }
+  return card;
+}
+
+function renderGames(games, images){
+  // group: a heading entry (no items) starts a new panel; entries with items are blocks
+  const panels = [];
+  let cur = null;
+  games.forEach(entry=>{
+    if(!entry.items){
+      if(cur) panels.push(cur);
+      cur = { name: entry.title, blocks: [] };
+    } else {
+      if(!cur) cur = { name:"", blocks:[] };
+      cur.blocks.push(entry);
+    }
+  });
+  if(cur) panels.push(cur);
+
+  const frag = document.createDocumentFragment();
+  panels.forEach((p,pi)=>{
+    const panel = el("div","game-panel");
+    if(p.name) panel.appendChild(el("div","game-name", p.name));
+    if(images && images[pi]){
+      const img = el("img","game-image");
+      img.src = images[pi];
+      img.alt = p.name || "game";
+      img.loading = "lazy";
+      panel.appendChild(img);
+    }
+    p.blocks.forEach(b=>{
+      const block = el("div","game-block");
+      block.appendChild(el("h4",null,b.title));
+      const list = el(b.ordered ? "ol" : "ul");
+      b.items.forEach(it=> list.appendChild(el("li",null,it)));
+      block.appendChild(list);
+      panel.appendChild(block);
+    });
+    frag.appendChild(panel);
+  });
+  return frag;
+}
+
+(function render(){
+  const main = document.getElementById("main");
+  const nav = document.getElementById("navPills");
+  let totalQ = 0, totalG = 0, scriptSecs = 0, bannerDone = false;
+
+  SECTIONS.forEach(sec=>{
+    // divider banner before the first Excel-only section
+    if(sec.notInScript && !bannerDone){
+      bannerDone = true;
+      const banner = el("section","excel-banner");
+      banner.id = "excel-only";
+      banner.innerHTML = "<div class='wrap'>" +
+        "<p class='eyebrow'>Excel only</p>" +
+        "<h2>These sections are not in the script</h2>" +
+        "<p>The sections below existed in the Excel sheet but do not appear anywhere in the " +
+        "\"Kon Banega Nisthavan\" script (Version 1). They are kept here for reference.</p></div>";
+      main.appendChild(banner);
+    }
+
+    // nav pill
+    const pill = el("a","nav-pill" + (sec.notInScript ? " excel" : ""),
+      sec.notInScript ? sec.title : (sec.num + ". " + sec.title));
+    pill.href = "#sec-" + sec.key;
+    nav.appendChild(pill);
+
+    const band = el("section","band");
+    band.id = "sec-" + sec.key;
+    const wrap = el("div","wrap");
+
+    const head = el("div","section-head");
+    head.appendChild(el("span","sec-num" + (sec.notInScript ? " excel" : ""),
+      sec.notInScript ? "Excel only" : ("વિભાગ " + sec.num)));
+    head.appendChild(el("h2",null, sec.title));
+    wrap.appendChild(head);
+
+    if(sec.flowNote){
+      wrap.appendChild(el("div","flow-note","<b>નોંધ:</b> " + sec.flowNote));
+    }
+
+    const grid = el("div","question-grid");
+    sec.questions.forEach((q,i)=>{
+      if(!sec.notInScript) totalQ++;
+      grid.appendChild(renderQuestion(q, i+1));
+    });
+    wrap.appendChild(grid);
+
+    if(sec.games && sec.games.length){
+      const gameNames = sec.games.filter(g=>!g.items).length || 1;
+      if(!sec.notInScript) totalG += gameNames;
+      wrap.appendChild(el("div","games-head","રમતો &middot; Activities (" + gameNames + ")"));
+      wrap.appendChild(renderGames(sec.games, sec.gameImages));
+    }
+
+    if(!sec.notInScript) scriptSecs++;
+    band.appendChild(wrap);
+    main.appendChild(band);
+  });
+
+  document.getElementById("statQ").textContent = totalQ;
+  document.getElementById("statG").textContent = totalG;
+  document.getElementById("statSec").textContent = scriptSecs;
+})();
+</script>
+</body>
+</html>
