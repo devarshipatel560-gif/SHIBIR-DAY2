@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="gu" data-lang="gu">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>કોન બનેગા નિષ્ઠાવાન — સંકલિત (Version 1 flow)</title>
+<title>કોન બનેગા નિષ્ઠાવાન · Kon Banega Nisthavan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;600;700;800&family=Noto+Sans+Gujarati:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
   --f-guj:"Noto Sans Gujarati","Nirmala UI","Shruti",system-ui,sans-serif;
   --f-sans:"Inter",system-ui,sans-serif;
   --bg:#f6f1ea; --bg-alt:#ede4d7; --ink:#1d1a1a; --ink-soft:#4a4340; --muted:#8a7e77;
-  --rose:#b8456b; --rose-deep:#7e2a48; --gold:#b8936a; --green:#4f6a3a; --blue:#355a8a;
+  --rose:#b8456b; --rose-deep:#7e2a48; --gold:#b8936a; --green:#4f6a3a;
   --card:#fffaf3; --hair:#d9cfc0; --cream:#fff4dc;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -22,6 +22,7 @@ body{
   min-height:100vh;font-family:var(--f-guj);color:var(--ink);background:var(--bg);
   line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased;
 }
+html[data-lang="en"] body{font-family:var(--f-sans);}
 img{display:block;max-width:100%;height:auto;}
 a{color:inherit;}
 
@@ -35,6 +36,7 @@ a{color:inherit;}
 .brand strong{color:var(--rose-deep);font-size:1rem;font-weight:800;}
 .brand span{color:var(--muted);font-family:var(--f-sans);font-size:.64rem;letter-spacing:.14em;
   text-transform:uppercase;font-weight:700;}
+.nav-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
 .nav-pills{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap;}
 .nav-pill{
   text-decoration:none;color:var(--rose-deep);border:1px solid rgba(184,69,107,.34);
@@ -42,6 +44,19 @@ a{color:inherit;}
   transition:transform .2s,background .2s,color .2s,border-color .2s;
 }
 .nav-pill:hover{transform:translateY(-1px);background:var(--rose);border-color:var(--rose);color:var(--cream);}
+
+/* language toggle */
+.lang-toggle{
+  display:inline-flex;align-items:center;gap:0;background:var(--card);border:1px solid var(--hair);
+  border-radius:999px;padding:3px;font-family:var(--f-sans);font-weight:800;font-size:.78rem;
+  box-shadow:0 4px 12px -8px rgba(30,20,20,.2);
+}
+.lang-toggle button{
+  cursor:pointer;background:transparent;border:0;padding:6px 14px;border-radius:999px;
+  font:inherit;color:var(--muted);letter-spacing:.08em;transition:all .2s;
+}
+.lang-toggle button.active{background:var(--rose);color:var(--cream);}
+.lang-toggle button:not(.active):hover{color:var(--rose-deep);}
 
 /* hero */
 .hero{padding:46px 24px 34px;background:
@@ -53,11 +68,6 @@ a{color:inherit;}
 h1{font-family:var(--f-serif);font-weight:300;font-size:clamp(2.6rem,6vw,5rem);line-height:1;color:var(--ink);}
 h1 em{color:var(--rose);font-style:italic;}
 .hero-copy{margin-top:18px;max-width:780px;color:var(--ink-soft);font-size:clamp(1rem,1.5vw,1.14rem);}
-.legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
-.legend span{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-sans);font-size:.74rem;
-  font-weight:700;color:var(--ink-soft);}
-.dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
-.dot.both{background:var(--green);} .dot.pdf{background:var(--rose);} .dot.app{background:var(--blue);}
 .hero-stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
 .mini-stat{min-width:120px;padding:10px 14px;background:rgba(255,250,243,.72);
   border:1px solid var(--hair);border-radius:6px;}
@@ -75,10 +85,6 @@ h1 em{color:var(--rose);font-style:italic;}
 .section-head h2{font-family:var(--f-serif);font-weight:300;font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1.1;}
 .section-head h2 em{color:var(--rose);font-style:italic;}
 
-.flow-note{background:rgba(184,147,106,.14);border:1px dashed rgba(184,147,106,.6);
-  border-radius:6px;padding:10px 14px;margin-bottom:20px;font-size:.96rem;color:var(--ink-soft);}
-.flow-note b{color:var(--rose-deep);}
-
 .question-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
 .question-card{background:var(--card);border:1px solid var(--hair);border-radius:8px;
   box-shadow:0 18px 45px -30px rgba(30,20,20,.36);padding:18px 20px;}
@@ -86,11 +92,6 @@ h1 em{color:var(--rose);font-style:italic;}
 .q-number{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
   background:#f1e4d4;color:var(--rose-deep);font-family:var(--f-serif);font-size:1.05rem;}
 .q-main{flex:1;}
-.q-badge{display:inline-block;font-family:var(--f-sans);font-size:.6rem;font-weight:800;
-  letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:999px;margin-bottom:6px;}
-.q-badge.both{background:#eaf2df;color:var(--green);}
-.q-badge.pdf{background:#f7e3ea;color:var(--rose-deep);}
-.q-badge.app{background:#e3ebf5;color:var(--blue);}
 .question{font-weight:800;color:var(--ink);font-size:1.02rem;}
 .options{display:grid;gap:7px;margin:14px 0 0 45px;}
 .option{border:1px solid rgba(217,207,192,.9);background:rgba(255,255,255,.5);border-radius:6px;
@@ -98,8 +99,6 @@ h1 em{color:var(--rose);font-style:italic;}
 .option.correct{color:#164d36;border-color:rgba(79,106,58,.45);background:#eaf2df;}
 .option-label{font-family:var(--f-sans);font-weight:800;margin-right:6px;color:var(--muted);}
 .option.correct .option-label{color:var(--green);}
-.q-note{margin:12px 0 0 45px;font-size:.9rem;color:var(--rose-deep);background:#f7e3ea;
-  border-radius:6px;padding:7px 10px;}
 details{margin:13px 0 0 45px;border-top:1px solid rgba(217,207,192,.8);padding-top:11px;}
 summary{cursor:pointer;color:var(--rose-deep);font-weight:800;list-style:none;font-size:.95rem;}
 summary::-webkit-details-marker{display:none;}
@@ -117,22 +116,23 @@ details[open] summary::after{content:"\2013";}
   box-shadow:0 18px 45px -30px rgba(30,20,20,.36);padding:20px 24px;margin-bottom:16px;}
 .game-name{font-family:var(--f-serif);font-weight:350;font-size:clamp(1.4rem,2.4vw,1.95rem);
   color:var(--rose-deep);margin-bottom:6px;}
-.game-image{width:100%;border:1px solid var(--hair);border-radius:6px;margin-bottom:14px;background:#fff;}
-.game-sub{font-family:var(--f-sans);font-weight:800;color:var(--ink);font-size:1.05rem;
-  margin:14px 0 4px;}
+.game-tag{font-family:var(--f-sans);font-size:.7rem;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.game-image{display:block;max-width:100%;width:auto;height:auto;
+  max-height:min(620px,72vh);object-fit:contain;
+  border-radius:8px;margin:6px auto 20px;
+  box-shadow:0 14px 36px -22px rgba(30,20,20,.35);}
+@media(max-width:880px){
+  .game-image{max-height:min(480px,60vh);}
+}
+@media(max-width:640px){
+  .game-image{max-height:60vh;margin:4px auto 14px;}
+}
 .game-block h4{color:var(--rose-deep);font-family:var(--f-sans);font-size:.92rem;font-weight:800;
   margin:13px 0 4px;}
-.game-block ul,.game-block ol{margin-left:1.3rem;color:var(--ink-soft);line-height:1.5;font-size:.97rem;}
+.game-block ul,.game-block ol{margin-left:1.3rem;color:var(--ink-soft);line-height:1.5;font-size:.97rem;
+  font-family:var(--f-sans);}
 .game-block li+li{margin-top:2px;}
-
-.excel-banner{background:var(--rose-deep);color:var(--cream);padding:42px 24px;}
-.excel-banner .wrap{max-width:1120px;margin:0 auto;}
-.excel-banner .eyebrow{color:rgba(255,244,220,.7);margin-bottom:10px;}
-.excel-banner h2{font-family:var(--f-serif);font-weight:300;font-size:clamp(1.8rem,3.2vw,2.6rem);line-height:1.12;}
-.excel-banner p{margin-top:10px;color:rgba(255,244,220,.86);max-width:780px;}
-.nav-pill.excel{border-color:rgba(53,90,138,.4);color:var(--blue);}
-.nav-pill.excel:hover{background:var(--blue);border-color:var(--blue);color:var(--cream);}
-.sec-num.excel{color:var(--blue);}
 
 footer{padding:30px 24px 50px;text-align:center;color:var(--muted);font-family:var(--f-sans);
   font-size:.8rem;}
@@ -143,638 +143,611 @@ footer{padding:30px 24px 50px;text-align:center;color:var(--muted);font-family:v
 @media(max-width:640px){
   body{font-size:16px;}
   .nav{flex-direction:column;align-items:flex-start;}
-  .options,.q-note,details{margin-left:0;}
+  .options,details{margin-left:0;}
   .q-top{flex-direction:column;}
 }
 </style>
 </head>
 <body>
 <nav class="nav">
-  <div class="brand"><strong>કોન બનેગા નિષ્ઠાવાન</strong><span>Quiz &amp; Activities</span></div>
-  <div class="nav-pills" id="navPills"></div>
+  <div class="brand">
+    <strong data-i18n-brand>કોન બનેગા નિષ્ઠાવાન</strong>
+    <span data-i18n-tag>Quiz &amp; Activities</span>
+  </div>
+  <div class="nav-right">
+    <div class="lang-toggle" role="tablist" aria-label="Language">
+      <button data-lang-btn="gu" class="active" aria-pressed="true">ગુ</button>
+      <button data-lang-btn="en" aria-pressed="false">EN</button>
+    </div>
+    <div class="nav-pills" id="navPills"></div>
+  </div>
 </nav>
 
 <header class="hero">
   <div class="hero-inner">
-    <p class="eyebrow">Quiz + Activities</p>
-    <h1>કોન બનેગા <em>નિષ્ઠાવાન?</em></h1>
-    <p class="hero-copy">
-      This standalone page follows the flow of <b>Version 1</b> of the "Kon Banega Nisthavan" script.
-      Each section lists all of its questions first, drawn from both the script and the Excel sheet,
-      followed by the activities, complete with instructions. The Excel-only sections that don't appear
-      in the script's Version 1 (Mandir, Kirtan, Niyam-Dharma, Das-Bhav) have been left out for now.
-    </p>
-    <div class="legend">
-      <span><i class="dot both"></i>In Script &amp; Excel</span>
-      <span><i class="dot pdf"></i>Only in Script</span>
-      <span><i class="dot app"></i>Only in Excel</span>
-    </div>
+    <p class="eyebrow" data-i18n-eyebrow>Quiz + Activities</p>
+    <h1 data-i18n-h1></h1>
+    <p class="hero-copy" data-i18n-lead></p>
     <div class="hero-stats">
-      <div class="mini-stat"><strong id="statSec">8</strong><span>Sections</span></div>
-      <div class="mini-stat"><strong id="statQ">0</strong><span>Questions</span></div>
-      <div class="mini-stat"><strong id="statG">0</strong><span>Activities</span></div>
+      <div class="mini-stat"><strong id="statSec">0</strong><span data-i18n-stat-sec>Sections</span></div>
+      <div class="mini-stat"><strong id="statQ">0</strong><span data-i18n-stat-q>Questions</span></div>
+      <div class="mini-stat"><strong id="statG">0</strong><span data-i18n-stat-g>Activities</span></div>
     </div>
   </div>
 </header>
 
 <main id="main"></main>
 
+<footer>
+  <span data-i18n-footer></span>
+</footer>
+
 <script>
+/* =====================================================
+   UI strings (gu / en)
+   ===================================================== */
+const UI = {
+  gu:{
+    brand:"કોન બનેગા નિષ્ઠાવાન",
+    tag:"ક્વિઝ અને રમતો",
+    eyebrow:"ક્વિઝ + રમતો",
+    h1:'કોન બનેગા <em>નિષ્ઠાવાન?</em>',
+    lead:"PPT માં આપેલા તમામ વિભાગો અને પ્રશ્નોને એક જ પાનામાં સંકલિત કર્યા છે. દરેક વિભાગ પછી તેની રમતની સૂચનાઓ આપી છે. ભાષા બદલવા માટે ઉપર ગુ / EN ટૉગલ વાપરો.",
+    secLabel:"વિભાગ",
+    statSec:"વિભાગ",
+    statQ:"પ્રશ્નો",
+    statG:"રમતો",
+    pradsangLbl:"પ્રસંગ · મનન",
+    gamesHead:"રમતો · પ્રવૃત્તિ",
+    footer:"BAPS સ્વામિનારાયણ સંસ્થા · સમર શિબિર 2026 · કોન બનેગા નિષ્ઠાવાન"
+  },
+  en:{
+    brand:"Kon Banega Nisthavan",
+    tag:"Quiz & Activities",
+    eyebrow:"Quiz + Activities",
+    h1:'Kon Banega <em>Nisthavan?</em>',
+    lead:"All sections and questions from the presenter card PPTs are compiled on this single page. After each section you'll find the corresponding activity instructions. Use the Gu / EN toggle above to switch languages.",
+    secLabel:"Section",
+    statSec:"Sections",
+    statQ:"Questions",
+    statG:"Activities",
+    pradsangLbl:"Prasang · Manan",
+    gamesHead:"Activity",
+    footer:"BAPS Swaminarayan Sanstha · Summer Shibir 2026 · Kon Banega Nisthavan"
+  }
+};
+
+/* =====================================================
+   SECTIONS — bilingual data (gu/en) + English activities
+   ===================================================== */
 const SECTIONS = [
+/* ---------- 1. UPASANA ---------- */
 {
-  key:"upasana", num:1, title:"ઉપાસના",
-  flowNote:"સ્ક્રિપ્ટ પ્રવાહ: આ વિભાગ પછી કીર્તન — “આજ મારે ઓરડે રે” અને “શાસ્ત્રીજી મહારાજનો સંગ”. (Excel માં આ વિભાગની કોઈ રમત નથી.)",
+  key:"upasana",
+  title:{gu:"ઉપાસના", en:"Upāsanā"},
   questions:[
-    { source:"both",
-      q:"અક્ષરપુરુષોત્તમ ઉપાસનામાં સર્વોપરી, સર્વકર્તા, સાકાર તથા કઈ ચોથી બાબત સમજવાની છે?",
-      options:["સમજણ","સત્પુરુષ","સંત","પ્રગટ"], correct:3,
-      prasang:[
-        "અક્ષરપુરુષોત્તમ ઉપાસનામાં ચોથી બાબત પ્રગટ છે.",
-        "“ઉપાસનામાં ૪ વાત કરે છે ને! કર્તા, સાકાર, સર્વોપરી અને પ્રગટ! જો ‘પ્રગટ’ ના હોય તો એક અંગ જ ઊડી જાય ૩ જ રહે.”",
-        "BAPS સિદ્ધાંત મુજબ ઉપાસનાના ચાર સ્તંભ: ૧. સર્વકર્તાહર્તા ૨. સાકાર ૩. સર્વોપરી ૪. પ્રગટ — ભગવાન હંમેશા ગુણાતીત સત્પુરુષ દ્વારા પૃથ્વી પર પ્રગટ રહે છે."
-      ]},
-    { source:"pdf",
-      q:"મહંતસ્વામી મહારાજે હરિકૃષ્ણ મહારાજની સાથે અક્ષરમૂર્તિ ગુણાતીતાનંદ સ્વામીની મૂર્તિની જોડ ક્યારે પધરાવી?",
-      options:[], correct:-1,
-      note:"સ્ક્રિપ્ટની Version 1 માં આ પ્રશ્નના વિકલ્પો અને જવાબ આપેલા નથી — ઉમેરવાના બાકી." },
-    { source:"pdf",
-      q:"આપનો સાધનામંત્ર કયો છે?",
-      options:["અક્ષરમ્ અહમ્ પુરુષોત્તમદાસોઽસ્મિ","ધન્યોઽસ્મિ પૂર્ણકામોઽસ્મિ","સ્વામિનારાયણ સાક્ષાત્ અક્ષરપુરુષોત્તમ","ઉત્તિષ્ઠ સહજાનંદ શ્રીહરે પુરુષોત્તમ"],
-      correct:0,
-      prasang:["સાધનામંત્ર ગોંડલ અક્ષરદેરી સાર્ધ શતાબ્દી (2018) પ્રસંગે આપવામાં આવ્યો હતો."] },
-    { source:"pdf",
-      q:"મહંત સ્વામી મહારાજે સત્સંગ દીક્ષા ગ્રંથમાં ઉપાસના સંબંધી કેટલા શ્લોકો આપ્યા છે?",
-      options:["(બાકી)","23","(બાકી)","(બાકી)"], correct:1,
-      note:"સ્ક્રિપ્ટમાં ફક્ત વિકલ્પ B) 23 ભરેલો છે; બાકીના વિકલ્પો અને સમજૂતી બાકી." },
-    { source:"app",
-      q:"શ્રીજી મહારાજે ______ રહેવા સારું છ ભવ્ય શિખરબદ્ધ મંદિરોનું નિર્માણ કર્યું હતું.",
-      options:["ભક્તિ","સંપ્રદાય","ઉપાસના","પરંપરા"], correct:2,
-      prasang:[
-        "શ્રીજી મહારાજે ઉપાસના રહેવા સારું છ ભવ્ય શિખરબદ્ધ મંદિરોનું નિર્માણ કર્યું હતું.",
-        "“એ સ્વરૂપોની ઉપાસનામાં રહેવા સારુ જ મહારાજે ભગવાનનાં મંદિર કરાવ્યાં છે. ઉપાસનાનો નાશ થઈ જાય તો પાછળથી અંધપરંપરા ચાલે.”",
-        "ભગવાન સ્વામિનારાયણે અમદાવાદ, ભુજ, વરતાલ, ધોલેરા, જૂનાગઢ અને ગઢડામાં શિખરબદ્ધ મંદિરોનું નિર્માણ કર્યું હતું."
-      ]},
-    { source:"app",
-      q:"ભગવાન સ્વામિનારાયણે મૂળ અક્ષર તરીકે કોની ઓળખાણ કરાવી હતી?",
-      options:["ગોપાળાનંદ સ્વામી","ગુણાતીતાનંદ સ્વામી","મુક્તાનંદ સ્વામી","રામાનંદ સ્વામી"], correct:1,
-      prasang:[
-        "ભગવાન સ્વામિનારાયણે મૂળ અક્ષર તરીકે ગુણાતીતાનંદ સ્વામીની ઓળખાણ કરાવી હતી.",
-        "“શ્રીહરિ કહે : ‘એવા સદ્‌ગુરુ તો આ ગુણાતીતાનંદ સ્વામી છે! એ તો મારે રહેવાનું અક્ષરધામ છે! ને અમે તો સાક્ષાત્ પુરુષોત્તમ નારાયણ છીએ!’”"
-      ]},
-    { source:"app",
-      q:"ગુણાતીતાનંદ સ્વામીનાં દીક્ષા પ્રસંગે મહારાજે તેઓની અક્ષરબ્રહ્મ તરીકે કરાવેલી ઓળખાણની વાત કયા સંપ્રદાયિક ગ્રંથમાં નોંધાયેલી છે?",
-      options:["વચનામૃત","હરિલીલામૃત","હરિલીલાકલ્પતરુ","હરિવાક્યસુધાસિંધુ"], correct:2,
-      prasang:[
-        "ગુણાતીતાનંદ સ્વામીની અક્ષરબ્રહ્મ તરીકેની ઓળખાણની વાત હરિલીલાકલ્પતરુ ગ્રંથમાં નોંધાયેલી છે.",
-        "સંવત ૧૮૬૬ પોષ સુદ પૂનમ, ડભાણ મુકામે મહાવિષ્ણુયાગ દરમિયાન શ્રીજી મહારાજે મૂળજી શર્માને દીક્ષા આપી ‘ગુણાતીતાનંદ સ્વામી’ નામ પાડ્યું. આ પ્રસંગનો ઉલ્લેખ ‘શ્રીહરિલીલાકલ્પતરુ’ ગ્રંથના ૭મા સ્કંધના ૧૭મા અધ્યાયમાં છે."
-      ]}
+    {
+      q:{
+        gu:"અક્ષરપુરુષોત્તમ ઉપાસનામાં સર્વોપરી, સર્વકર્તા, સાકાર સાથે કઈ ચોથી બાબત સમજવાની છે?",
+        en:"In the Akshar-Purushottam Upāsanā, along with Sarvopari, Sarvakartā, and Sākār, which is the fourth aspect to be understood?"
+      },
+      options:{
+        gu:["સમજણ","સત્પુરુષ","સંત","પ્રગટ"],
+        en:["Samjan (Understanding)","Satpurush","Sant","Pragat (Manifest)"]
+      },
+      correct:3,
+      prasang:{
+        gu:[
+          "અક્ષરપુરુષોત્તમ સિદ્ધાંત મુજબ ઉપાસનાના મુખ્ય ચાર સ્તંભો છે:",
+          "<b>સર્વકર્તાહર્તા:</b> ભગવાન જ સર્વના કર્તા છે.",
+          "<b>સાકાર:</b> ઘણા કહે છે કે ભગવાન તો પ્રકાશનો પુંજ છે, નિરાકાર છે. પણ આપણે શું માનીએ છીએ? ભગવાન હંમેશા 'સાકાર' છે. જેમ આપણું શરીર છે, એમ ભગવાનની દિવ્ય મૂર્તિ છે — એ હંમેશા મૂર્તિમાન છે.",
+          "<b>સર્વોપરી:</b> આપણા ઇષ્ટદેવ આપણા માટે સર્વોપરી છે.",
+          "<b>પ્રગટ:</b> ભગવાન હંમેશા ગુણાતીત સત્પુરુષ દ્વારા પૃથ્વી પર પ્રગટ રહે છે."
+        ],
+        en:[
+          "Four Main Pillars of Upāsanā:",
+          "<b>Sarvakartā-hartā</b> (all-doer): Bhagwān alone is the doer and sustainer of everything.",
+          "<b>Sākār</b> (possessing a form): Bhagwān always possesses a divine form. He is always manifest in a divine form and not a mass of light.",
+          "<b>Sarvopari:</b> Our Ishtadev is supreme for us.",
+          "<b>Pragat</b> (Manifest): Bhagwān always remains continuously manifest on Earth through the Gunatit Satpurush."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"મગનભાઈ કઈ સેવા કરીને શાસ્ત્રીજી મહારાજની માળાના મણકા બની ગયા?",
+        en:"By performing which sevā did Maganbhāi become Shastriji Maharaj's mālānā mankā?"
+      },
+      options:{
+        gu:["હરિભક્તોને નિત્ય જમાડવાની","આફ્રિકામાં મંદિર બનાવવાની","ઉપાસના પ્રવર્તનની","આર્થિક સેવા"],
+        en:["Regularly serving meals to the devotees","Building a mandir in Africa","Propagating the Upāsanā","Financial sevā"]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "મગનભાઈ આફ્રિકામાં રેલવે સ્ટેશન માસ્તર તરીકે નોકરી કરતા હોવા છતાં, તેમનું મુખ્ય લક્ષ્ય અક્ષરપુરુષોત્તમ ઉપાસનાનું પ્રવર્તન કરવાનું હતું. તેઓ કલાકો સુધી કથાવાર્તા કરતા અને તાર દ્વારા પણ અન્ય સ્ટેશનો પરના ભક્તોને સત્સંગનો મહિમા સમજાવતા.",
+          "આફ્રિકાના ટરોરો જેવા સ્થળોએ જ્યાં લોકો વ્યસનોમાં ડૂબેલા હતા, ત્યાં પબ (દારૂના અડ્ડા) પર જઈને પણ સભાઓ કરી. તેમની કથા ઘણી વાર બપોરે શરૂ થઈ બીજે દિવસે વહેલી સવાર સુધી ચાલતી — તેઓ આંખનું મટકું પણ ન મારતા.",
+          "તેમની આ અવિરત ઉપાસના પ્રવર્તનની સેવા જોઈને શાસ્ત્રીજી મહારાજે તેમને પોતાની 'માળાના મણકા' કહ્યા હતા."
+        ],
+        en:[
+          "Maganbhāi maintained singular devotion to spreading the Akshar-Purushottam Upāsanā while working as a railway stationmaster.",
+          "He innovatively used the railway telegraph system to share the mahimā of Satsang with devotees at distant stations, and fearlessly walked into the pubs of Tororo to hold spiritual assemblies and uplift those struggling with addiction.",
+          "His kathās ran continuously from afternoon until dawn, keeping audiences completely engaged. For his relentless efforts, Shastriji Maharaj honoured him as his 'Mālānā Mankā'."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"ઉત્પત્તિ સર્ગમાં સૃષ્ટિની ઉત્પત્તિનો ક્રમ કેવી રીતે સમજાવવામાં આવ્યો છે?",
+        en:"What is the sequence of the creation of the universe as explained in the Utpatti Sarga?"
+      },
+      options:{
+        gu:[
+          "પુરુષોત્તમ &gt; વિરાટ &gt; અક્ષર &gt; મુક્ત",
+          "પુરુષોત્તમ &gt; મુક્ત &gt; વિરાટ",
+          "પુરુષોત્તમ &gt; અક્ષર &gt; મુક્તો &gt; વિરાટ",
+          "પુરુષોત્તમ &gt; વિરાટ &gt; અક્ષર"
+        ],
+        en:[
+          "Purushottam &gt; Virāt &gt; Akshar &gt; Mukta",
+          "Purushottam &gt; Mukta &gt; Virāt",
+          "Purushottam &gt; Akshar &gt; Muktas &gt; Virāt",
+          "Purushottam &gt; Virāt &gt; Akshar"
+        ]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "પરબ્રહ્મ પુરુષોત્તમ નારાયણ જ્યારે સૃષ્ટિ રચવાની ઈચ્છા કરે છે, ત્યારે તેઓ અક્ષરબ્રહ્મ સામી દૃષ્ટિ કરે છે.",
+          "અક્ષરબ્રહ્મ દ્વારા એક અક્ષરમુક્ત (મૂળપુરુષ) માયા સાથે જોડાય છે, જેનાથી અનંત 'પ્રધાન-પુરુષ'નાં જોડલાં ઉત્પન્ન થાય છે.",
+          "દરેક પ્રધાન-પુરુષમાંથી એક બ્રહ્માંડ રચાય છે, જેમાં મહત્તત્ત્વ, અહંકાર અને ચોવીસ તત્ત્વો દ્વારા વિરાટ પુરુષનો દેહ તૈયાર થાય છે."
+        ],
+        en:[
+          "<b>The Divine Catalyst:</b> Parabrahma initiates creation by casting His divine glance upon Aksharbrahma.",
+          "<b>The Cosmic Spark:</b> Through Aksharbrahma, a liberated soul (Akshar-mukta / Mul-Purush) conjoins with Māyā.",
+          "<b>Infinite Universes:</b> This union generates infinite pairs of Pradhān-Purush — each pair creating a single, unique universe (brahmānd).",
+          "<b>The Cosmic Body:</b> Within each brahmānd, the form of the Virāt Purush is constructed from Mahattattva (primary cosmic intelligence), Ahankār (ego), and the 24 cosmic elements."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"શ્રીજી મહારાજે ______ રહેવા સારુ છ ભવ્ય શિખરબદ્ધ મંદિરોનું નિર્માણ કર્યું હતું.",
+        en:"Shriji Maharaj constructed six magnificent shikharbaddh mandirs to sustain the ______."
+      },
+      options:{
+        gu:["ભક્તિ","સંપ્રદાય","ઉપાસના","પરંપરા"],
+        en:["Bhakti","Sampradāy","Upāsanā","Tradition (Paramparā)"]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "શ્રીજી મહારાજનું પોતાનું જીવન અત્યંત કડક ત્યાગ અને સંપૂર્ણ વૈરાગ્યમય હતું. તેમ છતાં, તેમણે ભક્તોની અનુકૂળતા ખાતર ત્યાગના આ કઠોર નિયમો થોડા 'હળવા' અને સરળ બનાવ્યા.",
+          "<b>હેતુ:</b> જેથી સામાન્ય ભક્તો પણ ભગવાનના દિવ્ય સ્વરૂપની ભક્તિ (ઉપાસના)ના માર્ગે સહજતાથી આગળ વધી શકે.",
+          "<b>પરિણામ:</b> આવનારી પેઢીઓમાં ઉપાસના જળવાઈ રહે તે માટે તેમણે છ ભવ્ય મંદિરો — અમદાવાદ, ભુજ, વરતાલ, ધોલેરા, જૂનાગઢ અને ગઢડા — બાંધ્યાં."
+        ],
+        en:[
+          "Shriji Maharaj's life naturally emphasized strict renunciation (tyāg) and complete detachment (vairāgya). Yet, he intentionally 'softened' and eased these rigid rules of renunciation for devotees.",
+          "<b>The Purpose:</b> To allow ordinary devotees to progress smoothly on the path of worshiping God's divine form (Upāsanā).",
+          "<b>The Result:</b> Six magnificent mandirs — Amdāvād, Bhuj, Vartāl, Dholerā, Jūnāgadh, and Gadhadā — were built as accessible hubs for community worship and devotion to sustain Upāsanā for generations to come."
+        ]
+      }
+    }
   ],
-  games:[]
+  games:[] // Upasana section has no activity in the PPT
 },
+
+/* ---------- 2. HARDSHIPS / SAHAN / SHURVIRTA ---------- */
 {
-  key:"purusharth", num:2, title:"પુરુષાર્થ",
-  gameImages:["PURUSHARTH.png"],
+  key:"sahan",
+  title:{gu:"ભીડો, સહન અને શૂરવીરતા", en:"Hardships, Sahan Shakti & Shurvirtā"},
   questions:[
-    { source:"both",
-      q:"શાસ્ત્રીજી મહારાજે સતત 10 કલાક સુધી અક્ષરપુરુષોત્તમના મહિમાની વાતો કોને કરી?",
-      options:["જેઠાભાઈ","ઉત્તમભાઈ","બાલકૃષ્ણભાઈ","આશાભાઈ"], correct:0,
-      prasang:[
-        "શાસ્ત્રીજી મહારાજે સતત ૧૦ કલાક સુધી અક્ષરપુરુષોત્તમના મહિમાની વાતો જેઠાભાઈને કરી હતી. તેઓ પાછળથી નિર્ગુણદાસ સ્વામી તરીકે ઓળખાયા.",
-        "“એક દિવસે મંદિરની પ્રદક્ષિણામાં સાંજના ૬ વાગ્યાથી સવારના ૪ વાગ્યા સુધી શાસ્ત્રીજી મહારાજે તેમને અક્ષરપુરુષોત્તમના સિદ્ધાંતની વાતો કરી. દશ કલાકમાં શાસ્ત્રીજી મહારાજે તેમનું અંતર ભેદી નાખ્યું.”"
-      ]},
-    { source:"both",
-      q:"ખાનદેશમાં અક્ષરપુરુષોત્તમ સત્સંગના પ્રવર્તનમાં સિંહફાળો કોનો રહ્યો છે?",
-      options:["સાધુ બાલમુકુન્દદાસ","સાધુ વિજ્ઞાનદાસ","સાધુ મહાપુરુષદાસ","સાધુ નિર્ગુણદાસ"], correct:3,
-      note:"⚠ સ્ક્રિપ્ટ ‘Kon Banega Nisthavan’ (V1) માં આ પ્રશ્નનો સાચો જવાબ ‘B) સાધુ વિજ્ઞાનદાસ’ આપેલો છે. Excel માં ‘D) સાધુ નિર્ગુણદાસ’ છે — જવાબ ચકાસવો.",
-      prasang:[
-        "Excel મુજબ: ખાનદેશમાં અક્ષરપુરુષોત્તમ સત્સંગના પ્રવર્તનમાં સિંહફાળો સાધુ નિર્ગુણદાસનો રહ્યો છે.",
-        "પ્રારંભિક બીજ રોપવાનું કાર્ય સાધુ વિજ્ઞાનદાસજીએ કર્યું, પરંતુ તેને વ્યાપક બનાવીને ટકાવી રાખવાનું કાર્ય નિર્ગુણદાસ સ્વામીએ કર્યું હતું.",
-        "સ્ક્રિપ્ટ મુજબ: ખાનદેશમાં સત્સંગની શરૂઆતમાં સાધુ વિજ્ઞાનદાસનો મુખ્ય ફાળો રહ્યો — તેમણે વિચરણ કરીને મુમુક્ષુઓને શુદ્ધ ઉપાસનાની સમજણ આપીને સત્સંગનો પાયો નાખ્યો."
-      ]},
-    { source:"pdf",
-      q:"ખાનદેશ જવા નીકળતી વખતે જાલિલારોડ સ્ટેશને બંને પગ ઝલાઈ ગયા — આ પ્રસંગ વખતે શાસ્ત્રીજી મહારાજની ઉંમર કેટલી હતી?",
-      options:["84","82","80","78"], correct:0,
-      prasang:["૮૪ વર્ષની ઉંમરે અને બંને પગ ઝલાઈ ગયા હોવા છતાં શાસ્ત્રીજી મહારાજને પોતાની પીડાની ચિંતા નહોતી, પણ ખાનદેશના ભક્તોને લાભ ન મળ્યો તેનો ‘વસવસો’ હતો. આ તેમનો પુરુષાર્થ દર્શાવે છે."]},
-    { source:"app",
-      q:"BAPS સંસ્થાનું સૌપ્રથમ મંદિર શાસ્ત્રીજી મહારાજે ક્યાં બનાવ્યું?",
-      options:["આણંદ","મહેળાવ","બોચાસણ","વઢવાણ"], correct:2,
-      prasang:[
-        "બોચાસણ મંદિર એ શાસ્ત્રીજી મહારાજ દ્વારા નિર્મિત BAPS સંસ્થાનું સૌપ્રથમ શિખરબદ્ધ મંદિર છે.",
-        "ભગવાન સ્વામિનારાયણે બોચાસણના ભક્ત કાશીદાસ મોટાને વચન આપ્યું હતું કે “તમારે ત્યાં અમારે મંદિર કરવું છે... અમે અહીં ધામ સહિત બિરાજીશું.”",
-        "માગશર વદ ૧, સંવત ૧૯૬૩ના રોજ પાયા ખોદવાનું શરૂ થયું અને માત્ર ૧૯૩ દિવસમાં મંદિર તૈયાર થઈ ગયું. પાયા ખોદતી વખતે સોનાના સિક્કા નીકળ્યા, પણ સ્વામીશ્રીએ “આપણે તો અહીં મૂર્તિમાન લક્ષ્મી બેસાડીશું” કહીને દટાવી દીધા."
-      ]},
-    { source:"app",
-      q:"બોચાસણ બાદ બીજું શિખરબદ્ધ મંદિર ક્યાં બનાવ્યું?",
-      options:["સારંગપુર","ગોંડલ","અટલાદરા","ગઢડા"], correct:0,
-      prasang:[
-        "સારંગપુર મંદિર એ શાસ્ત્રીજી મહારાજ દ્વારા નિર્મિત બીજું શિખરબદ્ધ મંદિર છે.",
-        "શાસ્ત્રીજી મહારાજે લીમડી દરબાર પાસેથી ૨૪ એકર પ્રસાદીની જમીન મેળવી અને સંવત ૧૯૭૨, વૈશાખ સુદ ૬ (૨૩ મે, ૧૯૧૬) ના રોજ મધ્ય મંદિરમાં અક્ષર-પુરુષોત્તમ મહારાજ અને ગોપાળાનંદ સ્વામીની મૂર્તિઓની પ્રતિષ્ઠા કરી."
-      ]},
-    { source:"pdf",
-      q:"ગુજરાતનું બીજા નંબરનું સૌથી ઊંચું મંદિર કયું છે?",
-      options:["ગઢડા","સારંગપુર","બોચાસણ","સોમનાથ"], correct:1 },
-    { source:"pdf",
-      q:"સ્ક્રીન પર જે મંદિર દેખાય છે એ કયું છે?",
-      options:["બોચાસણ","અટલાદરા","ભરૂચ","પુણે"], correct:0,
-      prasang:[
-        "બોચાસણ મંદિર એ BAPS સંસ્થાનું સૌપ્રથમ શિખરબદ્ધ મંદિર છે, જે ભગવાન સ્વામિનારાયણના સંકલ્પ અને વચનને સાકાર કરવા બાંધવામાં આવ્યું.",
-        "તે સમયે આખા ભારતમાં આવું ત્રણ માળનું ભવ્ય મંદિર બીજે ક્યાંય નહોતું."
-      ]},
-    { source:"both",
-      q:"નોર્થ અમેરિકામાં સૌપ્રથમ શિખરબદ્ધ મંદિર ક્યાં બન્યું?",
-      options:["શિકાગો","હ્યુસ્ટન","એટલાન્ટા","ટોરોન્ટો"], correct:1 },
-    { source:"both",
-      q:"રોબિન્સવિલ અક્ષરધામનું લોકાર્પણ ક્યારે થયું?",
-      options:["8 October 2023","8 November 2023","10 October 2023","11 November 2023"], correct:0 },
-    { source:"both",
-      q:"મહંત સ્વામી મહારાજે હમણાં છેલ્લે કયા શિખરબદ્ધ મંદિરની મૂર્તિ પ્રતિષ્ઠા કરી?",
-      options:["અબુધાબી","સિડની","નાસિક","જોધપુર"], correct:3,
-      note:"સ્ક્રિપ્ટની V1 માં વિકલ્પો ભૂજ / સિડની / મહુવા / જોધપુર છે; Excel માં ઉપર મુજબ. જવાબ બંનેમાં જોધપુર." },
-    { source:"both",
-      q:"મહંત સ્વામી મહારાજ સપ્ટેમ્બર 2026માં કયા નૂતન મંદિરનું લોકાર્પણ કરશે?",
-      options:["કણાદ, સુરત","પેરિસ, ફ્રાન્સ","જોહાનિસબર્ગ, આફ્રિકા","મેલબર્ન, ઓસ્ટ્રેલિયા"], correct:1 }
+    {
+      q:{
+        gu:"“આ મૂંડાવ્યું છે તે પણ અક્ષર-પુરુષોત્તમ સારુ જ મૂંડાવ્યું છે.” — આ મહાવાક્ય શાસ્ત્રીજી મહારાજે કયા મંદિર નિર્માણ વખતે કહ્યું હતું?",
+        en:"“Ā mundāviyu chhe te pan Akshar-Purushottam sāru ja mundāviyu chhe.” (“This head has been shaved solely for the sake of Akshar-Purushottam.”) During the construction of which mandir did Shastriji Maharaj utter this monumental statement?"
+      },
+      options:{
+        gu:["સારંગપુર","બોચાસણ","વઢવાણ","ગોંડલ","ગઢડા"],
+        en:["Sārangpur","Bochāsan","Vadhawān","Gondal","Gadhadā"]
+      },
+      correct:0,
+      prasang:{
+        gu:[
+          "સારંગપુર મંદિરની પ્રતિષ્ઠા પૂર્વે જ્યારે લીમડીના ઠાકોર સાહેબે વિરોધીઓની ભંભેરણીથી પ્રેરાઈને મધ્ય મંદિરમાં રાધા-કૃષ્ણની મૂર્તિઓ પધરાવવાનો આગ્રહ કર્યો, ત્યારે શાસ્ત્રીજી મહારાજે અત્યંત ખુમારી અને નિડરતાથી કહ્યું:",
+          "“ઠાકોર સાહેબ! આ દેહે જે કષ્ટ સહન કર્યાં છે, તે મહાપ્રભુ શ્રીસહજાનંદ સ્વામી અને ગુણાતીતાનંદ સ્વામી સારુ જ સહ્યાં છે અને આ મૂંડાવ્યું છે તે પણ અક્ષર-પુરુષોત્તમ સારુ જ મૂંડાવ્યું છે. માટે બાપુ! અમારા ઈષ્ટદેવ તો શ્રીસહજાનંદ સ્વામી અને ગુણાતીતાનંદ સ્વામી જ છે, અને તેમની જ મૂર્તિઓ મધ્ય મંદિરમાં બેસશે.”",
+          "તેમણે સ્પષ્ટ કર્યું હતું કે તેમનું સમગ્ર જીવન અને દાખડો કેવળ અક્ષર-પુરુષોત્તમની ઉપાસનાના પ્રવર્તન માટે જ છે."
+        ],
+        en:[
+          "<b>The Ultimatum:</b> Prior to the consecration (murti pratishthā), the Thākor Sāheb of Limḍi, pressured by opposition, demanded that Rādhā-Krishna Bhagwān be installed in the central shrine instead.",
+          "<b>The Direct Response:</b> “The hardships this body has endured have been suffered solely for the sake of Mahāprabhu Shri Sahajānand Swāmi and Gunātitānand Swāmi. And this head has been shaved solely for the sake of Akshar-Purushottam. Therefore, Bāpu! Our Ishtadev is none other than Shri Sahajānand Swāmi and Gunātitānand Swāmi, and their murtis alone will be seated in the central shrine.”"
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"સારંગપુર મંદિર નિર્માણ વખતે કયા શૂરવીર ભક્તે શાસ્ત્રીજી મહારાજની આજ્ઞાથી લટકતા પથ્થરનાં દોરડાં બાંધ્યાં હતાં?",
+        en:"During the construction of the Sārangpur mandir, which heroic devotee tied the ropes of a dangling stone upon the āgnā of Shastriji Maharaj?"
+      },
+      options:{
+        gu:["આશાભાઈ","ઈશ્વરભાઈ","સોમા ભગત","જેઠા ભગત"],
+        en:["Āshābhāi","Ishwarbhāi","Somā Bhagat","Jethā Bhagat"]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "સારંગપુર મંદિરના નિર્માણ સમયે ૧૫૦ મણનો પથ્થર જ્યારે સાતમાંથી છ દોરડાં તૂટી જવાથી એક જ દોરડા પર લટકી રહ્યો હતો, ત્યારે શાસ્ત્રીજી મહારાજની આજ્ઞાથી સોમા ભગતે પોતાના જીવના જોખમે તે લટકતા પથ્થર પર ચઢીને તૂટેલા દોરડાં ફરીથી બાંધ્યાં હતાં."
+        ],
+        en:[
+          "<b>The Crisis:</b> During the mandir's construction, a massive stone weighing 150 mans (~3,000 kg) was left dangling in the air after 6 of its 7 support ropes snapped.",
+          "<b>The Command:</b> In this life-or-death moment, Shastriji Maharaj issued an immediate instruction (āgnā).",
+          "<b>Absolute Faith:</b> Relying entirely on that āgnā, Somā Bhagat selflessly risked his life and climbed directly onto the unstable, hanging 3-ton stone. High in the air, he successfully tied the broken ropes back together, securing the stone and preventing a catastrophic accident."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"વડતાલમાં જ્યારે શાસ્ત્રીજી મહારાજને જમવામાં ઝેર આપવામાં આવ્યું, ત્યારે તેમણે શું કર્યું હતું?",
+        en:"When Shastriji Maharaj was given poison in his food at Vadtāl, what did he do?"
+      },
+      options:{
+        gu:[
+          "બહાર જઈને બધાને વાત કરી દીધી",
+          "રસોઈયા સામે કેસ કર્યો",
+          "તે જ દિવસે વડતાલ છોડી દીધું",
+          "ચૂપચાપ બધું સહન કરી મહારાજનું સ્મરણ કર્યું"
+        ],
+        en:[
+          "He went outside and told everyone about it",
+          "He filed a case against the cook",
+          "He left Vadtāl that very day",
+          "He silently endured everything and remembered Maharaj"
+        ]
+      },
+      correct:3,
+      prasang:{
+        gu:[
+          "સંવત ૧૯૬૨ (ઈ.સ. ૧૯૦૫)ના કારતક સુદ બારસના દિવસે, નિર્જળા ઉપવાસનાં પારણાં કરવા શાસ્ત્રીજી મહારાજ વડતાલ મંદિરના ભંડારમાં ખીચડી જમવા પધાર્યા હતા. દ્વેષીઓ દ્વારા ખીચડીમાં કાતિલ ઝેર ભેળવવામાં આવ્યું હતું.",
+          "પ્રથમ કોળિયો મોંમાં મૂકતા જ શાસ્ત્રીજી મહારાજનું ગળું પકડાઈ ગયું અને બળવા લાગ્યું. પ્રસાદનો અનાદર ન થાય તે હેતુથી તેઓ થોડી ખીચડી જમીને ઊભા થઈ ગયા.",
+          "જ્યારે હરિભક્તો ગભરાઈ ગયા, ત્યારે શાસ્ત્રીજી મહારાજે અત્યંત સ્વસ્થતાથી કહ્યું: “મને કાંઈ થશે નહિ, તમે કોઈ મૂંઝાશો નહિ અને કોઈ જાતનો ક્લેશ પણ કરશો નહીં.” તેમણે કોઈની નિંદા કરી નહિ કે કેસ પણ ન કર્યો — બધું જ ચુપચાપ સહન કરી લીધું."
+        ],
+        en:[
+          "<b>The Incident:</b> On Kārtak Sud 12, Samvat 1962 (1905 CE), adversaries mixed a lethal poison into the khichdi Shastriji Maharaj ate to break a waterless fast (nirjalā upvās).",
+          "<b>Honoring the Prasād:</b> Though his throat instantly burned, he swallowed a small amount to avoid disrespecting the prasād.",
+          "<b>Calm Reassurance:</b> As the panicking devotees rushed to give him ghee to counter the toxin, he peacefully told them: “Nothing will happen to me; none of you need to worry. Please do not cause any kind of conflict.”",
+          "<b>Forgiveness Over Retaliation:</b> Refused to slander his attackers or file a legal case. He silently endured the trial, maintaining absolute faith in Bhagwān as the supreme doer (sarva-kartā)."
+        ]
+      }
+    }
   ],
+  image:"Chair-Position-Challenge.png",
+  games:[
+    {title:"Chair Position Challenge"},
+    {title:"Objective", items:["Hold a sitting position in mid-air, with no real chair, for as long as you can."]},
+    {title:"Materials Needed", items:["Open space","Timer"]},
+    {title:"Instructions", ordered:true, items:[
+      "Find your spot. Stand with your back against a wall, or pick a place in the open space.",
+      "When we start, slowly bend your knees and lower yourself down as if you're sitting on an invisible chair.",
+      "Keep your knees bent and your back straight the whole time.",
+      "No support allowed — your hands can't touch the ground, the wall, your knees, or anything else.",
+      "The moment you stand up, fall, or grab onto something, you're out.",
+      "Stay strong and hold the position. Whoever lasts the longest wins!"
+    ]},
+    {title:"Safety Note", items:["Do not force anyone to continue if they feel pain or discomfort. This game should test endurance, not cause injury."]}
+  ]
+},
+
+/* ---------- 3. PURUSHARTH & MANDIRS ---------- */
+{
+  key:"purusharth",
+  title:{gu:"પુરુષાર્થ અને મંદિરો", en:"Purushārth & Mandirs"},
+  questions:[
+    {
+      q:{
+        gu:"શાસ્ત્રીજી મહારાજ દ્વારા નિર્મિત આ કયા મંદિરની મૂર્તિ છે?",
+        en:"This murti is from which mandir constructed by Shastriji Maharaj?"
+      },
+      options:{
+        gu:["ગોંડલ","સારંગપુર","બોચાસણ","વઢવાણ"],
+        en:["Gondal","Sārangpur","Bochāsan","Vadhawān"]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "બોચાસણ મંદિર એ શાસ્ત્રીજી મહારાજ દ્વારા નિર્મિત BAPS સંસ્થાનું સૌપ્રથમ શિખરબદ્ધ મંદિર છે.",
+          "<b>ઐતિહાસિક વચન:</b> ભગવાન સ્વામિનારાયણે બોચાસણના ભક્ત કાશીદાસ મોટાને વચન આપ્યું હતું કે, “તમારે ત્યાં અમારે મંદિર કરવું છે... અમે અહીં ધામ સહિત બિરાજીશું.”",
+          "<b>નિર્માણની ઝડપ:</b> માગશર વદ ૧, સંવત ૧૯૬૩ના રોજ પાયા ખોદવાનું શરૂ થયું અને માત્ર છ મહિનામાં મંદિર તૈયાર થઈ ગયું.",
+          "<b>ત્યાગ:</b> પાયા ખોદતી વખતે સોનાના સિક્કા ભરેલા ચરુ નીકળ્યા, પણ સ્વામીશ્રીએ તેને અડક્યા વિના દટાવી દીધા — “આપણે તો અહીં મૂર્તિમાન લક્ષ્મી બેસાડીશું, એટલે બ્રહ્માંડની લક્ષ્મી તણાઈને આવશે.”",
+          "<b>મૂર્તિપ્રતિષ્ઠા:</b> સંવત ૧૯૬૩, વૈશાખ વદ ૧૦ (૫ જૂન, ૧૯૦૭)ના રોજ શાસ્ત્રીજી મહારાજે મધ્ય મંદિરમાં શ્રી અક્ષર-પુરુષોત્તમ મહારાજની મૂર્તિઓ પધરાવી."
+        ],
+        en:[
+          "<b>A Historic First:</b> The very first shikharbaddh (pinnacled) mandir constructed by Shastriji Maharaj for the BAPS sansthā.",
+          "<b>The Divine Promise:</b> Built to fulfill Bhagwān Swaminarayan's promise to devotee Kāshidās Motā: “We want to build a mandir at your place... We will reside here along with our Dhām.”",
+          "<b>Rapid Construction:</b> Foundation digging began on Māgshar Vad 1, Samvat 1963, and the entire mandir was completed in just six months.",
+          "<b>Detachment from Wealth:</b> When pots of gold coins were uncovered during excavation, Shastriji Maharaj left them untouched and ordered them reburied: “We are going to install Lakshmi herself in the form of these murtis here, so the wealth of the entire universe will naturally be drawn here.”",
+          "<b>The Consecration:</b> On Vaishākh Vad 10, Samvat 1963 (June 5, 1907), Shastriji Maharaj installed the murtis of Shri Akshar-Purushottam Mahārāj in the central shrine."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"બોચાસણ બાદ બીજું શિખરબદ્ધ મંદિર ક્યાં બનાવ્યું?",
+        en:"Where was the second shikharbaddh mandir built after Bochāsan?"
+      },
+      options:{
+        gu:["સારંગપુર","ગોંડલ","અટલાદરા","ગઢડા"],
+        en:["Sārangpur","Gondal","Atlādarā","Gadhadā"]
+      },
+      correct:0,
+      prasang:{
+        gu:[
+          "સારંગપુર મંદિર એ શાસ્ત્રીજી મહારાજ દ્વારા નિર્મિત બીજું શિખરબદ્ધ મંદિર છે. ઈ.સ. ૧૯૧૬માં ત્રણ માળનું ભવ્ય મંદિર રચીને ધામ, ધામી અને મુક્ત પધરાવ્યા હતા.",
+          "<b>પ્રતિષ્ઠા:</b> સંવત ૧૯૭૨, વૈશાખ સુદ ૬ (૨૩ મે, ૧૯૧૬)ના રોજ મધ્ય મંદિરમાં અક્ષર-પુરુષોત્તમ મહારાજ અને ગોપાળાનંદ સ્વામીની મૂર્તિઓની પ્રતિષ્ઠા થઈ.",
+          "<b>શીરાનો પ્રસંગ:</b> પ્રતિષ્ઠાના દિવસે દ્વેષીઓએ રસોઈ ખુટાડવાનો પ્રયત્ન કર્યો. શાસ્ત્રીજી મહારાજે શીરાના હોજ પર ઠાકોરજી પધરાવી, ઘીનો દીવો કર્યો, અને ૪ દિવસ સુધી લાખો હરિભક્તોને જમાડ્યા — ૮ દિવસ પછી પણ શીરો તાજો અને સ્વાદિષ્ટ રહ્યો. સ્વામીશ્રીના અદ્ભુત પ્રતાપનાં દર્શન થયાં."
+        ],
+        en:[
+          "<b>History &amp; Consecration:</b> Built in 1916 CE on 24 acres from the Limḍi Darbār. On May 23, 1916, Shastriji Maharaj consecrated the murtis of Akshar-Purushottam Mahārāj and Gopālānand Swāmi.",
+          "<b>The Food Crisis:</b> Opponents attempted to sabotage the inauguration by intentionally running out the supply of shiro.",
+          "<b>Divine Intervention:</b> Swāmishri covered the vats, placed Thākorji's murti and a ghee lamp on top, and authorized only specifically blessed servers to distribute it.",
+          "<b>Incredible Abundance:</b> Day 1 fed 200,000 devotees continuously until midnight. Days 2–3 fed the entire village and 3,000 guests; the shiro stayed steaming hot. Day 4 sent 8 cartloads of surplus to animal shelters in Barwālā and Botād. Day 8 the vats uncovered and found still half-full with fresh, delicious shiro."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"સારંગપુરમાં સુવર્ણજડિત મંદિરનું દર્શન શાસ્ત્રીજી મહારાજે કોને કરાવ્યું?",
+        en:"To whom did Shastriji Maharaj grant a divine vision of a gold-studded mandir in Sārangpur?"
+      },
+      options:{
+        gu:[
+          "પરમ ભગવદીય આશાભાઈ",
+          "પરમ ભગવદીય ઈશ્વરભાઈ",
+          "પરમ ભગવદીય છગનભાઈ",
+          "પરમ ભગવદીય રણછોડભગત"
+        ],
+        en:["Āshābhāi","Ishwarbhāi","Chhaganbhāi","Ranchhod Bhagat"]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "સારંગપુરમાં છગનલાલ ગગાભાઈ ખત્રી સાથેનો મુખ્ય પ્રસંગ મંદિરની લખણી (સેવા) વખતે થયો. પીઠા ખાચરના ઓરડામાં સભા ભરાઈ હતી ત્યારે શાસ્ત્રીજી મહારાજે છગનભાઈને લખણીમાં પહેલ કરવા કહ્યું.",
+          "છગનભાઈએ નમ્રતાથી રૂ. ૩૫ની સેવા લખાવી. તેમના મનમાં શંકા થઈ — ‘આટલી નાની રકમમાં લાખો રૂપિયાનું મંદિર કેવી રીતે પૂરું થશે?’",
+          "સ્વામીશ્રીએ કહ્યું: “તમારા જેવા નિષ્ઠાવાન મુક્તોનો એક રૂપિયો, એક કરોડ રૂપિયા બરાબર છે અને એમાં જ આ મંદિર પૂરું થવાનું છે.” એમ કહીને હાથ લાંબો કર્યો, ને છગનભાઈને સુવર્ણ અને રત્નજડિત ત્રણ શિખરનું મહામોટું મણિમય મંદિર અતિશય પ્રકાશે યુક્ત દેખાયું.",
+          "આ છગનભાઈ લીંબડી (મૂળ મોજીદડ)ના વતની હતા અને ઝાલાવાડના સત્સંગનો સ્તંભ સમાન હરિભક્ત હતા."
+        ],
+        en:[
+          "<b>The Setting:</b> During a donation assembly (lakhni) in Pithā Khāchar's quarters, Chhaganbhāi — a pillar of Satsang in the Jhālāvād region — pledged a modest 35 rupees.",
+          "<b>The Inner Doubt:</b> He privately wondered how a grand mandir costing millions of rupees could ever be completed through such small contributions.",
+          "<b>The Spiritual Value:</b> Shastriji Maharaj extended his hand, redefining the worth of pure devotion: “One rupee from a dedicated mukta like you is equivalent to ten million rupees, and it is through this alone that this mandir will be completed.”",
+          "<b>The Revelation:</b> Instantly, Chhaganbhāi was granted a divine vision of the future mandir — a massive, jewel-encrusted structure with three golden spires reaching into the sky and radiating intense light."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"વર્ષ ૨૦૨૬ / અત્યાર સુધીમાં સંસ્થામાં કુલ કેટલા શિખરબદ્ધ મંદિરો થયા?",
+        en:"As of the year 2026, how many total shikharbaddh mandirs have been established in the sansthā?"
+      },
+      options:{gu:["114","44","51","71"], en:["114","44","51","71"]},
+      correct:2,
+      prasang:{
+        gu:[
+          "<b>શાસ્ત્રીજી મહારાજ:</b> 5",
+          "<b>યોગીજી મહારાજ:</b> 2",
+          "<b>પ્રમુખસ્વામી મહારાજ:</b> 37 + 2 અક્ષરધામ",
+          "<b>મહંત સ્વામી મહારાજ:</b> 7 + 1 અક્ષરધામ",
+          "આ ઉપરાંત મોરબી, કણાદ અક્ષરધામ, સિડની, જગતપુર, ભુજ, પેરિસ, વ્યારા, અમરેલી જેવા અનેક મંદિરોના કાર્યો અત્યારે ચાલુ છે."
+        ],
+        en:[
+          "<b>Shastriji Maharaj:</b> 5",
+          "<b>Yogiji Maharaj:</b> 2",
+          "<b>Pramukh Swami Maharaj:</b> 37 + 2 Akshardhams",
+          "<b>Mahant Swami Maharaj:</b> 7 + 1 Akshardham",
+          "Construction work is currently underway for numerous mandirs such as Morbi, Surat Akshardham, Sydney, Jagatpur, Bhuj, Paris, Vyārā, Amreli etc."
+        ]
+      }
+    }
+  ],
+  image:"Apple-Bobbing-Challenge.png",
   games:[
     {title:"Apple Bobbing Challenge"},
-    {title:"Objective",items:["Retrieve an apple from the water using only your mouth."]},
-    {title:"Materials Needed",items:["Large tub or bucket","Clean water","Apples","Towels"]},
-    {title:"Instructions",ordered:true,items:[
-      "Fill a tub or bucket with clean water.",
-      "Place a few apples in the water.",
-      "One participant goes at a time.",
-      "The participant must keep both hands behind their back.",
-      "They must try to bite and lift an apple using only their mouth.",
-      "Once the apple is lifted out of the water, the challenge is complete.",
-      "If the participant is unable to get the apple, another teammate may try."
+    {title:"Objective", items:["Retrieve one apple from the water using only your mouth."]},
+    {title:"Materials Needed", items:["Large tub or bucket (one per participant where possible)","Clean water","Apples","Towels"]},
+    {title:"Instructions", ordered:true, items:[
+      "Each participant will get their own clean bucket or pan with fresh water and apples.",
+      "Keep both hands behind your back.",
+      "When the game starts, try to pick up one apple using only your mouth.",
+      "Do not use your hands to touch the bucket, water, or apple.",
+      "Once you lift the apple out of the water, your turn is complete."
     ]},
-    {title:"Safety Note",items:["Use clean water and fresh apples. Replace the water when needed. Make sure participants do not push their face too deep into the water."]}
+    {title:"Safety Note", items:["Use clean water and fresh apples. Replace the water when needed. Make sure participants do not push their face too deep into the water."]}
   ]
 },
+
+/* ---------- 4. DHIRAJ ---------- */
 {
-  key:"sahan", num:3, title:"ભીડો અને સહનશક્તિ",
-  gameImages:["SAHAN.png","SAHAN-2.png"],
+  key:"dhiraj",
+  title:{gu:"ધીરજ", en:"Dhirāj"},
   questions:[
-    { source:"pdf",
-      q:"કયા વર્ષમાં શાસ્ત્રીજી મહારાજને ઝેર આપ્યું?",
-      options:["1902 (વિક્રમ સંવત 1958)","1904 (વિક્રમ સંવત 1960)","1903 (વિક્રમ સંવત 1959)","1905 (વિક્રમ સંવત 1961)"], correct:0 },
-    { source:"pdf",
-      q:"વડતાલમાં જ્યારે શાસ્ત્રીજી મહારાજને જમવામાં ઝેર આપવામાં આવ્યું, ત્યારે તેમણે શું કર્યું હતું?",
-      options:["બહાર જઈને બધાને વાત કરી દીધી","રસોઈયા સામે કેસ કર્યો","તે જ દિવસે વડતાલ છોડી દીધું","ચૂપચાપ બધું સહન કરી મહારાજનું સ્મરણ કર્યું"], correct:3 },
-    { source:"pdf",
-      q:"શાસ્ત્રીજી મહારાજના જીવનમાં 'સહનશીલતા' એટલે શું?",
-      options:["કઈ ન સમજાય એટલે ચૂપ રહેવું","ઉપાસના માટે ગમે તેવા અપમાન પી જવાની શક્તિ","બીજા પર ગુસ્સો કરવો","નબળાઈ દર્શાવવી"], correct:1,
-      note:"સ્ક્રિપ્ટમાં નોંધ: આ પ્રશ્ન ‘અક્ષરપુરુષોત્તમના બળદિયા છીએ’ (ખેતરમાં પાણી/ધૂળ) પ્રસંગ સાથે બદલવાનું સૂચન છે." },
-    { source:"both",
-      q:"“આ મૂંડાવ્યું છે તે પણ અક્ષર-પુરુષોત્તમ સારુ જ મૂંડાવ્યું છે.” આ મહાવાક્ય શાસ્ત્રીજી મહારાજે કયા મંદિર નિર્માણ વખતે કહ્યું હતું?",
-      options:["સારંગપુર","બોચાસણ","વઢવાણ","ગોંડલ","ગઢડા"], correct:0,
-      prasang:[
-        "શાસ્ત્રીજી મહારાજે આ વાક્ય સારંગપુર મંદિરના નિર્માણ વખતે કહ્યું હતું.",
-        "“ઠાકોર સાહેબ! આ દેહે જે કષ્ટ સહન કર્યા છે, તે મહાપ્રભુ શ્રીસહજાનંદ સ્વામી અને ગુણાતીતાનંદ સ્વામી સારું જ સહ્યાં છે... અમારા ઈષ્ટદેવ તો શ્રીસહજાનંદ સ્વામી અને ગુણાતીતાનંદ સ્વામી જ છે.”",
-        "લીમડીના ઠાકોર સાહેબે મધ્ય મંદિરમાં રાધા-કૃષ્ણની મૂર્તિઓ પધરાવવાનો આગ્રહ કર્યો, ત્યારે શાસ્ત્રીજી મહારાજે અત્યંત ખુમારી અને નિડરતાથી આ શબ્દો કહ્યા હતા."
-      ]},
-    { source:"app",
-      q:"“આ મુંડાવ્યું છે તે અક્ષરપુરુષોત્તમ માટે મુંડાવ્યું છે.” – આ વાક્ય આપણને શું સમજાવે છે?",
-      options:["સંસ્થાના વિકાસ માટે સહન કરેલી તકલીફો","અક્ષરપુરુષોત્તમનો સિદ્ધાંત","સત્પુરુષ માટે હોમાઈ જવાનો ભાવ","ઉપરના તમામ"], correct:3 },
-    { source:"app",
-      q:"શાસ્ત્રીજી મહારાજે વડતાલથી મહાપ્રસ્થાન ક્યારે કર્યું?",
-      options:["સંવત 1962 કાર્તિક વદ પૂર્ણિમા","સંવત 1962 કાર્તિક સુદ પૂર્ણિમા","સંવત 1962 કાર્તિક સુદ પાંચમ","સંવત 1962 કાર્તિક સુદ બીજ"], correct:3,
-      prasang:[
-        "શાસ્ત્રીજી મહારાજે વડતાલથી મહાપ્રસ્થાન સંવત ૧૯૬૨ કાર્તિક સુદ બીજના રોજ કર્યું હતું.",
-        "આ ઐતિહાસિક પ્રસ્થાન અક્ષર-પુરુષોત્તમ ઉપાસનાના શુદ્ધ સિદ્ધાંતના પ્રવર્તન માટે હતું."
-      ]},
-    { source:"app",
-      q:"શાસ્ત્રીજી મહારાજે વડતાલથી મહાપ્રસ્થાન કેમ કર્યું?",
-      options:["સુખથી ભજન કરવા","જાનનું જોખમ","હરિભક્તનો આગ્રહ","અક્ષરપુરુષોત્તમ જ્ઞાનનું પ્રવર્તન કરવા માટે"], correct:3,
-      prasang:[
-        "શાસ્ત્રીજી મહારાજે વડતાલથી મહાપ્રસ્થાન અક્ષરપુરુષોત્તમ જ્ઞાનનું પ્રવર્તન કરવા માટે કર્યું હતું.",
-        "વરતાલમાં જાનનું જોખમ હતું અને હરિભક્તોનો આગ્રહ પણ હતો, પરંતુ તેમનું મુખ્ય લક્ષ્ય અક્ષરપુરુષોત્તમ ઉપાસના વિશ્વમાં પ્રવર્તાવવાનું હતું."
-      ]}
+    {
+      q:{
+        gu:"શાસ્ત્રીજી મહારાજે ગઢડામાં અક્ષર-પુરુષોત્તમ મંદિરના નિર્માણ માટે કેટલા વર્ષ પ્રતીક્ષા કરી?",
+        en:"How many years did Shastriji Maharaj wait for the construction of the Akshar-Purushottam mandir in Gadhadā?"
+      },
+      options:{
+        gu:["૨૫ વર્ષ","૧૦ વર્ષ","૫૫ વર્ષ","૩૩ વર્ષ"],
+        en:["25 years","10 years","55 years","33 years"]
+      },
+      correct:3,
+      prasang:{
+        gu:[
+          "ગઢપુરમાં ટેકરા ઉપર મંદિર કરવાનો મૂળ શ્રીજીમહારાજનો દૃઢ સંકલ્પ હતો. શાસ્ત્રીજી મહારાજે ૩૩ વર્ષ સુધી અત્યંત ધીરજ રાખી. સંપ્રદાય તેમજ સમાજનાં અનેક વિષમ પરિબળોનો પ્રતિકાર કરી તેમણે તે સંકલ્પ પૂર્ણ કર્યો.",
+          "આર્થિક પ્રતિકૂળતા છતાં સંગેમરમરના મંદિર-નિર્માણનો એમણે પ્રારંભ કર્યો. ભાવનગર નરેશના દફતરમાંથી જમીનની નામંજૂરી મળેલી, એ જ મહારાજના શુભ હસ્તે મંદિરનું ખાત કરાવ્યું.",
+          "આવી જ ધીરજનું દર્શન પ્રમુખસ્વામી મહારાજના જીવનમાં પણ. યોગીજી મહારાજે ૧૯૬૮માં સંકલ્પ કર્યો કે ‘દિલ્હીમાં યમુના ઘાટે મંદિર થાય’ — જમીન મળતા ૩૨ વર્ષ નીકળી ગયા પણ ધીરજ રાખી ગુરુનો સંકલ્પ પાર પાડ્યો. અને મંદિર તો શું, મહામંદિર બાંધી અક્ષરધામ સર્જી દીધું."
+        ],
+        en:[
+          "<b>Shastriji Maharaj (Gadhadā Mandir):</b> Driven to fulfill Shriji Maharaj's personal wish of constructing a mandir on the hill in Gadhpur. He overcame 33 years of intense social, financial, and institutional opposition before commencing construction on an all-marble mandir.",
+          "<b>Political Triumph:</b> Though the King of Bhāvnagar's office initially rejected the land request, Shastriji Maharaj ultimately had that very same king lay the foundation stone with his own hands.",
+          "<b>Pramukh Swami Maharaj (New Delhi Akshardham):</b> Inherited Yogiji Maharaj's 1968 wish to build a mandir on the banks of the Yamunā River in Delhi. Patiently waited over three decades just to acquire the land, never losing faith — and exceeded the original wish by building the world-renowned Swaminarayan Akshardham complex."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"ખાનદેશમાં અક્ષરપુરુષોત્તમ સત્સંગના પ્રવર્તનમાં સિંહફાળો કોનો રહ્યો છે?",
+        en:"Who made a lion's share of contribution in propagating the Akshar-Purushottam Satsang in Khāndesh?"
+      },
+      options:{
+        gu:["સાધુ બાલમુકુન્દદાસ","સાધુ વિજ્ઞાનદાસ","સાધુ મહાપુરુષદાસ","સાધુ નિર્ગુણદાસ"],
+        en:["Sādhu Bālmukunddās","Sādhu Vignāndās","Sādhu Mahāpurushdās","Sādhu Nirgundās"]
+      },
+      correct:1,
+      prasang:{
+        gu:[
+          "સ્વામી વિજ્ઞાનદાસજીએ ખાનદેશમાં વિચરણ કરીને મુમુક્ષુઓને અક્ષરપુરુષોત્તમની શુદ્ધ ઉપાસના અને ભગતજી મહારાજના મહિમાની સમજણ એવી દૃઢ કરાવી હતી કે ત્યાંના ભક્તો વહાણમાં બેસીને ભગતજી મહારાજનાં દર્શન કરવા મહુવા પધારતા અને દાન-ધર્માદો કરતા.",
+          "આ સ્વામી વિજ્ઞાનદાસજી કોણ? કોઠારી ગોરધનદાસના ભત્રીજા, ચરોતરના પટેલ, ખૂબ પ્રતિભાશાળી — પણ ભગતજી મહારાજમાં જીવ જોડ્યો, તો એમને ગુજરાતથી દૂર ખાનદેશ મોકલવામાં આવ્યા — અને ત્યાં પણ તેમણે સત્સંગના પાયા નાખ્યા."
+        ],
+        en:[
+          "<b>Background &amp; Exile:</b> A highly talented sadhu from Charotar (nephew of Kothāri Gordhandās). Because of his fierce allegiance to Bhagatji Maharaj, he was stationed far away in Khāndesh.",
+          "<b>Rooting the Upāsanā:</b> Transformed his relocation into a mission, deeply instilling the Akshar-Purushottam upāsanā and the mahimā of Bhagatji Maharaj across the region.",
+          "<b>Profound Impact:</b> Inspired Khāndesh devotees to travel by ship to Mahuvā just to receive Bhagatji Maharaj's darshan and offer their tithes (dharmādo).",
+          "<b>The Legacy:</b> His foundational grassroots efforts are the direct reason why Satsang flourishes so tremendously in Khāndesh today."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"શાસ્ત્રીજી મહારાજે સતત ૧૦ કલાક સુધી અક્ષરપુરુષોત્તમના મહિમાની વાતો કોને કરી?",
+        en:"To whom did Shastriji Maharaj talk about the glory of Akshar-Purushottam continuously for 10 hours?"
+      },
+      options:{
+        gu:["જેઠાભાઈ","ઉત્તમભાઈ","બાલકૃષ્ણભાઈ","આશાભાઈ"],
+        en:["Jethābhāi","Uttambhāi","Bālkrishnabhāi","Āshābhāi"]
+      },
+      correct:0,
+      prasang:{
+        gu:[
+          "શાસ્ત્રીજી મહારાજે સતત ૧૦ કલાક સુધી અક્ષરપુરુષોત્તમના મહિમાની વાતો જેઠાભાઈને કરી હતી (જેઓ પાછળથી નિર્ગુણદાસ સ્વામી તરીકે ઓળખાયા).",
+          "આ ઉપાસનાની દૃઢતા એવી તો થઈ કે નિર્ગુણ સ્વામી માટે કહેવાતું કે સત્સંગના ૧૬ આનીમાંથી ૧૪ આની વિકાસ નિર્ગુણ સ્વામીએ કર્યો. ૧૦૦-૧૦૦ પાનાંના પત્રો લખી છેક આફ્રિકા સુધી સત્સંગના પાયા નાખ્યા.",
+          "<b>કુલ વજન:</b> તેમના જીવનકાળ દરમિયાન કુલ ૨૮ મણ (~૫૬૦ કિગ્રા) જેટલા પત્રો લખ્યા. <b>પાનાં:</b> આશરે ૪,૦૦,૦૦૦ પાનાં. <b>દૈનિક સરેરાશ:</b> દરરોજ ૬૦ પાનાં (ચૂક પડે તો ૧૨૦ પાનાં લખીને ભરપાઈ કરે).",
+          "જો આ ૪,૦૦,૦૦૦ પાનાંની થપ્પી કરીએ તો ૧૩૧ ફીટ ઊંચી થપ્પી બને — બારથી તેર માળનું બિલ્ડિંગ, દિલ્હી અક્ષરધામની નીલકંઠવર્ણીની મૂર્તિ કરતાં પણ ૨૦ ફીટ વધારે ઊંચી!"
+        ],
+        en:[
+          "<b>The 10-Hour Turning Point:</b> While studying in Vadodarā, Jethābhāi (later Nirgundās Swāmi) listened to Shastriji Maharaj explain the upāsanā from the scriptures for 10 continuous hours, rooting his lifelong faith.",
+          "<b>Architect of Expansion:</b> Credited with driving “14-ānā out of 16-ānā” (the vast majority) of Satsang's modern development, anchoring exclusive faith across India and East Africa.",
+          "<b>A Monumental 20-Year Writing Mission:</b> Total Volume — wrote a staggering ~560 kg of letters, totaling 400,000 pages. Daily Output — averaged 60 pages every single day (writing up to 120 pages to catch up if a day was missed). Individual letters routinely spanned 100 pages.",
+          "<b>Visualizing the Scale:</b> If stacked, his 400,000 pages of letters would reach 131 feet high — equivalent to a 12–13 story building, standing 20 feet taller than the Nilkanth Varni murti in New Delhi!"
+        ]
+      }
+    }
   ],
+  image:"Limbu-Chamchi-Challenge.png",
   games:[
-    {title:"Option 1: Ice Diamond Challenge"},
-    {title:"Objective",items:["Melt the ice using only your hands and retrieve the diamond inside."]},
-    {title:"Materials Needed",items:["Ice blocks with small plastic diamonds or objects frozen inside","Tray or bowl","Towels"]},
-    {title:"Instructions",ordered:true,items:[
-      "Each team receives one ice block with a diamond inside.",
-      "Participants must melt the ice using only their hands.",
-      "They may take turns holding and rubbing the ice.",
-      "No tools, breaking, hitting, or throwing the ice is allowed.",
-      "The team continues until the diamond is fully released.",
-      "Once the diamond is free, the challenge is complete."
-    ]},
-    {title:"Option 2: Chair Position Challenge"},
-    {title:"Objective",items:["Stay in a sitting position without using an actual chair for as long as possible."]},
-    {title:"Materials Needed",items:["Open space","Timer"]},
-    {title:"Instructions",ordered:true,items:[
-      "Participants stand with their back against a wall or in an open space.",
-      "They slowly bend their knees and sit as if they are sitting on an invisible chair.",
-      "Their knees should be bent, and their back should stay straight.",
-      "Hands should not touch the ground, wall, knees, or any other support.",
-      "Once the participant stands up, falls, or takes support, they are out.",
-      "The person who holds the position the longest wins."
-    ]},
-    {title:"Safety Note",items:["Do not force anyone to continue if they feel pain or discomfort. This game should test endurance, not cause injury."]}
-  ]
-},
-{
-  key:"dhiraj", num:4, title:"ધીરજ",
-  gameImages:["DHIRAJ.png","DHIRAJ-2.png"],
-  questions:[
-    { source:"pdf",
-      q:"શાસ્ત્રીજી મહારાજે ગઢડામાં અક્ષર-પુરુષોત્તમ મંદિરના નિર્માણ માટે કેટલા વર્ષ પ્રતીક્ષા કરી?",
-      options:["૨૫ વર્ષ","૧૦ વર્ષ","૫ વર્ષ","૩૬ વર્ષ"], correct:-1,
-      note:"સ્ક્રિપ્ટની Version 1 માં સાચો જવાબ ચિહ્નિત નથી — ચકાસવાનો બાકી." },
-    { source:"pdf",
-      q:"પ્રમુખ સ્વામી મહારાજે દિલ્લી અક્ષરધામ બનાવવા માટે કેટલા વર્ષો સુધી રાહ જોઈ?",
-      options:["૧૮","૨૦","૧૬","૨૨"], correct:0,
-      prasang:[
-        "યોગીજી મહારાજે ૧૯૬૮માં યમુનાના કિનારે અક્ષરધામ બનાવવાનો સંકલ્પ કર્યો હતો. પ્રમુખસ્વામી મહારાજે ૧૯૮૨માં જમીન માટેની સત્તાવાર પ્રક્રિયા શરૂ કરી.",
-        "૧૯૮૨ થી ૨૦૦૦ સુધીના ૧૮ વર્ષો દરમિયાન અનેક અવરોધો આવ્યા. અંતે ૨૦૦૦ની સાલમાં જમીન મળી અને માત્ર ૫ વર્ષમાં ૨૦૦૫માં દિલ્હી અક્ષરધામ તૈયાર થઈ ગયું."
-      ]}
-  ],
-  games:[
-    {title:"Option 1: Steady Steps Challenge"},
-    {title:"Objective",items:["Carry a cup of water from start to finish without spilling too much."]},
-    {title:"Materials Needed",items:["Plastic cups","Water","Tape for start and finish lines"]},
-    {title:"Instructions",ordered:true,items:[
-      "Fill a cup of water up to the marked line.",
-      "One participant starts at the start line.",
-      "They must walk slowly to the finish line while holding the cup.",
-      "The water must stay above the marked line.",
-      "If too much water spills, the participant must restart.",
-      "Each team member can take a turn.",
-      "The challenge is complete when the team successfully carries the water to the finish line."
-    ]},
-    {title:"Extra Challenge",items:["Ask participants to walk with the cup using one hand only."]},
-    {title:"Option 2: Limbu Chamchi Challenge"},
-    {title:"Objective",items:["Balance the lemon on the spoon and cross the finish line without dropping it. The goal is not to finish first, but to stay steady, calm, and focused."]},
-    {title:"Materials Needed",items:["Lemons","Spoons","Tape or markers for start and finish lines","Open space"]},
-    {title:"Instructions",ordered:true,items:[
+    {title:"Limbu Chamchi Challenge"},
+    {title:"Objective", items:["Balance the lemon on the spoon and cross the finish line without dropping it. The goal is not to finish first, but to stay steady, calm, and focused."]},
+    {title:"Materials Needed", items:["Lemons","Spoons","Tape or markers for start and finish lines","Open space"]},
+    {title:"Instructions", ordered:true, items:[
       "Mark a clear start line and finish line.",
       "Five to six participants stand at the start line.",
       "Give each participant one spoon and one lemon.",
-      "Each participant places the spoon handle in their mouth.",
-      "The lemon must be balanced on the spoon.",
-      "When the game begins, participants walk carefully from the start line to the finish line.",
-      "Participants may not use their hands to hold the spoon or lemon during the challenge.",
+      "Each participant places the spoon handle in their mouth and balances the lemon on the spoon.",
+      "When the game starts, participants walk carefully toward the finish line.",
+      "Do not use your hands to hold the spoon or lemon during the challenge.",
       "If the lemon falls, the participant must return to the start line and begin again.",
-      "The challenge is complete when a participant crosses the finish line with the lemon still balanced on the spoon.",
-      "The winner is the participant who completes the challenge with balance and control, not the one who rushes."
+      "The challenge is complete when you cross the finish line with the lemon still balanced on the spoon."
     ]},
-    {title:"Rules",items:[
+    {title:"Rules", items:[
       "Do not run or push others.",
       "Hands cannot touch the spoon or lemon during the challenge.",
       "Participants must stay in their own lane or path.",
       "If the lemon falls, the participant must restart from the start line.",
       "Focus on balance, patience, and steadiness."
     ]},
-    {title:"Reflection Message",items:["In life, speed is not always the most important thing. Sometimes, patience, balance, and focus help us reach the goal safely and successfully."]}
+    {title:"Reflection Message", items:["In life, speed is not always the most important thing. Sometimes, patience, balance, and focus help us reach the goal safely and successfully."]}
   ]
 },
+
+/* ---------- 5. DASBHAV ---------- */
 {
-  key:"haribhakto", num:5, title:"હરિભક્તો",
-  flowNote:"સ્ક્રિપ્ટ પ્રવાહ: “જેવા શાસ્ત્રીજી મહારાજ હતા તેવા જ તેમના સંતો અને હરિભક્તો” — આ વિભાગમાં Excel માં કોઈ રમત નથી.",
+  key:"dasbhav",
+  title:{gu:"દાસભાવ", en:"Dāsbhāv"},
   questions:[
-    { source:"both",
-      q:"ઈશ્વરભાઈની ઈમેજ સ્ક્રીન પર બતાવવામાં આવી છે. આ છબીમાં દેખાતા ‘મુક્તરાજ’ કોણ છે?",
-      options:["આશાભાઈ","ઈશ્વરભાઈ","જેઠા ભગત","જેઠાલાલ સ્વામીનારાયણ"], correct:1 },
-    { source:"both",
-      q:"મગનભાઈ કઈ સેવા કરીને શાસ્ત્રીજી મહારાજની માળાના મણકા બની ગયા?",
-      options:["હરિભક્તોને નિત્ય જમાડવાની","આફ્રિકામાં મંદિર બનાવવાની","ઉપાસના પ્રવર્તનની","આર્થિક સેવા"], correct:2,
-      prasang:[
-        "મગનભાઈ ઉપાસના પ્રવર્તનની સેવા કરીને શાસ્ત્રીજી મહારાજની માળાના મણકા બની ગયા હતા.",
-        "મગનભાઈ આફ્રિકામાં રેલવે સ્ટેશન માસ્તર તરીકે નોકરી કરતા હોવા છતાં, કલાકો સુધી કથાવાર્તા કરતા અને તાર દ્વારા પણ અન્ય સ્ટેશનો પરના ભક્તોને સત્સંગનો મહિમા સમજાવતા હતા."
-      ]},
-    { source:"both",
-      q:"સારંગપુરમાં સુવર્ણ જડિત મંદિરના દર્શન શાસ્ત્રીજી મહારાજે કોને કરાવ્યા?",
-      options:["પરમ ભગવદીય આશાભાઈ","પરમ ભગવદીય ઈશ્વરભાઈ","પરમ ભગવદીય છગનભાઈ","પરમ ભગવદીય રણછોડભગત"], correct:2,
-      prasang:[
-        "સારંગપુરમાં છગનલાલ ગગાભાઈ ખત્રી સાથે જોડાયેલો પ્રસંગ મંદિરની લખણી વખતે થયો હતો.",
-        "છગનભાઈએ રૂ. ૩૫ની સેવા લખાવી. “તમારા જેવા નિષ્ઠાવાન મુક્તોનો એક રૂપિયો, એક કરોડ રૂપિયા બરાબર છે” — એમ કહીને સ્વામીશ્રીએ હાથ લાંબો કર્યો અને છગનભાઈને સુવર્ણ-રત્નજડિત ત્રણ શિખરનું મણિમય મંદિર દેખાયું."
-      ]},
-    { source:"both",
-      q:"“અમે સૌ સ્વામીના બાળક, જીવીશું સ્વામીને માટે” – આ કીર્તનના રચયિતા કોણ છે?",
-      options:["પરમ ભગવદીય શંકરભાઈ","મોતીભાઈ","મહાપુરુષદાસ","નારાયણ ભગત"], correct:1,
-      prasang:[
-        "આ કીર્તનના રચયિતા મોતીભાઈ (મોતીભાઈ ભગવાનદાસ પટેલ) છે.",
-        "આણંદના મોતીભાઈ ભગવાનદાસ પટેલ શાસ્ત્રીજી મહારાજના અનન્ય ભક્ત હતા. તેમણે આ કીર્તન દ્વારા અક્ષર-પુરુષોત્તમ સિદ્ધાંત પ્રત્યેની શૂરવીરતા અને સમર્પણ ભાવ વ્યક્ત કર્યો છે."
-      ]},
-    { source:"both",
-      q:"“અક્ષરપુરુષોત્તમ દયાળુ પ્રભુ અક્ષરપુરુષોત્તમ” આ કીર્તનના રચયિતા કોણ છે?",
-      options:["સાધુ બાલમુકુન્દદાસ","છગન ભગત","સાધુ મહાપુરુષદાસ","શંકરદાસ"], correct:2 }
+    {
+      q:{
+        gu:"શાસ્ત્રીજી મહારાજના કયા વચનમાં આપણને દાસભાવનું દર્શન થાય છે?",
+        en:"In which of Shastriji Maharaj's statements do we witness his profound sense of servitude (dāsbhāv)?"
+      },
+      options:{
+        gu:[
+          "“અમે તો ખીચડિયા સાધુ છીએ.”",
+          "“૪૦ વર્ષ ધોકા ખાધેલા, તે ખમવાનો સ્વભાવ પડી ગયો છે...”",
+          "“આપણે તો અક્ષરપુરુષોત્તમના બળદિયા છીએ.”",
+          "“આપણે ક્યાં નેતા છીએ? આપણે તો શાસ્ત્રી છીએ.”"
+        ],
+        en:[
+          "“We are just simple khichadiyā sādhus (swamis who live on basic food).”",
+          "“We have endured blows for 40 years, so it has become our nature to tolerate...”",
+          "“We are the oxen of Akshar-Purushottam.”",
+          "“We are not leaders. We are just scholars (shāstris).”"
+        ]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "જેમ બળદમાં દાસનાં તમામ લક્ષણો રહ્યાં છે, તેમ શાસ્ત્રીજી મહારાજનાં આ વચનોના આધારે તેઓમાં રહેલા દાસભાવનું દર્શન થાય છે. વચનામૃત મધ્યના ૩માં કહ્યું છે કે ‘પોતાના જીવાત્માને એ બ્રહ્મ સંગાથે એકતા કરીને પરબ્રહ્મની સ્વામી-સેવકભાવે ઉપાસના કરવી.’ શ્રીજીમહારાજના આ સિદ્ધાંત પ્રમાણે તેઓ જીવતા.",
+          "<b>બળદનાં લક્ષણો:</b> બળદ હંમેશાં સહનશીલ હોય છે · નીરે ત્યારે ખાય · ઊંઘ, આળસ, કંટાળો નહીં · જીવનભરનો સેવક · ગમાણમાં ઉતારો · કોઈનું જોવાનું નહીં · સાત સમેલિયો · માલિકની મરજી જાણે · વેચ્યો વેચાય · બે બળદ ભેગા ચાલે · મમત્વ નહીં · બ્રહ્મચારી · વ્યસનમુક્ત અને શાકાહારી · જાતવાન બળદ ગૂડિયું ન વાળે · મરીને પગરખાં આપે."
+        ],
+        en:[
+          "<b>The Metaphor of the Ox:</b> Shastriji Maharaj lived with the total surrender and resilience of a noble ox.",
+          "<b>Absolute Purity:</b> Strictly vegetarian, celibate (brahmachāri), addiction-free, and entirely detached (mamatva).",
+          "<b>Flawless Work Ethic:</b> Free from laziness, boredom, or distractions; walks in perfect sync with others and never quits mid-task.",
+          "<b>Total Submission:</b> Intuitively aligns with the master's wishes, accepts any accommodation, eats only when fed, and goes wherever directed.",
+          "<b>Lifelong Resilience:</b> Enduring and forgiving; serves faithfully for life and remains useful (like leather) even after death."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"“અક્ષર પુરુષોત્તમની વાતો મારા માથા પર બેસીને કરે તો પણ ઓછું છે.” — આ વાક્ય પરથી શાસ્ત્રીજી મહારાજના અંતરનો કયો ભાવ પ્રગટ થાય છે?",
+        en:"“Even if someone sits on top of my head to talk about Akshar-Purushottam, it is still not enough.” Which inner sentiment of Shastriji Maharaj is revealed through this statement?"
+      },
+      options:{
+        gu:[
+          "હરિભક્તોના અંતરની લાગણીની સમજ",
+          "નાની જગ્યામાં પણ સાંકડે માકડે ચલાવી લેવાની ભાવના",
+          "નિષ્ઠા પ્રવર્તનની સેવા કરનારનો મહિમા",
+          "ઉપરના તમામ"
+        ],
+        en:[
+          "Understanding the inner feelings of haribhaktas",
+          "The willingness to manage and adjust even in cramped spaces",
+          "Great appreciation for those who serve to propagate nishthā",
+          "All of the above"
+        ]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "આ વાક્ય શાસ્ત્રીજી મહારાજની અક્ષરપુરુષોત્તમ ઉપાસના પ્રત્યેની અત્યંત નિષ્ઠા અને આ જ્ઞાનનો પ્રસાર કરનારા ભક્તો પ્રત્યેનો અપાર મહિમા અને દાસભાવ દર્શાવે છે.",
+          "અમદાવાદમાં જ્યારે પ્રોફેસર જેઠાલાલ સ્વામિનારાયણ સ્વામીશ્રીના આસન (પાટ) પર બેસીને અક્ષર-પુરુષોત્તમ સિદ્ધાંતની કથા કરી રહ્યા હતા, ત્યારે અન્ય શિષ્ય બબુભાઈને તે મર્યાદાનો ભંગ લાગ્યો અને સ્વામીશ્રીને ફરિયાદ કરી.",
+          "ત્યારે શાસ્ત્રીજી મહારાજે કહ્યું હતું: “અક્ષરપુરુષોત્તમના મહિમાની વાત મારી પાટ પર બેસીને તો શું, મારા માથા પર બેસીને કરે તોય ઓછું છે.”",
+          "<b>પ્રો. જેઠાલાલ સ્વામિનારાયણ:</b> ગુજરાત કૉલેજમાં ગણિતના પ્રખર પ્રાધ્યાપક, સ્વાતંત્ર્ય સેનાની, અને અમદાવાદ સત્સંગ મંડળના પ્રમુખ — જેમણે સ્વામીશ્રીની આજ્ઞાથી સંસ્કૃતમાં ૧૦,૦૦૦ શ્લોકોવાળા ‘શ્રી અક્ષરપુરુષોત્તમ ચરિતમ્’ ગ્રંથની રચના કરી હતી."
+        ],
+        en:[
+          "<b>Profile of a Scholar:</b> Professor Jethālāl Swaminarayan was a brilliant math professor, freedom fighter, and Amdāvād Satsang Mandal President. On Swāmishri's āgnā, he authored the 10,000-verse Sanskrit scripture ‘Shri Akshar-Purushottam Charitam’ and famously led vibrant public street dhuns.",
+          "<b>The Incident:</b> While in Amdāvād, Professor Jethālāl sat directly on Swāmishri's personal wooden seat (pāt) to deliver a katha. A disciple named Babubhāi complained to the Guru, viewing it as a serious breach of protocol.",
+          "<b>The Fearless Response:</b> Shastriji Maharaj completely dismissed the complaint, placing the propagation of spiritual knowledge far above personal prestige: “Forget about sitting on my seat — even if someone sits on top of my head to talk about the glory of Akshar-Purushottam, it is still not enough.”",
+          "<b>The Ultimate Takeaway:</b> Swāmishri demonstrated his profound servitude (dāsbhāv) and conviction, asserting that anyone who boldly sings the true glory of Akshar and Purushottam holds the most supreme status."
+        ]
+      }
+    }
   ],
-  games:[]
-},
-{
-  key:"samp", num:6, title:"સંપ",
-  gameImages:["SAMP.png","SAMP-2.png"],
-  questions:[
-    { source:"both",
-      q:"શાસ્ત્રીજી મહારાજ જ્યારે વરતાલથી નીકળ્યા, ત્યારે તેમની સાથે કેટલા સંતો હતા?",
-      options:["ત્રણ","પાંચ","સાત","આઠ"], correct:1,
-      prasang:[
-        "શાસ્ત્રીજી મહારાજ સંવત ૧૯૬૨ કાર્તિક સુદ ૨ ના રોજ વરતાલથી નીકળ્યા ત્યારે તેમની સાથે પાંચ સાધુઓ હતા: સાધુ રામરતનદાસ, સાધુ ભક્તિજીવનદાસ, સાધુ જ્ઞાનપ્રિયદાસ, સાધુ રત્નજીવનદાસ અને સાધુ નીલકંઠદાસ.",
-        "“શાસ્ત્રીજી મહારાજ વરતાલથી નીકળ્યા ત્યારે પાંચ સાધુ હતા, પણ સંપ હતો તો પાંચસોને ડોલાવ્યા.” આ પાંચ સાધુ અને શાસ્ત્રીજી મહારાજ — કુલ ૬ સંતોનું મંડળ નીકળ્યું હતું."
-      ]},
-    { source:"app",
-      q:"નૉર્થ અમેરિકાના અક્ષરધામમાં કેટલા સ્વયંસેવકો સેવામાં જોડાયા?",
-      options:["11,500","12,400","12,500","11,400"], correct:2 }
-  ],
-  games:[
-    {title:"Option 1: Hula Hoop Circle"},
-    {title:"Objective",items:["Pass the hula hoop around the entire circle without letting go of each other’s hands."]},
-    {title:"Materials Needed",items:["Hula hoop"]},
-    {title:"Instructions",ordered:true,items:[
-      "All team members stand in a circle.",
-      "Everyone holds hands.",
-      "Place the hula hoop between two people before they join hands.",
-      "The team must move the hula hoop around the full circle.",
-      "Players may use their arms, shoulders, head, legs, and body movement.",
-      "Hands must stay connected at all times.",
-      "If anyone lets go, the team must restart."
-    ]},
-    {title:"Extra Challenge",items:["Try one round without talking."]},
-    {title:"Option 2: Blindfold Bat and Ball Challenge"},
-    {title:"Objective",items:["Knock the soft ball off your partner’s head by following their instructions while blindfolded."]},
-    {title:"Materials Needed",items:["Soft foam bat or cushion bat","Soft ball","Blindfold","Open space"]},
-    {title:"Instructions",ordered:true,items:[
-      "Divide participants into pairs.",
-      "One participant balances a soft ball on their head.",
-      "The other participant holds a soft foam bat and is blindfolded.",
-      "The blindfolded participant must not swing randomly.",
-      "The partner with the ball gives clear verbal instructions, such as “move one step forward,” “turn slightly left,” or “raise the bat a little.”",
-      "The blindfolded participant follows only their partner’s guidance.",
-      "The goal is to gently hit the ball off the partner’s head using the soft bat.",
-      "Once the ball falls, the challenge is complete.",
-      "Partners may switch roles after one round."
-    ]},
-    {title:"Safety Rules",items:[
-      "Use only a soft bat and soft ball.",
-      "The blindfolded person should swing gently.",
-      "No hard hitting.",
-      "A volunteer should stand nearby to make sure the game stays safe."
-    ]},
-    {title:"Extra Challenge",items:["Make it a team relay where each pair gets one attempt, and the team with the most successful hits wins."]}
-  ]
-},
-{
-  key:"agna", num:7, title:"આજ્ઞા",
-  gameImages:["AGNA.png"],
-  questions:[
-    { source:"pdf",
-      q:"શાસ્ત્રીજી મહારાજની આજ્ઞાથી ગલભાઈએ કયા મંદિરમાં જઈને અક્ષરપુરુષોત્તમ મહારાજની જાય બોલાવી હતી?",
-      options:["ગઢડા","અમદાવાદ","ધોલેરા","વડતાલ"], correct:3,
-      note:"સ્ક્રિપ્ટની Version 1 માં આ પ્રશ્નની સમજૂતી (explanation) બાકી છે." },
-    { source:"both",
-      q:"સોમા ભગતે શાસ્ત્રીજી મહારાજની આજ્ઞાથી કયા મંદિર નિર્માણમાં દોરડા બાંધવાની સેવા કરી?",
-      options:["ગઢડા","બોચાસણ","સારંગપુર","વડતાલ"], correct:2,
-      prasang:[
-        "સોમા ભગતે શાસ્ત્રીજી મહારાજની આજ્ઞાથી સારંગપુર મંદિર નિર્માણમાં દોરડા (રાંઢવા) બાંધવાની સેવા કરી હતી.",
-        "૧૫૦ મણનો પથ્થર જ્યારે સાતમાંથી છ દોરડા તૂટી જવાથી એક જ દોરડા પર લટકી રહ્યો હતો, ત્યારે શાસ્ત્રીજી મહારાજની આજ્ઞાથી સોમા ભગતે પોતાના જીવના જોખમે તે લટકતા પથ્થર પર ચઢીને તૂટેલા દોરડા ફરીથી બાંધ્યા હતા."
-      ]},
-    { source:"app",
-      q:"13 સપ્ટેમ્બર 2023ના દિવસે મહંત સ્વામી મહારાજે શું કરવાની પ્રેરણા આપી?",
-      options:["દરરોજ પંદર મિનિટ પ્રાપ્તિનો વિચાર","ઘરસભા","સત્સંગ દીક્ષા મુખપાઠ","વચનામૃત વાંચન"], correct:0 },
-    { source:"app",
-      q:"4 ઑક્ટોબર 2023ના દિવસે મહંત સ્વામી મહારાજે શું કરવાની પ્રેરણા આપી?",
-      options:["દરરોજ પંદર મિનિટ ‘પ્રાપ્તિનો વિચાર’ કરવો","અંદર અક્ષરધામ","સત્સંગ દીક્ષા મુખપાઠ કરવો","અંદર અક્ષરપુરુષોત્તમ"], correct:1 },
-    { source:"app",
-      q:"કેટલા બાળકોએ સત્સંગ દીક્ષા ગ્રંથનો મુખપાઠ રજૂ કરી સ્વામીશ્રીનો રાજીપો પ્રાપ્ત કર્યો?",
-      options:["12,735","15,000","15,454","15,666"], correct:3 },
-    { source:"app",
-      q:"બ્રહ્મસ્વરૂપ શાસ્ત્રીજી મહારાજે વર્ષમાં _______ નિર્જળા ઉપવાસ કરવાની આજ્ઞા કરી છે.",
-      options:["9","3","5","7"], correct:2,
-      prasang:[
-        "બ્રહ્મસ્વરૂપ શાસ્ત્રીજી મહારાજે વર્ષમાં ૫ નિર્જળા ઉપવાસ કરવાની આજ્ઞા કરી છે.",
-        "પાંચ ઉપવાસમાં શ્રીહરિ જયંતી (રામનવમી), જન્માષ્ટમી અને ત્રણ મુખ્ય એકાદશીઓ (દેવપોઢી, જળઝીલણી, દેવઊઠી) નો સમાવેશ થાય છે."
-      ]}
-  ],
-  games:[
-    {title:"Blindfold Trust Walk"},
-    {title:"Objective",items:["Reach the finish line safely by following instructions from teammates."]},
-    {title:"Materials Needed",items:["Blindfold","Cones or simple obstacles"]},
-    {title:"Instructions",ordered:true,items:[
-      "Choose one participant to be blindfolded.",
-      "Set up a simple path with cones or safe obstacles.",
-      "The blindfolded participant must walk from the start line to the finish line.",
-      "Teammates may guide only by giving verbal instructions.",
-      "No one may touch or physically move the blindfolded participant.",
-      "The blindfolded participant must listen carefully and follow the instructions.",
-      "If they touch an obstacle, pause and continue from that spot."
-    ]},
-    {title:"Extra Challenge",items:["Allow only one teammate to give directions, while others remain silent."]}
-  ]
-},
-{
-  key:"mahima", num:8, title:"મહિમા",
-  gameImages:["MAHIMA.png"],
-  flowNote:"સ્ક્રિપ્ટની Version 1 ના મહિમા વિભાગમાં કોઈ MCQ નહોતી (ફક્ત પ્રસ્તાવના + રમત + સંદેશ). નીચેના પ્રશ્નો Excel માંથી ઉમેરેલા છે.",
-  questions:[
-    { source:"app",
-      q:"“તમારા શિષ્યો ભવિષ્યમાં તમારી સોનાની મૂર્તિ પધરાવશે” – આ વાક્ય કોણે કહ્યું હતું?",
-      options:["કૃપાશંકર પંડ્યા","પ્રભાશંકર જોશી","દોલતરામભાઈ પંડ્યા","કૃષ્ણરામ શાસ્ત્રી"], correct:2,
-      prasang:[
-        "આ વાક્ય નડિયાદના સાક્ષર અને વરતાલ મંદિરના ટ્રસ્ટી દોલતરામભાઈ પંડ્યાએ કહ્યું હતું.",
-        "સને ૧૯૧૪માં દોલતરામ પંડ્યાએ શાસ્ત્રીજી મહારાજને પોતાના ઘરે પધરામણી માટે નિમંત્રણ આપ્યું. સ્વામીશ્રીએ વચનામૃતના આધારે અઢી કલાક સુધી શુદ્ધ અક્ષર-પુરુષોત્તમ ઉપાસનાનો સિદ્ધાંત સમજાવ્યો, ત્યારે દોલતરામભાઈ બોલી ઊઠ્યા કે ભવિષ્યમાં તમારા શિષ્યો તમારી સુવર્ણની મૂર્તિઓ પધરાવશે."
-      ]},
-    { source:"app",
-      q:"મહંત સ્વામી મહારાજ મુજબ દાસભાવ કેળવવાનો મુખ્ય ઉપાય કયો છે?",
-      options:["વધુ પડતું કામ કરવું","મહિમા સમજવો","મૌન રહેવું","ઉપવાસ કરવા"], correct:1,
-      prasang:[
-        "કણાદ (સુરત), ૨૦૨૪-૦૨-૦૨ — સ્વામીશ્રીના દીક્ષાદિન નિમિત્તે પ્રશ્નોત્તરીનું આયોજન હતું.",
-        "પ્રશ્ન: “અમે અમારા જીવનમાં દાસભાવ કેવી રીતે વધુ દૃઢ કરી શકીએ?” સ્વામીશ્રી: “મહિમા! બધાનો મહિમા સમજાય તો દાસભાવ આવે — એક-બેનો નહીં, બધ્ધાનો મહિમા સમજવો પડે.”"
-      ]}
-  ],
-  games:[
-    {title:"Gun Darshan Ball Pass Challenge"},
-    {title:"Objective",items:["Recognize and share one good quality, gun, of someone in the group."]},
-    {title:"Materials Needed",items:["1 soft ball","Speaker","Kirtan or music","Open space"]},
-    {title:"Setup",ordered:true,items:[
-      "Make one group of 8 to 10 participants.",
-      "Ask everyone to sit or stand in a circle.",
-      "Give one soft ball to the group.",
-      "Start playing kirtan or music."
-    ]},
-    {title:"Instructions",ordered:true,items:[
-      "When the music starts, participants pass the ball around the group.",
-      "Everyone must keep passing the ball until the music stops.",
-      "When the music stops, the person holding the ball stays in their place.",
-      "That person chooses anyone in the group and says one good quality about them.",
-      "After they share, start the music again.",
-      "Continue for multiple rounds so different people get a chance."
-    ]},
-    {title:"Rules",items:[
-      "The quality must be respectful and positive.",
-      "Do not repeat the same quality too many times.",
-      "Try to be specific.",
-      "No teasing or comments that may hurt someone.",
-      "If someone cannot think of a quality, the group can help them."
-    ]}
-  ]
-},
-{
-  key:"mandir", title:"મંદિર", notInScript:true,
-  flowNote:"આમાંના કેટલાક પ્રશ્નો (નોર્થ અમેરિકા, રોબિન્સવિલ, જોધપુર, પેરિસ) script ના પુરુષાર્થ વિભાગમાં પણ મૂકેલા છે — અહીં Excel ની મૂળ ગોઠવણ બતાવી છે.",
-  questions:[
-    { source:"app",
-      q:"ઈમેજ સ્ક્રીન પર બતાવેલ મંદિર ઓળખો (અટલાદરા મંદિર): આ કયું મંદિર છે?",
-      options:["ગઢડા","સારંગપુર","બોચાસણ","અટલાદરા","ગોંડલ"], correct:3,
-      prasang:[
-        "BAPS અટલાદરા (વડોદરા) મંદિર એ બ્રહ્મસ્વરૂપ શાસ્ત્રીજી મહારાજ દ્વારા નિર્મિત ચોથું શિખરબદ્ધ મંદિર છે.",
-        "અટલાદરાના મથુરભાઈ પટેલ અને રણછોડ ભક્તની વિનંતીથી શાસ્ત્રીજી મહારાજે અહીં મંદિર કરવાનું સ્વીકાર્યું.",
-        "મંદિરનું ખાતમુહૂર્ત સંવત ૧૯૯૬, વૈશાખ સુદ ૩ (૧૦-૫-૧૯૪૦) ના રોજ થયું. મૂર્તિ પ્રતિષ્ઠા સંવત ૨૦૦૧, અષાઢ સુદ ૩ (૧૨-૭-૧૯૪૫) ના રોજ શાસ્ત્રીજી મહારાજના હસ્તે કરવામાં આવી.",
-        "પ્રમુખસ્વામી મહારાજે (ત્યારે સાધુ નારાયણસ્વરૂપદાસ) આ મંદિરના નિર્માણમાં પથ્થર ઉતારવાની અને પાલખ પર ચઢીને અનેક શારીરિક સેવાઓ કરી હતી."
-      ]},
-    { source:"app",
-      q:"નોર્થ અમેરિકામાં સૌપ્રથમ શિખરબદ્ધ મંદિર ક્યાં બન્યું?",
-      options:["શિકાગો","હ્યુસ્ટન","એટલાન્ટા","ટોરોન્ટો"], correct:1,
-      note:"↑ આ પ્રશ્ન ઉપર ‘પુરુષાર્થ’ વિભાગમાં પણ આપેલો છે." },
-    { source:"app",
-      q:"રોબિન્સવિલ અક્ષરધામનું લોકાર્પણ ક્યારે થયું?",
-      options:["8 October 2023","8 November 2023","10 October 2023","11 November 2023"], correct:0,
-      note:"↑ આ પ્રશ્ન ઉપર ‘પુરુષાર્થ’ વિભાગમાં પણ આપેલો છે." },
-    { source:"app",
-      q:"મહંત સ્વામી મહારાજે હમણાં છેલ્લે કયા શિખરબદ્ધ મંદિરની મૂર્તિ પ્રતિષ્ઠા કરી?",
-      options:["અબુધાબી","સિડની","નાસિક","જોધપુર"], correct:3,
-      note:"↑ આ પ્રશ્ન ઉપર ‘પુરુષાર્થ’ વિભાગમાં પણ આપેલો છે." },
-    { source:"app",
-      q:"મહંત સ્વામી મહારાજ સપ્ટેમ્બર 2026માં કયા નૂતન મંદિરનું લોકાર્પણ કરશે?",
-      options:["કણાદ, સુરત","પેરિસ, ફ્રાન્સ","જોહાનિસબર્ગ, આફ્રિકા","મેલબર્ન, ઓસ્ટ્રેલિયા"], correct:1,
-      note:"↑ આ પ્રશ્ન ઉપર ‘પુરુષાર્થ’ વિભાગમાં પણ આપેલો છે." },
-    { source:"app",
-      q:"વર્ષ 2026 / અત્યારસુધીમાં સંસ્થામાં કુલ કેટલા શિખરબદ્ધ મંદિરો થયા?",
-      options:["114","44","51","71"], correct:2,
-      prasang:["શાસ્ત્રીજી મહારાજ: 5","યોગીજી મહારાજ: 2","પ્રમુખસ્વામી મહારાજ: 37","મહંત સ્વામી મહારાજ: 7"] }
-  ],
-  games:[]
-},
-{
-  key:"kirtan", title:"કીર્તન", notInScript:true,
-  gameImages:["KIRTAN.png"],
-  questions:[
-    { source:"app",
-      q:"“અમે સૌ સ્વામીના બાળક, જીવીશું સ્વામીને માટે” – આ કીર્તનના રચયિતા કોણ છે?",
-      options:["પરમ ભગવદીય શંકરભાઈ","મોતીભાઈ","મહાપુરુષદાસ","નારાયણ ભગત"], correct:1,
-      note:"↑ આ પ્રશ્ન ઉપર ‘હરિભક્તો’ વિભાગમાં પણ આપેલો છે.",
-      prasang:[
-        "આ કીર્તનના રચયિતા મોતીભાઈ (મોતીભાઈ ભગવાનદાસ પટેલ) છે.",
-        "આણંદના મોતીભાઈ ભગવાનદાસ પટેલ શાસ્ત્રીજી મહારાજના અનન્ય ભક્ત હતા. તેમણે આ કીર્તન દ્વારા અક્ષર-પુરુષોત્તમ સિદ્ધાંત પ્રત્યેની શૂરવીરતા અને સમર્પણ ભાવ વ્યક્ત કર્યો છે."
-      ]},
-    { source:"app",
-      q:"અક્ષરધામથી મહા એકાંતિક કીર્તનનું મ્યુઝિક પ્લે કરી કીર્તન કર્યું છે એ કયું છે?",
-      options:["શાસ્ત્રીજી મહારાજનો સંગભાઈ મને","દયાળુ ભગવાન અક્ષરપુરુષોત્તમ","અક્ષરધામથી મહા એકાંતિક","નમન કરું શ્રીનાથને"], correct:2 },
-    { source:"app",
-      q:"કીર્તનનું મ્યુઝિક પ્લે કરી કીર્તન કર્યું છે એ કયું છે?",
-      options:["Option A","Option B","Option C","Option D"], correct:-1 },
-    { source:"app",
-      q:"કીર્તનનું મ્યુઝિક પ્લે કરી કીર્તન કર્યું છે એ કયું છે?",
-      options:["Option A","Option B","Option C","Option D"], correct:-1 }
-  ],
-  games:[
-    {title:"Kirtan Musical Chair Challenge"},
-    {title:"Objective",items:["Play musical chairs using kirtan as the music and learn the importance of staying connected to satsang."]},
-    {title:"Materials Needed",items:["Chairs","Speaker","Phone or laptop","Kirtan playlist"]},
-    {title:"Setup",ordered:true,items:[
-      "Place the chairs in a straight line.",
-      "Chairs should face alternating directions.",
-      "Example: first chair faces left, second chair faces right, third chair faces left, and so on.",
-      "Keep one chair fewer than the number of participants.",
-      "Example: If 10 people are playing, place 9 chairs.",
-      "Ask participants to stand in a line near the chairs."
-    ]},
-    {title:"Instructions",ordered:true,items:[
-      "When the kirtan starts, participants walk around the straight line of chairs.",
-      "Everyone should keep moving in the same direction.",
-      "When they reach the end of the chair line, they turn around and continue walking around the chairs.",
-      "When the kirtan stops, everyone must quickly sit on a chair.",
-      "The person left without a chair is out for that round.",
-      "Remove one chair after every round.",
-      "Start the kirtan again and continue the game.",
-      "Keep playing until one final participant remains.",
-      "The last person sitting is the winner."
-    ]},
-    {title:"Rules",items:[
-      "No pushing, pulling, or blocking others.",
-      "Do not sit before the kirtan stops.",
-      "Walk calmly and safely.",
-      "Chairs should have enough space around them.",
-      "Use clean and uplifting kirtans only."
-    ]}
-  ]
-},
-{
-  key:"niyam-dharma", title:"નિયમ-ધર્મ", notInScript:true,
-  gameImages:["NIYAM-DHARMA.png"],
-  questions:[
-    { source:"app",
-      q:"“શાસ્ત્રી યજ્ઞપુરુષદાસ જેવો સ્ત્રી-ધનનો ત્યાગી હજુ સુધી દીઠો નથી.” ઉપરોક્ત વાક્ય કોણે કહ્યું છે?",
-      options:["ઉલ્લાસ રામદાસભાઈ","કોઠારી ગોરધનભાઈ","કોઠારી બેચરભાઈ","આચાર્ય લક્ષ્મીપ્રસાદ"], correct:1,
-      prasang:[
-        "આ વાક્ય વરતાલ મંદિરના કોઠારી ગોવર્ધનભાઈએ કહ્યું છે.",
-        "“બે હજાર સાધુઓમાં શાસ્ત્રી યજ્ઞપુરુષદાસજી જેવો સર્વ પ્રકારે ધન-સ્ત્રીનો ત્યાગી મેં હજુ સુધી કોઈ દીઠો નથી. તેની વાતો મને સાકરના કટકા જેવી લાગે છે એટલે અહીં આવું છું.”"
-      ]},
-    { source:"app",
-      q:"સત્સંગ દીક્ષા ગ્રંથના લેખનનો પ્રારંભ મહંત સ્વામી મહારાજે ક્યાંથી કર્યો?",
-      options:["ગોંડલ","સુરત","નવસારી","નેનપુર"], correct:2,
-      prasang:[
-        "સત્સંગ દીક્ષા ગ્રંથના લેખનનો પ્રારંભ મહંત સ્વામી મહારાજે નવસારીથી કર્યો હતો.",
-        "સ્વામીશ્રીએ ૩૦ જાન્યુઆરી ૨૦૨૦, વસંત પંચમીના દિવસે નવસારીમાં આ ગ્રંથનો શુભારંભ કર્યો અને ૨ એપ્રિલ ૨૦૨૦ના રોજ અમદાવાદમાં તે પૂર્ણ કર્યો."
-      ]},
-    { source:"app",
-      q:"શાસ્ત્રીજી મહારાજ મુસાફરી દરમિયાન કયો નિયમ પાળતા હતા જેનો ઉલ્લેખ યોગીજી મહારાજે પણ કર્યો છે?",
-      options:["મુસાફરીમાં ક્યારેય સૂવું નહીં.","મુસાફરીમાં (બહારનું) કાંઈ પણ લેવું નહીં.","હંમેશા ચાલતા જ મુસાફરી કરવી.","ટ્રેનમાં મુસાફરી ન કરવી."], correct:1 },
-    { source:"app",
-      q:"શાસ્ત્રીજી મહારાજ કયા ગ્રંથોના અલ્પ વચનનો પણ ક્યારેય લોપ કરતા નહીં અને બીજા પાસે પણ પળાવતા?",
-      options:["શિક્ષાપત્રી, ધર્મામૃત અને નિષ્કામશુદ્ધિ","માત્ર વચનામૃત.","માત્ર સ્વામીની વાતો.","રામાયણ અને મહાભારત"], correct:0,
-      prasang:[
-        "સ્વામીશ્રી ભરૂચમાં બિરાજતા હતા ત્યારે અચાનક ટાઈફોઈડ તાવ લાગુ પડ્યો. ડોક્ટરોએ આરામની સૂચના કરી, પણ સ્વામીશ્રીને શ્રીજી મહારાજની આજ્ઞાનું વધુ મહત્વ હતું.",
-        "શ્રીજીની આજ્ઞાનું યથાર્થ પાલન એ જ તેમનું જીવન હતું. શિક્ષાપત્રી, ધર્મામૃત અને નિષ્કામશુદ્ધિનું અલ્પ વચન પણ કોઈ દિવસ લોપતા નહીં."
-      ]}
-  ],
-  games:[
-    {title:"Balance Box Challenge"},
-    {title:"Objective",items:["Balance balloons on a tray while staying inside the marked boundary."]},
-    {title:"Materials Needed",items:["Tray or cardboard board","Balloons","Tape to mark a square on the floor"]},
-    {title:"Instructions",ordered:true,items:[
-      "Mark a square boundary on the floor using tape.",
-      "Two team members stand inside the square and hold the tray together.",
-      "Other team members gently toss balloons onto the tray.",
-      "The two players must balance the tray and keep the balloons from falling.",
-      "Players holding the tray must stay inside the square at all times.",
-      "They cannot step outside the boundary.",
-      "They cannot grab the balloons with their hands.",
-      "The goal is to keep as many balloons as possible on the tray for a set time."
-    ]},
-    {title:"Rules",items:[
-      "Hands can only hold the tray.",
-      "Players must remain inside the boundary.",
-      "If a balloon falls, it cannot be picked up again."
-    ]}
-  ]
-},
-{
-  key:"das-bhav", title:"દાસભાવ", notInScript:true,
-  gameImages:["DAS-BHAV.png"],
-  questions:[
-    { source:"app",
-      q:"“અક્ષર પુરુષોત્તમની વાતો મારા માથા પર બેસીને કરે તો પણ ઓછું છે.” – આ વાક્ય પરથી શાસ્ત્રીજી મહારાજના અંતરનો કયો ભાવ પ્રગટ થાય છે?",
-      options:["હરિભક્તોના અંતરની લાગણીની સમજ","નાની જગ્યામાં પણ સાંકડે માકડે ચલાવી લેવાની ભાવના","નિષ્ઠા પ્રવર્તનની સેવા કરનારનો મહિમા","ઉપરના તમામ"], correct:2,
-      prasang:[
-        "આ વાક્ય પરથી શાસ્ત્રીજી મહારાજના અંતરનો નિષ્ઠા પ્રવર્તનની સેવા કરનારનો મહિમા પ્રગટ થાય છે.",
-        "આ વાક્ય શાસ્ત્રીજી મહારાજની અક્ષરપુરુષોત્તમ ઉપાસના પ્રત્યેની અત્યંત નિષ્ઠા અને જ્ઞાનનો પ્રસાર કરનારા ભક્તો પ્રત્યેનો અપાર મહિમા અને દાસભાવ દર્શાવે છે."
-      ]},
-    { source:"app",
-      q:"૨૦૨૩ના વર્ષમાં નોર્થ અમેરિકા અક્ષરધામ મહોત્સવ દરમિયાન મહંત સ્વામી મહારાજે ખાલી જગ્યાની ચરણરજ માથે ચડાવી — એ કોની હતી?",
-      options:["સદ્‌ગુરુ સંતોની","દર્શનાર્થીઓની","સ્વયંસેવકોની","ઉપરના તમામ"], correct:2 },
-    { source:"app",
-      q:"શાસ્ત્રીજી મહારાજના કયા વચનમાં આપણને દાસભાવના દર્શન થાય છે?",
-      options:["“અમે તો ખીચડિયા સાધુ છીએ.”","“૪૦ વર્ષ ધોકા ખાધેલા, તે ખમવાને સ્વભાવ પડી ગયો છે...”","“આપણે તો અક્ષરપુરુષોત્તમના બળદિયા છીએ”","“આપણે ક્યાં નેતા છીએ? આપણે તો શાસ્ત્રી છીએ.”"], correct:2 }
-  ],
+  image:"Limbo-Challenge.png",
   games:[
     {title:"Limbo Challenge"},
-    {title:"Objective",items:["Pass under the limbo bar as it gets lower each round."]},
-    {title:"Materials Needed",items:["Limbo stick, rope, pool noodle, or any safe bar"]},
-    {title:"Instructions",ordered:true,items:[
+    {title:"Objective", items:["Pass under the limbo bar as it gets lower each round."]},
+    {title:"Materials Needed", items:["Limbo stick, rope, pool noodle, or any safe bar","Open space"]},
+    {title:"Instructions", ordered:true, items:[
       "Two volunteers hold the limbo bar.",
       "One participant goes at a time.",
       "Each participant must pass under the bar by leaning backward.",
@@ -783,12 +756,465 @@ const SECTIONS = [
       "After every round, lower the bar slightly.",
       "Continue until the final participant remains, or until the team completes the challenge."
     ]},
-    {title:"Reflection Before Turn",items:["Before going under the bar, each participant may share one way they can practice humility in daily life."]}
+    {title:"Reflection Before Turn", items:["Before going under the bar, each participant may share one way they can practice humility (dāsbhāv) in daily life."]}
+  ]
+},
+
+/* ---------- 6. AGNA ---------- */
+{
+  key:"agna",
+  title:{gu:"આજ્ઞા", en:"Āgnā"},
+  questions:[
+    {
+      q:{
+        gu:"શાસ્ત્રીજી મહારાજની આજ્ઞાથી ગલભાઈએ કયા મંદિરમાં જઈને અક્ષરપુરુષોત્તમ મહારાજની જય બોલાવી હતી?",
+        en:"Upon the āgnā of Shastriji Maharaj, in which mandir did Galbhāi go and call out the jaynād of Akshar-Purushottam Maharaj?"
+      },
+      options:{
+        gu:["ગઢડા","અમદાવાદ","ધોલેરા","વડતાલ"],
+        en:["Gadhadā","Amdāvād","Dholerā","Vadtāl"]
+      },
+      correct:3,
+      prasang:{
+        gu:[
+          "શાસ્ત્રીજી મહારાજે એકવાર ગલભાઈને બોલાવ્યા અને કસોટી કરતા હોય તેમ પૂછ્યું: ‘ગલભાઈ, વડતાલના મોટા સમૈયામાં જઈને સભા વચ્ચે “અક્ષર-પુરુષોત્તમની જય” બોલાવવાની હિંમત છે?’",
+          "ગલભાઈની શ્રદ્ધા અડગ હતી — ‘સ્વામી, જો તમારી મરજી અને આજ્ઞા હોય તો મને કોઈનો ડર નથી. ભગવાન તમારી સાથે છે, એટલે મારો વાળ પણ કોઈ વાંકો નહીં કરી શકે.’",
+          "ચૈત્રી પૂનમના દિવસે વડતાલનું મંદિર હરિભક્તોથી ચિક્કાર. આચાર્ય મહારાજ ગાદી પર બિરાજમાન. એ વખતે ગલભાઈ ઊભા થયા — પહેલા ‘સહજાનંદ સ્વામીની જય’ બોલાવી, અને તરત જ ગગનભેદી અવાજે ગર્જના કરી: ‘શ્રી અક્ષરપુરુષોત્તમ મહારાજની જય!’",
+          "આખી સભાએ જોશમાં ઝીલી લીધો. પણ જ્યારે ભક્તોને ભાન થયું કે અક્ષર-પુરુષોત્તમની જય બોલાઈ છે, ત્યારે સન્નાટો છવાઈ ગયો. ગલભાઈનું વ્યક્તિત્વ સિંહ જેવું — વિરોધ કરનારા ચૂપ થઈ ગયા. એક જયનાદે જ વડતાલમાં અક્ષર-પુરુષોત્તમ સિદ્ધાંતની ચર્ચાનો પાયો નંખાયો."
+        ],
+        en:[
+          "<b>The Ultimate Test:</b> Shastriji Maharaj challenged Galbhāi's conviction, asking if he had the courage to call out ‘Akshar-Purushottamni Jay’ in the middle of the massive, highly hostile Vadtāl festival assembly.",
+          "<b>The Roar at Vadtāl:</b> On Chaitri Punam, inside a packed mandir and in front of the Āchārya Maharaj, Galbhāi stood up and roared with a sky-rending voice: ‘Shri Akshar-Purushottam Mahārājni Jay!’",
+          "<b>The Stunned Silence:</b> Swept up in his pure enthusiasm, the entire crowd instinctively repeated the chant — before a sudden, pin-drop silence fell over the assembly as they realized what they had just proclaimed.",
+          "<b>The Impact:</b> Galbhāi's commanding, lion-like presence completely silenced the opposition, successfully laying the foundation for all future discussions of the Akshar-Purushottam philosophy in Vadtāl."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"બ્રહ્મસ્વરૂપ શાસ્ત્રીજી મહારાજે વર્ષમાં _______ નિર્જળા ઉપવાસ કરવાની આજ્ઞા કરી છે.",
+        en:"Brahmaswarup Shastriji Maharaj has given the āgnā to observe _______ waterless fasts (nirjalā upavās) in a year."
+      },
+      options:{gu:["9","3","5","7"], en:["9","3","5","7"]},
+      correct:2,
+      prasang:{
+        gu:[
+          "બ્રહ્મસ્વરૂપ શાસ્ત્રીજી મહારાજે વર્ષમાં ૫ (પાંચ) નિર્જળા ઉપવાસ કરવાની આજ્ઞા કરી છે.",
+          "આ પાંચ ઉપવાસમાં શ્રીહરિ જયંતી (રામનવમી), જન્માષ્ટમી, અને ત્રણ મુખ્ય એકાદશીઓ (દેવપોઢી, જળઝીલણી, અને દેવઊઠી)નો સમાવેશ થાય છે. શાસ્ત્રીજી મહારાજના જણાવ્યા મુજબ, આ પાંચ નિર્જળા ઉપવાસ કરવાથી આખા વર્ષના વ્રતનું પુણ્ય પ્રાપ્ત થાય છે."
+        ],
+        en:[
+          "Shastriji Maharaj directed all swamis and haribhaktas to observe five fasts without water.",
+          "These five fasts include Shri Hari Jayanti (Rāmnavami), Janmāstami, and the three major Ekādashis (Devpodhi, Jaljhilani, and Devuthi). According to Shastriji Maharaj, observing these five waterless fasts grants the spiritual merit (punya) of fasting for the entire year."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"૧૩ સપ્ટેમ્બર ૨૦૨૩ના દિવસે મહંતસ્વામી મહારાજે શું કરવાની પ્રેરણા આપી?",
+        en:"On September 13, 2023, what did Mahant Swami Maharaj inspire everyone to do?"
+      },
+      options:{
+        gu:["દરરોજ પંદર મિનિટ પ્રાપ્તિનો વિચાર","ઘરસભા","સત્સંગ દીક્ષા મુખપાઠ","વચનામૃત વાંચન"],
+        en:["Do prāptino vichār for fifteen minutes daily","Ghar sabhā","Memorization of the Satsang Dikshā","Reading the Vachanāmrut"]
+      },
+      correct:0,
+      prasang:{
+        gu:[
+          "૧૩ સપ્ટેમ્બર ૨૦૨૩ના રોજ મહંતસ્વામી મહારાજ રોબિન્સવિલમાં વિરાજમાન હતા અને એ દિવસે તેમનો જન્મદિવસ તારીખ પ્રમાણે ઉજવાઈ રહ્યો હતો.",
+          "ત્યારે પ્રશ્ન પૂછવામાં આવ્યો: ‘સંપ્રદાયના તમામ હરિભક્તોના દરેક પ્રશ્નોનું સમાધાન થાય તે માટે અમારે શું કરવું?’",
+          "મહંતસ્વામી મહારાજે પત્રમાં લખી આપ્યું: ‘દરરોજ નિયમિત ૧૫ મિનિટ પ્રાપ્તિનો વિચાર કરવો.’"
+        ],
+        en:[
+          "<b>The Occasion:</b> On September 13, 2023, during Mahant Swami Maharaj's birthday celebrations in Robbinsville, New Jersey, he was asked a profound question on behalf of the entire fellowship.",
+          "<b>Question:</b> “What should we do so that every problem faced by all the haribhaktas of the sampradāy can be resolved?”",
+          "<b>Answer:</b> “Regularly do prāptino vichār for 15 minutes every day.”"
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"૪ ઑક્ટોબર ૨૦૨૩ના દિવસે મહંતસ્વામી મહારાજે શું કરવાની પ્રેરણા આપી?",
+        en:"On October 4, 2023, what did Mahant Swami Maharaj inspire everyone to do?"
+      },
+      options:{
+        gu:["દરરોજ પંદર મિનિટ ‘પ્રાપ્તિનો વિચાર’ કરવો","અંદર અક્ષરધામ","સત્સંગ દીક્ષા મુખપાઠ કરવો","અંદર અક્ષરપુરુષોત્તમ"],
+        en:["Do prāptino vichār for fifteen minutes daily","Andar Akshardham (Build Akshardham within)","Memorize the Satsang Dikshā","Akshar-Purushottam within (Andar Akshar-Purushottam)"]
+      },
+      correct:1,
+      prasang:{
+        gu:[
+          "૪ ઑક્ટોબર ૨૦૨૩ના દિવસે મહંતસ્વામી મહારાજે અક્ષરધામમાં આશીર્વાદ આપતા જણાવ્યું હતું: “આવું અક્ષરધામ છે — દિવ્ય, અલૌકિક. એને અનુરૂપ આપણું જીવન થવું જોઈએ. બહાર તો અક્ષરધામ થઇ ગયું છે, હવે આપણે અંદર લઇ જવાનું છે.”"
+        ],
+        en:[
+          "<b>The Context:</b> Delivered during āshirvād on October 4, 2023, amidst the inaugural celebrations of Swaminarayan Akshardham.",
+          "<b>The Call to Elevation:</b> Mahant Swami Maharaj emphasized that because Akshardham is entirely divine and transcendental (alaukik), our daily conduct and character must rise to match its purity.",
+          "<b>The Core Message:</b> “Externally, Akshardham has been completed. Now, we have to bring it inside.”"
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"કેટલા બાળકોએ સત્સંગ દીક્ષા ગ્રંથનો મુખપાઠ રજૂ કરી સ્વામીશ્રીનો રાજીપો પ્રાપ્ત કર્યો?",
+        en:"How many children memorized and recited the Satsang Diksha shāstra to earn Swāmishri's rājipo?"
+      },
+      options:{gu:["12,735","15,000","15,454","15,666"], en:["12,735","15,000","15,454","15,666"]},
+      correct:3,
+      prasang:{
+        gu:[
+          "મહંતસ્વામી મહારાજે ઈ.સ. ૨૦૨૪ની દિવાળીના પવિત્ર પર્વે એક વર્ષમાં ૧૦,૦૦૦ બાળકો ‘સત્સંગ દીક્ષા’ ગ્રંથનો સંસ્કૃત ભાષામાં સંપૂર્ણ મુખપાઠ કરે — એવો સંકલ્પ કર્યો હતો.",
+          "ગુરુના આ સંકલ્પને ઝીલી લઈને સમગ્ર વિશ્વના બાળ-બાલિકાઓ મુખપાઠમાં જોડાઈ ગયા. માત્ર એક જ વર્ષમાં ૧૦,૦૦૦ના લક્ષ્યાંકની સામે ૧૫,૦૦૦થી વધુ બાળકોએ આખો ગ્રંથ મુખપાઠ કરી ગુરુનો સંકલ્પ સવાયો પૂરો કર્યો.",
+          "નાની ઉંમરનાં બાળકોએ પણ આશ્ચર્યજનક રીતે મુખપાઠ પૂર્ણ કર્યો. સ્વામીશ્રીએ તેમને ‘બાળ વિદ્વાન’ તરીકે બિરદાવ્યા."
+        ],
+        en:[
+          "<b>The Divine Wish:</b> On Diwali 2024, Mahant Swami Maharaj set a goal for 10,000 children worldwide to fully memorize the Sanskrit Satsang Diksha within one year.",
+          "<b>Shattering the Target:</b> Embracing his vision, over 15,000 bāl-bālikās — including remarkably young children — completely memorized the entire scripture on time.",
+          "<b>The Ultimate Honor:</b> To celebrate their extraordinary scriptural mastery, Swāmishri officially awarded these children the title of ‘Bāl Vidwān’ (Child Scholars)."
+        ]
+      }
+    }
+  ],
+  games:[
+    {title:"Blindfold Trust Walk"},
+    {title:"Objective", items:["Reach the finish line safely by following verbal instructions from one teammate (or audio guidance)."]},
+    {title:"Materials Needed", items:["Blindfold","Speaker / audio of Guruhari Mahant Swami Maharaj","Cones or simple safe obstacles","Open space"]},
+    {title:"Instructions", ordered:true, items:[
+      "Selected participants will be blindfolded.",
+      "Everyone will listen carefully to the Guruhari Mahant Swami Maharaj audio.",
+      "The blindfolded participants must follow the instructions given in the audio.",
+      "Participants should move carefully and complete each step as guided.",
+      "No one may touch or physically guide the blindfolded participants.",
+      "If a participant is confused, they should pause and listen carefully before continuing.",
+      "If a participant touches an obstacle, they must pause and continue from that spot.",
+      "The challenge is complete when the participant safely reaches the final point by following the audio guidance."
+    ]}
+  ]
+},
+
+/* ---------- 7. NIYAM-DHARMA ---------- */
+{
+  key:"niyam-dharma",
+  title:{gu:"નિયમ-ધર્મ", en:"Niyam Dharma"},
+  questions:[
+    {
+      q:{
+        gu:"શાસ્ત્રીજી મહારાજ કયા ગ્રંથોના અલ્પ વચનનો પણ ક્યારેય લોપ કરતા નહીં અને બીજા પાસે પણ પળાવતા?",
+        en:"From which scriptures did Shastriji Maharaj never transgress even the minor āgnās, and strictly ensured that others followed them as well?"
+      },
+      options:{
+        gu:["શિક્ષાપત્રી, ધર્મામૃત અને નિષ્કામશુદ્ધિ","માત્ર વચનામૃત","માત્ર સ્વામીની વાતો","રામાયણ અને મહાભારત"],
+        en:["Shikshāpatri, Dharmāmrut, and Nishkāmshuddhi","Only the Vachanāmrut","Only Swāmini Vāto","The Rāmāyan and Mahābhārat"]
+      },
+      correct:0,
+      prasang:{
+        gu:[
+          "શાસ્ત્રીજી મહારાજ ભરૂચમાં બિરાજતા હતા ત્યારે અચાનક ટાઈફોઈડ તાવ લાગુ પડ્યો. ડોક્ટરોએ બિલકુલ આરામ કરવા અને કુદરતી હાજતો પણ બધી પથારીમાં જ કરવા સૂચના કરી. પરંતુ સ્વામીશ્રીને ડોક્ટરો કરતાં શ્રીજીમહારાજની આજ્ઞાનું વધુ મહત્ત્વ હતું.",
+          "પોતાના નિયમ મુજબ દરેક ક્રિયા સ્વામીશ્રી કરવા લાગ્યા. તાવમાં ઝાડા થયા ત્યારે જેટલી વખત શૌચ માટે જાય તેટલી વખત સ્નાન કરે જ.",
+          "શ્રીજીની આજ્ઞાનું યથાર્થ પાલન એ જ તેમનું જીવન હતું. શિક્ષાપત્રી, ધર્મામૃત અને નિષ્કામશુદ્ધિનું અલ્પ વચન પણ કોઈ દિવસ લોપતા નહીં — અને બીજા પાસેથી લોપ થયો હોય તો અચૂક પ્રાયશ્ચિત કરાવતા."
+        ],
+        en:[
+          "<b>The Medical Crisis:</b> While staying in Bharuch, Shastriji Maharaj contracted severe typhoid fever. Doctors ordered absolute bed rest, advising him to attend to all nature's calls right in bed.",
+          "<b>Uncompromising Purity:</b> Refusing to compromise scriptural rules (āgnā), Swāmishri insisted on walking to the restroom despite his severe weakness, taking a full, purifying bath after every single instance of dysentery.",
+          "<b>Guardianship of Scripture:</b> He lived strictly by the words of the Shikshāpatri, Dharmāmrut, and Nishkāmshuddhi, closely guarding every minor command and strictly enforcing atonement (prāyashchit) for any lapses."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"“શાસ્ત્રી યજ્ઞપુરુષદાસ જેવો સ્ત્રી-ધનનો ત્યાગી હજુ સુધી દીઠો નથી.” — ઉપરોક્ત વાક્ય કોણે કહ્યું છે?",
+        en:"“I have not yet seen a renouncer of women and wealth like Shastri Yagnapurushdās.” Who spoke the above sentence?"
+      },
+      options:{
+        gu:["ઉલ્લાસ રામદાસભાઈ","કોઠારી ગોરધનભાઈ","કોઠારી બેચરભાઈ","આચાર્ય લક્ષ્મીપ્રસાદ"],
+        en:["Ullās Rāmdāsbhāi","Kothāri Gordhanbhāi","Kothāri Becharbhāi","Āchārya Lakshmiprasād"]
+      },
+      correct:1,
+      prasang:{
+        gu:[
+          "“બે હજાર સાધુઓમાં શાસ્ત્રી યજ્ઞપુરુષદાસજી જેવો સર્વ પ્રકારે ધન-સ્ત્રીનો ત્યાગી મેં હજુ સુધી કોઈ દીઠો નથી. તેની વાતો મને સાકરના કટકા જેવી લાગે છે એટલે અહીં આવું છું.”",
+          "કોઠારી ગોવર્ધનભાઈ જ્યારે શાસ્ત્રીજી મહારાજની કથા સાંભળવા જતા, ત્યારે અન્ય સાધુઓએ તેમને રોકવાનો પ્રયત્ન કર્યો. તેના જવાબમાં ગોવર્ધનભાઈએ શાસ્ત્રીજી મહારાજની શુદ્ધ ત્યાગની મર્યાદા અને વિદ્વત્તાનાં વખાણ કરતા આ શબ્દો કહ્યા હતા."
+        ],
+        en:[
+          "<b>The Opposition:</b> When jealous swamis tried to stop Kothāri Gordhanbhāi (Vadtāl's chief administrator) from attending Shastriji Maharaj's kathā, he completely brushed them aside.",
+          "<b>The Fearless Defense:</b> “Among two thousand swamis, I have not yet seen anyone who is a renouncer of wealth and women in every possible way like Shastri Yagnapurushdāsji. His kathās feel like pieces of sugar to me, which is why I come here.”"
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"સત્સંગ દીક્ષા ગ્રંથના લેખનનો પ્રારંભ મહંત સ્વામી મહારાજે ક્યાંથી કર્યો?",
+        en:"From where did Mahant Swami Maharaj commence the writing of the Satsang Diksha scripture?"
+      },
+      options:{
+        gu:["ગોંડલ","સુરત","નવસારી","નેનપુર"],
+        en:["Gondal","Surat","Navsāri","Nenpur"]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "મહંતસ્વામી મહારાજે ૩૦ જાન્યુઆરી ૨૦૨૦ના રોજ નવસારીમાં વસંતપંચમીના દિવસે આ ગ્રંથ લખવાની શરૂઆત કરી હતી, અને ૨ એપ્રિલ ૨૦૨૦ના રોજ અમદાવાદમાં તે પૂર્ણ કર્યો હતો."
+        ],
+        en:[
+          "Mahant Swami Maharaj began writing the Satsang Diksha scripture on January 30, 2020, on the day of Vasant Panchami in Navsāri, and completed it on April 2, 2020, in Amdāvād."
+        ]
+      }
+    }
+  ],
+  image:"Balance-Box-Challenge.png",
+  games:[
+    {title:"Balance Box Challenge"},
+    {title:"Objective", items:["Keep as many balloons as possible in the air, above shoulder level, while staying inside the marked box."]},
+    {title:"Materials Needed", items:["Tape to mark a square boundary on the floor","Balloons (multiple)","Timer"]},
+    {title:"Instructions", ordered:true, items:[
+      "Mark a square boundary on the floor using tape.",
+      "Two players stand inside the box.",
+      "One helper stands outside the box with extra balloons.",
+      "Start with one balloon in the air.",
+      "The two players must keep the balloon(s) in the air using only their hands.",
+      "Balloons must stay above shoulder level as much as possible.",
+      "The helper adds one new balloon every 10 seconds.",
+      "Players must remain inside the box at all times.",
+      "If a balloon touches the floor, that balloon is out.",
+      "The round ends when all balloons fall or when the set time is complete."
+    ]},
+    {title:"Rules", items:[
+      "Players must stay inside the marked boundary at all times.",
+      "Balloons should stay above shoulder level.",
+      "Only hands may be used to keep balloons in the air.",
+      "If a balloon touches the floor, it cannot be picked up again."
+    ]}
+  ]
+},
+
+/* ---------- 8. SAMP ---------- */
+{
+  key:"samp",
+  title:{gu:"સંપ", en:"Samp"},
+  questions:[
+    {
+      q:{
+        gu:"શાસ્ત્રીજી મહારાજ જ્યારે વરતાલથી નીકળ્યા, ત્યારે તેમની સાથે કેટલા સંતો હતા?",
+        en:"When Shastriji Maharaj left Vadtāl, how many swamis were with him?"
+      },
+      options:{gu:["ત્રણ","પાંચ","સાત","આઠ"], en:["Three","Five","Seven","Eight"]},
+      correct:1,
+      prasang:{
+        gu:[
+          "શાસ્ત્રીજી મહારાજ જ્યારે સંવત ૧૯૬૨ના કાર્તિક સુદ ૨ના રોજ વરતાલથી નીકળ્યા, ત્યારે તેમની સાથે પાંચ સાધુઓ હતા, પણ તેમની વચ્ચે સંપ હતો તો પાંચસોને ડોલાવ્યા.",
+          "સ્વામીની વાતમાં આવે છે — ‘એક રુચિવાળા બે જ હોય તે લાખ બરાબર છે.’ શાસ્ત્રીજી મહારાજની સાથે પ-પ કોઠારી નીકળ્યા હતા — જીભાઈ કોઠારી, કોઠારી બેચર ભગત, પ્રભુદાસ કોઠારી, જેઠાભાઈ અને કોઠારી શંકર ભગત. કેવો સન્નાટો છવાઈ ગયો હશે!",
+          "નીકળતી વખતે શાસ્ત્રીજી મહારાજે હરિકૃષ્ણ મહારાજ પાસે પ્રાર્થના કરી હતી: “મહારાજ! અમારે જુદું પડવાનો જરાય સંકલ્પ નથી, પણ જો આપની ઈચ્છાથી જુદા પડતા હોઈએ તો આપ અમારી સહાયમાં રહેજો અને અખંડ ભેગા રહેજો.”"
+        ],
+        en:[
+          "<b>The Exodus (Kartik Sud 2, 1962):</b> Shastriji Maharaj stepped away from Vadtāl with just five devoted sadhus. Their perfect unity (samp) was so powerful it shook 500 others.",
+          "<b>The Math of Unity:</b> Their departure validated a profound truth from the Swāmini Vāto — just two people sharing the same divine vision are equal to 100,000.",
+          "<b>The Five Devoted Leaders:</b> Jeebhāi Kothāri, Kothāri Bechar Bhagat, Prabhudās Kothāri, Jethābhāi, and Kothāri Shankar Bhagat fearlessly chose this uncertain path out of absolute faith.",
+          "<b>A Prayer of Total Reliance:</b> “Mahārāj! We have absolutely no desire to separate, but if we are separating by your will, then please come to our aid and remain continuously with us.”"
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"“ઝેર ખાઈને પણ સંપ રાખવો પડશે” — આ વાક્ય કોણ બોલ્યું હતું?",
+        en:"“Jer khāine pan samp rākhvo padshe” (“We will have to maintain unity even at the cost of consuming poison”) — Who spoke this sentence?"
+      },
+      options:{
+        gu:["શાસ્ત્રીજી મહારાજ","યોગીજી મહારાજ","પ્રમુખ સ્વામી મહારાજ","મહંત સ્વામી મહારાજ"],
+        en:["Shastriji Maharaj","Yogiji Maharaj","Pramukh Swami Maharaj","Mahant Swami Maharaj"]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "અમેરિકામાં CFIના સમૈયા વખતે કેટલાક કાર્યકરો વચ્ચે મતભેદ થવાને કારણે તેઓ સેવા છોડીને જવા તૈયાર થયા હતા. પ્રમુખસ્વામી મહારાજ પાસે એકબીજાની ફરિયાદો કરી. બાપાએ શાંતિથી બધું જ સાંભળ્યું અને અંતે આ સૂત્ર આપ્યું: “ઝેર ખાઈને પણ સંપ રાખવો પડશે.” સંપ રાખવા માટે આપણે અપમાન કે અન્યાયરૂપી ઝેર પીવાની તૈયારી રાખવી પડશે.",
+          "શાસ્ત્રીજી મહારાજના જીવનમાં પણ આવો જ સંપ હતો. જ્યારે દ્વારકાપીઠના જગદ્‌ગુરુ શંકરાચાર્ય માધવતીર્થે શાસ્ત્રીજી મહારાજને પોતાની સાથે ભેળવી દઈ વડતાલના વિદ્વાનોને શાસ્ત્રાર્થમાં પરાજિત કરવાનો ઇરાદો રાખ્યો, ત્યારે શાસ્ત્રીજી મહારાજે અજાતશત્રુભાવે જવાબ આપ્યો:",
+          "“કૌરવો સામે યુદ્ધ કરવાનો વિચાર કરતા રાજાઓએ પાંડવોનો અભિપ્રાય જાણવા સંન્યાસીના વેશમાં રાજાને મોકલ્યો. ત્યારે યુધિષ્ઠિરે કહેવરાવ્યું કે કૌરવો સામેના તમારા યુદ્ધમાં અમે અને કૌરવો એક છીએ (અમે ૧૦૫ છીએ). તેમ તમારી સામે અમે અને વડતાલ એક છીએ.” — જે વડતાલે અનેક કષ્ટો આપ્યાં, મારી નાંખવાના પ્રયત્નો કર્યા, તેમની જ પડખે ઊભા રહીને શાસ્ત્રીજી મહારાજે અજોડ સંપ બતાવ્યો."
+        ],
+        en:[
+          "<b>The Maxim of Pramukh Swami Maharaj:</b> “We will have to maintain samp even at the cost of consuming poison.”",
+          "<b>The Political Trap:</b> Seeking a strategic alliance, Jagadguru Shankarāchārya repeatedly invited Shastriji Maharaj to join forces and defeat Vadtāl in a public scriptural debate.",
+          "<b>A No-Enmity Response:</b> “In your war against the Kauravas, the Kauravas and we are one... Similarly, against you, Vartāl and we are one.”",
+          "<b>The Ultimate Standard:</b> Even though Vadtāl had heavily persecuted and tried to kill him, Shastriji Maharaj fiercely protected the fellowship's integrity. His lesson was clear: Whether the other side maintains unity or not, I must."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"નૉર્થ અમેરિકાના અક્ષરધામમાં કેટલા સ્વયંસેવકો સેવામાં જોડાયા?",
+        en:"How many volunteers joined the sevā for North America's Akshardham?"
+      },
+      options:{gu:["400","12,400","12,500","11,400"], en:["400","12,400","12,500","11,400"]},
+      correct:2,
+      prasang:{
+        gu:[
+          "એક સ્વામીબાપાની આજ્ઞાથી અક્ષરધામ નિર્માણકાર્યમાં ૧૨,૫૦૦ સ્વયંસેવકો જોડાઈ ગયા. સમય, સંજોગો, અગવડ જોયા વગર કેવળ બાપાને રાજી કરવાની ભાવનાથી — એક જ વિચાર સાથે સંપથી મંડી પડ્યા — તો જે કાર્ય ૨૦૨૭માં થવાનું હતું તે ૨૦૨૩માં પૂરું કર્યું."
+        ],
+        en:[
+          "<b>The Unified Force:</b> Guided by Swāmishri's āgnā, 12,500 volunteers joined hands to construct Akshardham with samp.",
+          "<b>The Single Focus:</b> Driven entirely by a desire to please Bāpā, they worked tirelessly, completely overlooking personal discomfort, time, and circumstances.",
+          "<b>Defying the Timeline:</b> Because of their extraordinary, collective devotion, a massive project scheduled for completion in 2027 was miraculously finished four years early in 2023."
+        ]
+      }
+    }
+  ],
+  image:"Hula-Hoop-Circle.png",
+  games:[
+    {title:"Hula Hoop Circle"},
+    {title:"Objective", items:["Pass the hula hoop around the entire circle without letting go of each other's hands."]},
+    {title:"Materials Needed", items:["1 hula hoop","Open space"]},
+    {title:"Instructions", ordered:true, items:[
+      "All team members stand in a circle.",
+      "Everyone holds hands.",
+      "Place the hula hoop between two people before they join hands.",
+      "The team must move the hula hoop around the full circle.",
+      "Players may use their arms, shoulders, head, legs, and body movement.",
+      "Hands must stay connected at all times.",
+      "If anyone lets go, the team must restart."
+    ]}
+  ]
+},
+
+/* ---------- 9. MAHIMA ---------- */
+{
+  key:"mahima",
+  title:{gu:"મહિમા", en:"Mahimā"},
+  questions:[
+    {
+      q:{
+        gu:"“તમારા શિષ્યો ભવિષ્યમાં તમારી સોનાની મૂર્તિ પધરાવશે” — આ વાક્ય કોણે કહ્યું હતું?",
+        en:"“In the future, your disciples will install a golden murti of you.” Who spoke this sentence?"
+      },
+      options:{
+        gu:["કરુણાશંકર પંડ્યા","પ્રભાશંકર પંડ્યા","દોલતરામ કૃપાશંકર પંડ્યા","કૃષ્ણરામ શાસ્ત્રી"],
+        en:["Karunāshankar","Prabhāshankar Pandyā","Dolatrām Krupāshankar Pandyā","Krishnarām Shāstri"]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "નડિયાદના સાક્ષર અને વરતાલ મંદિરના ટ્રસ્ટી દોલતરામ કૃપાશંકર પંડ્યાએ જ્યારે શાસ્ત્રીજી મહારાજ પાસેથી વચનામૃતના આધારે અક્ષર-પુરુષોત્તમ ઉપાસનાની સ્પષ્ટતા સાંભળી, ત્યારે તેઓ અત્યંત પ્રભાવિત થયા હતા.",
+          "તેમણે અનુભવ્યું કે શાસ્ત્રીજી મહારાજે જે કાર્ય કર્યું છે તે અદ્વિતીય છે, તેથી ભવિષ્યમાં તેમના શિષ્યો તેમની સુવર્ણ મૂર્તિ પધરાવશે — એવી ભવિષ્યવાણી કરી હતી.",
+          "પ્રમુખસ્વામી મહારાજે ૧૯૮૧માં સારંગપુર ખાતે શાસ્ત્રીજી મહારાજનું સ્મૃતિ મંદિર તૈયાર કર્યું, ત્યારે દોલતરામ પંડ્યાની આ વાતને યાદ કરતા જણાવ્યું હતું કે આજે ૬૫ વર્ષ પછી સોનાના સિંહાસનમાં શાસ્ત્રીજી મહારાજની મૂર્તિ બિરાજે છે."
+        ],
+        en:[
+          "<b>The Scholar's Conviction:</b> After hearing Shastriji Maharaj clarify the Akshar-Purushottam upāsanā from the Vachanāmrut, Vadtāl trustee Dolatrām Pandyā declared his work unparalleled.",
+          "<b>The Prophecy:</b> Moved by Swāmishri's divine impact, Dolatrām predicted that future disciples would one day install a golden murti of him.",
+          "<b>The Fulfillment (1981):</b> While opening the Smruti Mandir in Sārangpur, Pramukh Swami Maharaj recalled the prediction, noting that 65 years later, Swāmishri's murti now sits enshrined on a golden throne."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"શાસ્ત્રીજી મહારાજને ‘સાત સામેલિયા સાધુ’ કેમ કહેવાયા?",
+        en:"Why was Shastriji Maharaj called a ‘sāt sameliyā sadhu’?"
+      },
+      options:{
+        gu:[
+          "તેઓ સાત ભાષા જાણતા હતા",
+          "તેઓ સાત મંદિરોના મહંત હતા",
+          "તેઓ દરેક ક્ષેત્રમાં પારંગત અને કળાકુશળ હતા",
+          "તેઓ સાત વર્ષ સુધી વિચરણમાં રહ્યા"
+        ],
+        en:[
+          "He knew seven languages",
+          "He was the mahant of seven mandirs",
+          "He was an expert and highly skilled in many fields",
+          "He remained on vicharan for seven years"
+        ]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "શાસ્ત્રીજી મહારાજ શાસ્ત્રોના પ્રખર વિદ્વાન હતા, પણ તેની સાથે વ્યવહારકુશળ પણ હતા. તે ઉપરાંત સ્થાપત્ય વિદ્યા, શિલ્પકળા, ખેતી, પશુપાલન, પાકવિદ્યા, સંગીત — એવી અનેક વિદ્યાઓમાં પ્રવીણ હતા, એટલે જ ‘સાત સામેલિયા’ કહેવાતા.",
+          "વરતાલ સંસ્થાના આદિ કોઠારી ગોરધનદાસ એકવાર બોલ્યા હતા: “તમે તો શાસ્ત્રમાં પ્રવીણ, ત્યાગ-વૈરાગ્યમાં પ્રવીણ, ભક્તિમાં પ્રવીણ, વ્યવહારમાં પ્રવીણ — અને ખેતી નથી કરી; છતાં બળદની પરખમાં પણ પ્રવીણ! હવે કોઈ વાત બાકી રાખી છે કે નહિ?!”"
+        ],
+        en:[
+          "<b>Multifaceted Mastery:</b> Beyond scriptural depth, Shastriji Maharaj excelled in architecture, sculpting, agriculture, cooking, and music — earning the title ‘Sāt Sāmeliyā’ (expert in many fields).",
+          "<b>The Administrator's Amazement:</b> Gordhandās, the chief administrator (ādi kothāri) of Vadtāl, was completely astonished by Swāmishri's sharp real-world acumen and famously remarked: “You are proficient in the scriptures, proficient in renunciation and detachment, proficient in devotion, proficient in worldly affairs, and though you have never farmed, you are even an expert in judging oxen! Have you left any subject untouched?!”"
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"આ છબીમાં દેખાતા ‘મુક્તરાજ’ કોણ છે? (આશાભાઈ — બંગલા-આગ પ્રસંગ)",
+        en:"Who is the ‘Muktarāj’ seen in this picture? (Āshābhāi — Bungalow Fire incident)"
+      },
+      options:{
+        gu:["આશાભાઈ","ઈશ્વરભાઈ","જેઠા ભગત","જેઠાલાલ સ્વામિનારાયણ"],
+        en:["Āshābhāi","Ishwarbhāi","Jethā Bhagat","Jethālāl Swaminarayan"]
+      },
+      correct:0,
+      prasang:{
+        gu:[
+          "આશાભાઈ પ્રભુદાસ પટેલ (પુરુષોત્તમપુરા) સાધી ગામના હતા. શાસ્ત્રીજી મહારાજના સમયના પરમ ભક્તરાજ. શાસ્ત્રીજી મહારાજ ધામમાં પધાર્યા પછી આશાભાઈએ સંવત ૨૦૦૭ની ગુરુપૂર્ણિમાના દિવસે યોગીજી મહારાજના હસ્તે દીક્ષા લઈ સાધુ યજ્ઞપ્રિયદાસજી નામ ધારણ કર્યું.",
+          "<b>બંગલા-આગ પ્રસંગ:</b> તેમના ઘરે છસો મણ કપાસ, સાતસો મણ ચણા અને એક હજાર મણ ઘઉં તથા બીજી પરચૂરણ વસ્તુઓ વેચાણ માટે પડી હતી — તે બધું બળી ગયું. છતાં તેઓ સ્થિર રહ્યા — જાણે ‘मिथिलायां प्रदीप्तायां न मे दह्यति किंचन।’ — ‘આમાં મારું કાંઈ બળતું નથી.’",
+          "શાસ્ત્રીજી મહારાજે કહ્યું: ‘તમારાં તમામ પાપ બળી ગયાં.’ મોતીભાઈએ પૂછ્યું: ‘સ્વામી! આટલા વર્ષોના સંબંધ પછી પણ પાપ રહ્યાં હશે ખરાં?’",
+          "સ્વામીશ્રીએ ઉત્તર આપ્યો: ‘ભગવાનના એકાંતિક ભક્તને તો ભગવાન સિવાય બીજે ઠેકાણે પ્રીતિ કે વાસના રહે તે જ પાપ કહેવાય. બંગલો બળી ગયો તેમાં સાંખ્યજ્ઞાન મહારાજે કરાવી દીધું.’"
+        ],
+        en:[
+          "<b>A Devotee's Evolution:</b> A leading devotee of Shastriji Maharaj, Āshābhāi was later initiated by Yogiji Maharaj as Sadhu Yagnapriyadāsji on Guru Purnima.",
+          "<b>Unshaken by Disaster:</b> When a massive fire destroyed his bungalow and thousands of maunds of crops (cotton, wheat, chickpeas), he remained completely unfazed.",
+          "<b>Redefining Sin:</b> Shastriji Maharaj consoled him, saying his ‘sins’ were now burnt away. When asked how a loyal devotee could still have sins, Swāmishri redefined the spiritual standard: “For an ekāntik bhakta, to have affection or worldly desire (vāsanā) anywhere other than in Bhagwān is itself considered a sin.”",
+          "<b>The Blessing of Sānkhya Gnān:</b> Swāmishri explained the loss was a divine gift of sānkhya gnān, ensuring future material wealth would never bind his soul."
+        ]
+      }
+    },
+    {
+      q:{
+        gu:"આ છબીમાં દેખાતા ‘મુક્તરાજ’ કોણ છે? (હરમાનભાઈ — આફ્રિકા સત્સંગ)",
+        en:"Who is the ‘Muktarāj’ seen in this picture? (Harmānbhāi — Africa Satsang)"
+      },
+      options:{
+        gu:["આશાભાઈ","ઈશ્વરભાઈ","હરમાનભાઈ","જેઠાલાલ સ્વામિનારાયણ"],
+        en:["Āshābhāi","Ishwarbhāi","Harmānbhāi","Jethālāl Swaminarayan"]
+      },
+      correct:2,
+      prasang:{
+        gu:[
+          "હરમાનભાઈ મકનદાસ પટેલ (ગાના) શાસ્ત્રીજી મહારાજના એક અત્યંત નિષ્ઠાવાન અને શૂરવીર હરિભક્ત હતા, જેમણે આફ્રિકામાં BAPS સત્સંગનો પાયો નાખ્યો હતો.",
+          "પૂર્વ આફ્રિકામાં સત્સંગમંડળની સ્થાપના કરી જનરલ સેક્રેટરી તરીકેનો હોદ્દો સંભાળી સત્સંગનો વિકાસ કર્યો.",
+          "શાસ્ત્રીજી મહારાજની આજ્ઞા અને આશીર્વાદથી હરમાનભાઈએ આફ્રિકામાં અક્ષર-પુરુષોત્તમ ઉપાસનાનો પ્રચાર કર્યો અને ૧૯૪૫માં નૈરોબીમાં પ્રથમ મંદિરના નિર્માણમાં મહત્વની ભૂમિકા ભજવી હતી."
+        ],
+        en:[
+          "<b>The Foundation:</b> A courageous disciple of Shastriji Maharaj, Harmānbhāi laid the foundational roots of the BAPS satsang in Africa.",
+          "<b>Satsang Leadership:</b> He established the East Africa Satsang Mandal and systematically developed the fellowship as its General Secretary.",
+          "<b>Nairobi Mandir (1945):</b> Following Swāmishri's āgnā to spread the Akshar-Purushottam upāsanā, he played a vital role in building Africa's very first BAPS mandir.",
+          "<b>Lifelong Dedication:</b> He centered his entire life on absolute obedience to his Guru and expanding the satsang."
+        ]
+      }
+    }
+  ],
+  image:"Gun-Darshan-Ball-Pass.png",
+  games:[
+    {title:"Gun Darshan Ball Pass"},
+    {title:"Objective", items:["Recognize and share one good quality (gun) of someone in the group."]},
+    {title:"Materials Needed", items:["1 soft ball","Speaker","Kirtan or music","Open space"]},
+    {title:"Setup", ordered:true, items:[
+      "Make one group of 8 to 10 participants.",
+      "Ask everyone to sit or stand in a circle.",
+      "Give one soft ball to the group.",
+      "Start playing kirtan or music."
+    ]},
+    {title:"Instructions", ordered:true, items:[
+      "When the music starts, participants pass the ball around the group.",
+      "Everyone must keep passing the ball until the music stops.",
+      "When the music stops, the person holding the ball stays in their place.",
+      "That person chooses anyone in the group and says one good quality about them.",
+      "After they share, start the music again.",
+      "Continue for multiple rounds so different people get a chance."
+    ]},
+    {title:"Rules", items:[
+      "The quality must be respectful and positive.",
+      "Do not repeat the same quality too many times.",
+      "Try to be specific.",
+      "No teasing or comments that may hurt someone.",
+      "If someone cannot think of a quality, the group can help them."
+    ]}
   ]
 }
 ];
 
+/* =====================================================
+   STATE + RENDER
+   ===================================================== */
 const LETTERS = ["A","B","C","D","E","F"];
+let LANG = "gu";
 
 function el(tag, cls, html){
   const e = document.createElement(tag);
@@ -797,20 +1223,39 @@ function el(tag, cls, html){
   return e;
 }
 
+function applyChrome(){
+  const t = UI[LANG];
+  document.documentElement.setAttribute("data-lang", LANG);
+  document.documentElement.lang = (LANG === "gu" ? "gu" : "en");
+  document.querySelector("[data-i18n-brand]").textContent = t.brand;
+  document.querySelector("[data-i18n-tag]").textContent = t.tag;
+  document.querySelector("[data-i18n-eyebrow]").textContent = t.eyebrow;
+  document.querySelector("[data-i18n-h1]").innerHTML = t.h1;
+  document.querySelector("[data-i18n-lead]").textContent = t.lead;
+  document.querySelector("[data-i18n-stat-sec]").textContent = t.statSec;
+  document.querySelector("[data-i18n-stat-q]").textContent = t.statQ;
+  document.querySelector("[data-i18n-stat-g]").textContent = t.statG;
+  document.querySelector("[data-i18n-footer]").textContent = t.footer;
+  document.querySelectorAll("[data-lang-btn]").forEach(b=>{
+    const active = b.dataset.langBtn === LANG;
+    b.classList.toggle("active", active);
+    b.setAttribute("aria-pressed", active ? "true" : "false");
+  });
+}
+
 function renderQuestion(item, idx){
+  const t = UI[LANG];
   const card = el("div","question-card");
   const top = el("div","q-top");
   top.appendChild(el("div","q-number", String(idx)));
   const main = el("div","q-main");
-  const badgeTxt = item.source==="both" ? "Script + Excel" : item.source==="pdf" ? "Script" : "Excel";
-  main.appendChild(el("span","q-badge "+item.source, badgeTxt));
-  main.appendChild(el("div","question", item.q));
+  main.appendChild(el("div","question", item.q[LANG]));
   top.appendChild(main);
   card.appendChild(top);
 
-  if(item.options && item.options.length){
+  if(item.options && item.options[LANG] && item.options[LANG].length){
     const opts = el("div","options");
-    item.options.forEach((o,i)=>{
+    item.options[LANG].forEach((o,i)=>{
       const isCorrect = i === item.correct;
       const op = el("div","option" + (isCorrect ? " correct" : ""));
       op.innerHTML = '<span class="option-label">'+LETTERS[i]+'</span>'+o;
@@ -818,22 +1263,19 @@ function renderQuestion(item, idx){
     });
     card.appendChild(opts);
   }
-  if(item.note){
-    card.appendChild(el("div","q-note", item.note));
-  }
-  if(item.prasang && item.prasang.length){
+  if(item.prasang && item.prasang[LANG] && item.prasang[LANG].length){
     const d = el("details");
-    d.appendChild(el("summary",null,"પ્રસંગ / સમજૂતી"));
+    d.appendChild(el("summary",null, t.pradsangLbl));
     const body = el("div","prasang");
-    item.prasang.forEach(p=> body.appendChild(el("p",null,p)));
+    item.prasang[LANG].forEach(p=> body.appendChild(el("p",null,p)));
     d.appendChild(body);
     card.appendChild(d);
   }
   return card;
 }
 
-function renderGames(games, images){
-  // group: a heading entry (no items) starts a new panel; entries with items are blocks
+function renderGames(games, image){
+  // Group entries: a "title-only" entry (no items) starts a new panel
   const panels = [];
   let cur = null;
   games.forEach(entry=>{
@@ -848,13 +1290,14 @@ function renderGames(games, images){
   if(cur) panels.push(cur);
 
   const frag = document.createDocumentFragment();
-  panels.forEach((p,pi)=>{
+  panels.forEach((p, pi)=>{
     const panel = el("div","game-panel");
     if(p.name) panel.appendChild(el("div","game-name", p.name));
-    if(images && images[pi]){
+    panel.appendChild(el("div","game-tag", "Activity instructions (English)"));
+    if(image && pi === 0){
       const img = el("img","game-image");
-      img.src = images[pi];
-      img.alt = p.name || "game";
+      img.src = image;
+      img.alt = p.name || "activity";
       img.loading = "lazy";
       panel.appendChild(img);
     }
@@ -871,28 +1314,19 @@ function renderGames(games, images){
   return frag;
 }
 
-(function render(){
+function render(){
+  applyChrome();
+  const t = UI[LANG];
   const main = document.getElementById("main");
   const nav = document.getElementById("navPills");
-  let totalQ = 0, totalG = 0, scriptSecs = 0, bannerDone = false;
+  main.innerHTML = "";
+  nav.innerHTML = "";
 
-  SECTIONS.forEach(sec=>{
-    // divider banner before the first Excel-only section
-    if(sec.notInScript && !bannerDone){
-      bannerDone = true;
-      const banner = el("section","excel-banner");
-      banner.id = "excel-only";
-      banner.innerHTML = "<div class='wrap'>" +
-        "<p class='eyebrow'>Excel only</p>" +
-        "<h2>These sections are not in the script</h2>" +
-        "<p>The sections below existed in the Excel sheet but do not appear anywhere in the " +
-        "\"Kon Banega Nisthavan\" script (Version 1). They are kept here for reference.</p></div>";
-      main.appendChild(banner);
-    }
+  let totalQ = 0, totalG = 0;
 
+  SECTIONS.forEach((sec, sIdx)=>{
     // nav pill
-    const pill = el("a","nav-pill" + (sec.notInScript ? " excel" : ""),
-      sec.notInScript ? sec.title : (sec.num + ". " + sec.title));
+    const pill = el("a","nav-pill", (sIdx+1) + ". " + sec.title[LANG]);
     pill.href = "#sec-" + sec.key;
     nav.appendChild(pill);
 
@@ -901,38 +1335,43 @@ function renderGames(games, images){
     const wrap = el("div","wrap");
 
     const head = el("div","section-head");
-    head.appendChild(el("span","sec-num" + (sec.notInScript ? " excel" : ""),
-      sec.notInScript ? "Excel only" : ("વિભાગ " + sec.num)));
-    head.appendChild(el("h2",null, sec.title));
+    head.appendChild(el("span","sec-num", t.secLabel + " " + (sIdx+1)));
+    head.appendChild(el("h2",null, sec.title[LANG]));
     wrap.appendChild(head);
-
-    if(sec.flowNote){
-      wrap.appendChild(el("div","flow-note","<b>નોંધ:</b> " + sec.flowNote));
-    }
 
     const grid = el("div","question-grid");
     sec.questions.forEach((q,i)=>{
-      if(!sec.notInScript) totalQ++;
+      totalQ++;
       grid.appendChild(renderQuestion(q, i+1));
     });
     wrap.appendChild(grid);
 
     if(sec.games && sec.games.length){
-      const gameNames = sec.games.filter(g=>!g.items).length || 1;
-      if(!sec.notInScript) totalG += gameNames;
-      wrap.appendChild(el("div","games-head","રમતો &middot; Activities (" + gameNames + ")"));
-      wrap.appendChild(renderGames(sec.games, sec.gameImages));
+      const titles = sec.games.filter(g=>!g.items).length || 1;
+      totalG += titles;
+      wrap.appendChild(el("div","games-head", t.gamesHead + " (" + titles + ")"));
+      wrap.appendChild(renderGames(sec.games, sec.image));
     }
 
-    if(!sec.notInScript) scriptSecs++;
     band.appendChild(wrap);
     main.appendChild(band);
   });
 
+  document.getElementById("statSec").textContent = SECTIONS.length;
   document.getElementById("statQ").textContent = totalQ;
   document.getElementById("statG").textContent = totalG;
-  document.getElementById("statSec").textContent = scriptSecs;
-})();
+}
+
+document.querySelectorAll("[data-lang-btn]").forEach(b=>{
+  b.addEventListener("click", ()=>{
+    const next = b.dataset.langBtn;
+    if(next === LANG) return;
+    LANG = next;
+    render();
+  });
+});
+
+render();
 </script>
 </body>
 </html>
